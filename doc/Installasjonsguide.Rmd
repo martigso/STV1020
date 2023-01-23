@@ -10,7 +10,7 @@ output:
 
 Du må installere R og Rstudio før første seminar. Dersom du allerede har installert R og Rstudio så er det fint om du oppdaterer til siste versjon før seminar. Om alle har samme versjon så vil seminarene gå mye smidigere. 
 
-Dersom du trenger hjelp eller har problemer med installasjon/oppdatering så kan du komme på kodekafé 17. og 23. februar. Mer informasjon om tid og sted finner du på [Kodecafé-sidene](https://www.sv.uio.no/isv/forskning/kurs/?fbclid=IwAR3-yQAJbPp2e8erHl_Ek3Jz_wn1LS4HPaq1t005JeKIJ-TDXoggy-jwlrQ). 
+Dersom du trenger hjelp eller har problemer med installasjon/oppdatering så kan du komme på [kodekafé](https://www.sv.uio.no/isv/english/research/courses/coffee-and-coding/).
 
 Har du R og Rstudio installert? 
 
@@ -39,7 +39,7 @@ Har du R og Rstudio installert?
 6. Klikk på lenken som matcher din versjon og lagre filen på maskinen. Når nedlastningen er ferdig så åpner du filen og følger installasjonsveiledningen. 
 7. Nå kan du laste ned Rstudio. 
 
-*Linux (Ubuntu)*
+*Linux (Ubuntu 20.04+)*
 1. Installere dependencies:
     - `sudo apt install dirmngr gnupg apt-transport-https ca-certificates software-properties-common`
 2. Legge til CRAN i listen over repositories:

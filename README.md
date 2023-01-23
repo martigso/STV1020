@@ -13,7 +13,7 @@ Lenke til gamle R-prøver: https://github.com/martigso/stv1020R/tree/master/tidl
 
 #### Noen nyttige lenker
 
-- [Coffee & Coding](https://www.sv.uio.no/isv/english/research/courses/)
+- [Coffee & Coding](https://www.sv.uio.no/isv/english/research/courses/coffee-and-coding/)
 - Øve deg på R direkte relatert til STV1020 i [denne tutorialen](https://shinyibv02.uio.no/connect/?fbclid=IwAR2tF5yHFLF1ymRYFaUuHUc6uxV1k6F24bZe_Cdki54bGfKXndHmgt0ne_I#/apps/55/access).
 - Bli med i facebookgruppen [R for statsvitenskap ved UiO](https://www.facebook.com/groups/427792970608618).
 - [Discord server for STV](https://discord.gg/CAP9TbdWFa)

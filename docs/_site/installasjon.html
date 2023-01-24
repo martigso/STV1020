@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-0.9.446">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>STV1020 – installasjon</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<link href="./laste_data.html" rel="next">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link id="quarto-text-highlighting-styles" href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">(Untitled)</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">STV1020</a> 
+    </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">1. Introduksjon</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./installasjon.html" class="sidebar-item-text sidebar-link active">2. Installasjonsguide</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./laste_data.html" class="sidebar-item-text sidebar-link">3. Guide for innlastning av datasett</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workbench.html" class="sidebar-item-text sidebar-link">4. Guide for RStudio Workbench</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./proveinfo.html" class="sidebar-item-text sidebar-link">5. Informasjon om R-prøven</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#installasjonsguide" id="toc-installasjonsguide" class="nav-link active" data-scroll-target="#installasjonsguide">2. Installasjonsguide</a>
+  <ul class="collapse">
+  <li><a href="#hvordan-innstallere-og-oppdatere-r-og-rstudio" id="toc-hvordan-innstallere-og-oppdatere-r-og-rstudio" class="nav-link" data-scroll-target="#hvordan-innstallere-og-oppdatere-r-og-rstudio">Hvordan innstallere og oppdatere R og Rstudio?</a></li>
+  <li><a href="#hvordan-installere-r-og-rstudio" id="toc-hvordan-installere-r-og-rstudio" class="nav-link" data-scroll-target="#hvordan-installere-r-og-rstudio">Hvordan installere R og Rstudio</a></li>
+  <li><a href="#installere-rstudio" id="toc-installere-rstudio" class="nav-link" data-scroll-target="#installere-rstudio">Installere Rstudio</a></li>
+  <li><a href="#hvordan-oppdatere-r-og-rstudio" id="toc-hvordan-oppdatere-r-og-rstudio" class="nav-link" data-scroll-target="#hvordan-oppdatere-r-og-rstudio">Hvordan oppdatere R og Rstudio</a></li>
+  <li><a href="#verifiser-r-versjon" id="toc-verifiser-r-versjon" class="nav-link" data-scroll-target="#verifiser-r-versjon">Verifiser R versjon</a></li>
+  <li><a href="#oppdatere-r-og-rstudio" id="toc-oppdatere-r-og-rstudio" class="nav-link" data-scroll-target="#oppdatere-r-og-rstudio">Oppdatere R og RStudio</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="installasjonsguide" class="level1">
+<h1>2. Installasjonsguide</h1>
+<section id="hvordan-innstallere-og-oppdatere-r-og-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="hvordan-innstallere-og-oppdatere-r-og-rstudio">Hvordan innstallere og oppdatere R og Rstudio?</h2>
+<p>Du må installere R og Rstudio før første seminar. Dersom du allerede har installert R og Rstudio så er det fint om du oppdaterer til siste versjon før seminar. Om alle har samme versjon så vil seminarene gå mye smidigere.</p>
+<p>Dersom du trenger hjelp eller har problemer med installasjon/oppdatering så kan du komme på <a href="https://www.sv.uio.no/isv/english/research/courses/coffee-and-coding/">kodekafé</a>.</p>
+<p>Har du R og Rstudio installert?</p>
+<ul>
+<li>Ja - følg instruksjonene under “Hvordan oppdatere R og Rstudio”.</li>
+<li>Nei - følg instruksjonene under “Hvordan installere R og Rstudio”.</li>
+</ul>
+</section>
+<section id="hvordan-installere-r-og-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="hvordan-installere-r-og-rstudio">Hvordan installere R og Rstudio</h2>
+<p><em>Windows</em>:</p>
+<ol type="1">
+<li>Åpne en nettleser og gå til <a href="https://www.r-project.org">www.r-project.org</a>.</li>
+<li>Klikk på “download R” lenken. Den er i første avsnitt under “Getting started”.</li>
+<li>Velg CRAN location. Her burde du gå for Norway. Klikk på lenken.<br>
+</li>
+<li>Klikk på “Download R for Windows” på toppen av siden.</li>
+<li>Klikk på “install R for the first time”.</li>
+<li>Klikk på “Download R for Windows” og lagre filen på maskinen din. Når nedlastningen er ferdig så åpner du .exe-filen og følger installasjonsveiledningen.</li>
+<li>Nå kan du laste ned Rstudio.</li>
+</ol>
+<p><em>Mac</em>:</p>
+<ol type="1">
+<li>Åpne en nettleser og gå til <a href="https://www.r-project.org">www.r-project.org</a>.</li>
+<li>Klikk på “download R” lenken. Den finner du i første avsnitt under “Getting started”.</li>
+<li>Velg CRAN location. Her burde du gå for Norway. Klikk på lenken.</li>
+<li>Klikk på “Download R for (Mac) OS X” på toppen av siden. Du må lese det som står på siden du kommer til nå nøye dersom du har Mac.</li>
+<li>Velg den R-versjonen som passer den operativsystemversjonen du har. Om du har en eldre MacBook så er det viktig at du klikker på riktig lenke. Er du usikker på hvilken macOS-versjon du har så kan du klikke på eplet i venstre hjørne og velge “about this mac”. Der skal det stå macOS etterfulgt av navnet på versjonen.</li>
+<li>Klikk på lenken som matcher din versjon og lagre filen på maskinen. Når nedlastningen er ferdig så åpner du filen og følger installasjonsveiledningen.</li>
+<li>Nå kan du laste ned Rstudio.</li>
+</ol>
+<p><em>Linux (Ubuntu 20.04+)</em></p>
+<ol type="1">
+<li>Installere dependencies:</li>
+</ol>
+<pre><code>sudo apt install dirmngr gnupg apt-transport-https ca-certificates software-properties-common</code></pre>
+<ol start="2" type="1">
+<li>Legge til CRAN i listen over repositories:</li>
+</ol>
+<pre><code>sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9`
+sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/'</code></pre>
+<ol start="3" type="1">
+<li>Installere R:
+<ul>
+<li><code>sudo apt install r-base r-base-dev</code></li>
+</ul></li>
+<li>Sjekk om det virker:
+<ul>
+<li><code>R --version</code></li>
+</ul></li>
+</ol>
+</section>
+<section id="installere-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="installere-rstudio">Installere Rstudio</h2>
+<ol type="1">
+<li>Gå til <a href="https://www.rstudio.com">www.rstudio.com</a>.</li>
+<li>Trykk på “Download”.</li>
+<li>Trykk “Download” knappen under gratisversjonen av Rstudio Desktop.</li>
+<li>Finn den versjonen som er anbefalt for operativsystemet ditt. Klikk på lenken i kolonnen “Download” for å laste ned installasjonsfilen.</li>
+<li>Kjør filen og følg installasjonsveiledning.</li>
+</ol>
+<p>Nå er du klar for første R-seminar!</p>
+</section>
+<section id="hvordan-oppdatere-r-og-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="hvordan-oppdatere-r-og-rstudio">Hvordan oppdatere R og Rstudio</h2>
+<p>Seminarene går smidigere om alle bruker samme versjon av R. Dersom du har R og Rstudio installert fra før så kan du følge denne oppskriften for å sjekke hvilken versjon du har og eventuelt oppdatere dersom nødvendig.</p>
+</section>
+<section id="verifiser-r-versjon" class="level2">
+<h2 class="anchored" data-anchor-id="verifiser-r-versjon">Verifiser R versjon</h2>
+<p>Åpne Rstudio. Øverst i konsoll så vil du se “session info”. Den første linjen forteller deg hvilken R versjon du bruker. Alternativt så kan du kjøre koden <code>R.version.string</code> for å printe R versjonen.</p>
+<p>Har du R versjon 4.2.2 installert?</p>
+<ul>
+<li>Nei - følg instruksjonene for å “Oppdatere R og Rstudio”</li>
+<li>Ja - supert! Du er klar for første R-seminar!</li>
+</ul>
+</section>
+<section id="oppdatere-r-og-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="oppdatere-r-og-rstudio">Oppdatere R og RStudio</h2>
+<p><em>Windows</em></p>
+<p>For å oppdatere R på en Windows maskin så kan du prøve å bruke pakken <code>installr</code>.</p>
+<ol type="1">
+<li><p>Installer og last inn <code>installr</code>: skriv inn og kjør kodene <code>install.packages("installr")</code> og <code>library(installr)</code></p></li>
+<li><p>Skriv <code>updateR()</code> og kjør koden. Dette vil starte oppdateringsveilederen til R.</p></li>
+<li><p>For å oppdatere Rstudio så åpner du Rstudio, velger Help &gt; Check for Updates. Dette vil sende deg til Rstudios nettside hvor du kan laste ned den nyeste versjonen.</p></li>
+</ol>
+<p>Nå er du klar for første R-seminar!</p>
+<p><em>Mac</em></p>
+<p>På Mac så laster du selv ned og installerer den nyeste versjonen av R. Når du restarter Rstudio så vil den oppdaterte versjonen av R automatisk bli tatt i bruk. <em>NB! Her er det snakk om den nyeste versjonen av R som er kompatibel med din Mac.</em></p>
+<ol type="1">
+<li><p>Følg installasjonsveiledningen for MAC.</p></li>
+<li><p>For å oppdatere Rstudio så åpner du Rstudio, velger Help &gt; Check for Updates. Dette vil sende deg til Rstudios nettside hvor du kan laste ned den nyeste versjonen.</p></li>
+</ol>
+<p><em>Linux (Ubuntu)</em></p>
+<p>R oppdateres som alt annet på Ubuntu: 1. <code>sudo apt update</code> 2. <code>sudo apt upgrade</code></p>
+<p>Rstudio oppdateres ved å følge veiledningen for installasjon av Rstudio over.</p>
+<p>Nå er du klar for første R-seminar!</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">1. Introduksjon</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./laste_data.html" class="pagination-link">
+        <span class="nav-page-text">3. Guide for innlastning av datasett</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -1,10 +1,11 @@
 ---
 title: "Installasjonsguide"
-output: 
-  pdf_document: 
-      keep_md: yes
-  github_document: default 
-    
+output:
+  html_document:
+    df_print: paged
+  github_document: default
+  pdf_document:
+    keep_md: yes
 ---
 #### Hvordan innstallere og oppdatere R og Rstudio? 
 
@@ -39,7 +40,8 @@ Har du R og Rstudio installert?
 6. Klikk på lenken som matcher din versjon og lagre filen på maskinen. Når nedlastningen er ferdig så åpner du filen og følger installasjonsveiledningen. 
 7. Nå kan du laste ned Rstudio. 
 
-*Linux (Ubuntu 20.04+)*
+*Linux (Ubuntu 20.04+)*:
+
 1. Installere dependencies:
     - `sudo apt install dirmngr gnupg apt-transport-https ca-certificates software-properties-common`
 2. Legge til CRAN i listen over repositories:

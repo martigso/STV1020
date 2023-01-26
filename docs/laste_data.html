@@ -187,7 +187,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul>
   <li><a href="#guide-for-innlastning-av-datasett" id="toc-guide-for-innlastning-av-datasett" class="nav-link active" data-scroll-target="#guide-for-innlastning-av-datasett">3. Guide for innlastning av datasett</a>
   <ul class="collapse">
-  <li><a href="#veiledning-for-innlastning-av-data" id="toc-veiledning-for-innlastning-av-data" class="nav-link" data-scroll-target="#veiledning-for-innlastning-av-data">Veiledning for innlastning av data</a></li>
+  <li><a href="#veiledning-for-innlastning-av-data" id="toc-veiledning-for-innlastning-av-data" class="nav-link" data-scroll-target="#veiledning-for-innlastning-av-data">Veiledning for innlastning av data</a>
+  <ul class="collapse">
+  <li><a href="#riktig-working-directory" id="toc-riktig-working-directory" class="nav-link" data-scroll-target="#riktig-working-directory">Riktig <em>working directory</em>?</a></li>
+  <li><a href="#plassere-datasettfil" id="toc-plassere-datasettfil" class="nav-link" data-scroll-target="#plassere-datasettfil">Plassere datasettfil</a></li>
+  <li><a href="#sjekk-koden-for-feil" id="toc-sjekk-koden-for-feil" class="nav-link" data-scroll-target="#sjekk-koden-for-feil">Sjekk koden for feil</a></li>
+  </ul></li>
   <li><a href="#koder-for-å-laste-inn-ulike-filtyper" id="toc-koder-for-å-laste-inn-ulike-filtyper" class="nav-link" data-scroll-target="#koder-for-å-laste-inn-ulike-filtyper">Koder for å laste inn ulike filtyper</a>
   <ul class="collapse">
   <li><a href="#excel-fil-slutter-på-f.eks.-.xlsx" id="toc-excel-fil-slutter-på-f.eks.-.xlsx" class="nav-link" data-scroll-target="#excel-fil-slutter-på-f.eks.-.xlsx">Excel-fil (slutter på f.eks. .xlsx)</a></li>
@@ -196,7 +201,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#stata-fil-slutter-på-.dta" id="toc-stata-fil-slutter-på-.dta" class="nav-link" data-scroll-target="#stata-fil-slutter-på-.dta">Stata-fil (slutter på .dta)</a></li>
   <li><a href="#spss-fil-slutter-på-.sav" id="toc-spss-fil-slutter-på-.sav" class="nav-link" data-scroll-target="#spss-fil-slutter-på-.sav">SPSS-fil (slutter på .sav)</a></li>
   </ul></li>
-  <li><a href="#undersøke-at-tidyverse-er-installert" id="toc-undersøke-at-tidyverse-er-installert" class="nav-link" data-scroll-target="#undersøke-at-tidyverse-er-installert">Undersøke at <code>tidyverse</code> er installert</a></li>
+  <li><a href="#undersøke-om-tidyverse-er-installert" id="toc-undersøke-om-tidyverse-er-installert" class="nav-link" data-scroll-target="#undersøke-om-tidyverse-er-installert">Undersøke om <code>tidyverse</code> er installert</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -210,21 +215,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>3. Guide for innlastning av datasett</h1>
 <section id="veiledning-for-innlastning-av-data" class="level2">
 <h2 class="anchored" data-anchor-id="veiledning-for-innlastning-av-data">Veiledning for innlastning av data</h2>
-<p>Når du skal laste inn et datasett til RStudio, og det oppstår problemer, bør du først sjekke disse tingene:</p>
-<ol type="1">
-<li>Pass på at du enten åpner prosjektfilen din eller setter «working directory» til en mappe du finner igjen. F.eks kan du lage en mappe som heter «R-seminar» på skrivebordet, og så lage undermapper for hvert seminar. Dere kan sette working directory som vist under, eller bruke koden <code>setwd()</code>. Hvis dere vil dobbeltsjekke, bruk koden <code>getwd()</code>.</li>
-</ol>
+<p>Når du skal laste inn et datasett til RStudio, og det oppstår problemer, kan du sjekke tipsene under. Her er eksemplene fra en Mac, men de samme løsningene vil finnes også på Windows og Linux.</p>
+<section id="riktig-working-directory" class="level3">
+<h3 class="anchored" data-anchor-id="riktig-working-directory">Riktig <em>working directory</em>?</h3>
+<p>Pass på at du enten åpner prosjektfilen din eller setter <em>working directory</em> til en mappe du finner igjen. For eksempel kan du lage en mappe som heter “R-seminar” på skrivebordet, og så lage undermapper for hvert seminar. Dere kan sette <em>working directory</em> som vist under, eller bruke koden <code>setwd()</code>. Hvis dere vil dobbeltsjekke, bruk koden <code>getwd()</code>.</p>
 <p><img src="./bilder/dataveil1.jpg" class="img-fluid"></p>
-<ol start="2" type="1">
-<li>Legg datasett-filen i samme mappe som du har lagret prosjektfilen din i eller som du har satt som working directory. På bildet under ser dere hvordan jeg har gjort det.</li>
-</ol>
+<p>Det aller viktigste er å finne en god måte å strukturere prosjektene sine på. Eksempelvis <a href="https://kdestasio.github.io/post/r_best_practices/">R Best Practices”</a>. Ta gjerne også en titt på RStudios/posit egen side for <a href="https://support.posit.co/hc/en-us/articles/200526207-Using-Projects">hvordan man bruker prosjekter</a>.</p>
+</section>
+<section id="plassere-datasettfil" class="level3">
+<h3 class="anchored" data-anchor-id="plassere-datasettfil">Plassere datasettfil</h3>
+<p>Pass på at datasettfilen ligger i mappen du prøver å hente den fra. For eksempel er det lurt å ha datasett i en egen datamappe der prosjektfilen din er lagret. På bildet under ser dere hvordan det er gjort i dette eksempelet.</p>
 <p><img src="./bilder/dataveil2.jpg" class="img-fluid"></p>
-<ol start="3" type="1">
-<li>Dobbeltsjekk koden du skriver i RStudio, sjekk for skrivefeil, parenteser og hermetegn, og at filnavnet er det samme som du har lagret filen som.</li>
-</ol>
+</section>
+<section id="sjekk-koden-for-feil" class="level3">
+<h3 class="anchored" data-anchor-id="sjekk-koden-for-feil">Sjekk koden for feil</h3>
+<p>Dobbeltsjekk koden du skriver i RStudio, sjekk for skrivefeil, parenteser og hermetegn, og at filnavnet er det samme som du har lagret filen som.</p>
 <p>Bruk gjerne tab for å finne frem filen din for å unngå problemer med skrivefeil. Still markøren i hermetegnene i koden for å laste inn data og trykk på tab-knappen (hvilken knapp det er kan du google) for å liste opp mapper og filer i working directory/prosjektmappen din. Om datafilen er lagret i working directory/prosjektmappen så bør den komme opp i en liste som vist i bildene under.</p>
 <p><img src="./bilder/dataveil3.jpg" class="img-fluid"></p>
 <p><img src="./bilder/dataveil4.jpg" class="img-fluid"></p>
+</section>
 </section>
 <section id="koder-for-å-laste-inn-ulike-filtyper" class="level2">
 <h2 class="anchored" data-anchor-id="koder-for-å-laste-inn-ulike-filtyper">Koder for å laste inn ulike filtyper</h2>
@@ -270,19 +279,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>navn <span class="ot">&lt;-</span> <span class="fu">read_sav</span>(<span class="st">"file"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Vær obs på at variabler som egentlig er faktorer kan bli lest som numeriske ved bruk av <code>haven</code>. Derfor er det ekstra viktig å sjekke kodebok og/eller labels.</p>
-<p>Hvis dere har fulgt stegene over, men likevel ikke får lastet inn data-settet:</p>
+<p>Hvis dere har fulgt stegene over, men likevel ikke får lastet inn datasettet:</p>
 <ol type="1">
-<li>Sjekk om pakkene du har installert er oppdatert. For å undersøke om noen av pakkene trenger en oppdatering, kan dere trykke på ‘tools’ og ‘check for package updates’.</li>
-<li>Hvis du har mac, sjekk at macen din er oppdatert. Er du usikker på hvordan så se på <a href="https://support.apple.com/en-us/HT201541">Apple sine support-sider</a><br>
-</li>
-<li>Sjekk at du har riktig versjon av R og Rstudio for Mac-en din (er du usikker så sjekk <a href="https://github.com/liserodland/STV1020/blob/main/doc/Installasjonsguide.md">installasjonsveiledningen</a></li>
+<li>Sjekk om pakkene du har installert er oppdatert.
+<ul>
+<li>For å undersøke om noen av pakkene trenger en oppdatering, kan dere trykke på ‘tools’ og ‘check for package updates’.</li>
+<li>Eller kjøre koden <code>update.packages(ask = FALSE)</code></li>
+</ul></li>
+<li>Hvis du har Mac, sjekk at maskinen din er oppdatert.
+<ul>
+<li>Er du usikker på hvordan så se på <a href="https://support.apple.com/en-us/HT201541">Apple sine support-sider</a></li>
+</ul></li>
+<li>Sjekk at du har riktig versjon av R og Rstudio for maskinen din
+<ul>
+<li>Er du usikker så sjekk <a href="./installasjon.html">installasjonsveiledningen</a></li>
+</ul></li>
 </ol>
 <p>Hvis dere har gått gjennom alle stegene, og likevel ikke får lastet inn datasettene så er neste steg å gå innom <a href="https://www.sv.uio.no/isv/english/research/courses/coffeeandcode.html">kodekafé</a> for å få hjelp.</p>
 </section>
 </section>
-<section id="undersøke-at-tidyverse-er-installert" class="level2">
-<h2 class="anchored" data-anchor-id="undersøke-at-tidyverse-er-installert">Undersøke at <code>tidyverse</code> er installert</h2>
-<p>For å undersøke om tidyverse er installert kan dere kjøre denne koden. Du skal få opp et plot nederst til høyre når du kjører koden:</p>
+<section id="undersøke-om-tidyverse-er-installert" class="level2">
+<h2 class="anchored" data-anchor-id="undersøke-om-tidyverse-er-installert">Undersøke om <code>tidyverse</code> er installert</h2>
+<p>For å undersøke om tidyverse er installert kan dere kjøre koden under. Du skal få opp et plot nederst til høyre i RStudio når du kjører koden:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install.packages er ikke nødvendig å kjøre om du allerede har installert pakken</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>) </span>

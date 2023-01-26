@@ -1,23 +1,46 @@
 # 1. Introduksjon
 
+`r emo::ji("wave")` Velkommen til R-seminarer i STV1020! `r emo::ji("wave")`
+
+I denne lille notatboka finner du litt informasjon om praktisk ting og tang. Det kan være lurt å se over de forskjellige sidene i venstremargen:
+
+1. Introduksjon (det er der du er nå)
+2. [Installasjonsguide for R](installasjon.qmd)
+3. [Guide for å laste inn datasett i R](laste_data.qmd)
+4. [Guide for RStudio Workbench](workbench.qmd)
+5. [Informasjon om R-prøven](proveinfo.qmd)
+
 ## Forventninger og forberedelser
 
-Her kommer litt informasjon om R-seminarene. R-seminarene blir etterfulgt av en digital prøve [[DATO]] som du må bestå for å kunne gå opp til eksamen i STV1020. Dersom du ikke består på første forsøk så får du et nytt forsøk [[DATO]]. På grunn av dagens korona-situasjon vil det ikke være mulig å bruke UiO-pcene på seminarene. Alle må derfor ha med egen laptop. 
+Her kommer litt informasjon om R-seminarene. R-seminarene blir etterfulgt av en digital prøve [[DATO ikke satt]] som du må bestå for å kunne gå opp til eksamen i STV1020. Dersom du ikke består på første forsøk så får du et nytt forsøk [[DATO ikke satt]]. På grunn av dagens korona-situasjon vil det ikke være mulig å bruke UiO-pcene på seminarene. Alle må derfor ha med egen laptop. 
 
 Før første seminar så forventer vi:
 
--	At du har lest [insert]. 
+-	`r emo::ji("floppy_disk")` At du har lastet ned og installert R og Rstudio før første seminar. Følg gjerne [installasjonsguiden](installasjon.qmd) på denne siden. `r emo::ji("computer")` 
 
--	At du har lastet ned og installert R og Rstudio før første seminar (se nedlastningsguide over). 
+-	`r emo::ji("chart_with_upwards_trend")`  At du har lest gjennom [guide for innlasting av datasett](laste_data.qmd) `r emo::ji("chart_with_downwards_trend")` 
 
-Under seminarrekka så forventer vi:
+Under seminarrekka forventer vi:
 
--	At du møter opp på seminar. 
+-	`r emo::ji("woman_student")` At du møter opp på seminar. `r emo::ji("man_student")`
 
--	At du jobber med å løse oppgaver mellom seminarene.
+-	`r emo::ji("books")` At du jobber med å løse oppgaver mellom seminarene. `r emo::ji("books")`
 
-Dette er viktig for at seminarene skal gå så smidig som mulig og for at dere skal få læringsutbytte av å delta. For noen kan R virke skummelt ved første øyekast, men erfaringsmessig så går dette veldig fint så lenge du legger ned litt innsats underveis :)   
+Dette er viktig for at seminarene skal gå så smidig som mulig og for at dere skal få læringsutbytte av å delta. For noen kan R virke skummelt ved første øyekast, men erfaringsmessig så går dette veldig fint så lenge du legger ned litt innsats underveis `r emo::ji("tada")` `r emo::ji("partying_face")` `r emo::ji("tada")`
 
+## Nyttige lenker
 
-
-
+- [Coffee & Coding](https://www.sv.uio.no/isv/english/research/courses/coffee-and-coding/)
+- Øve deg på R direkte relatert til STV1020 i [denne tutorialen](https://shinyibv02.uio.no/connect/?fbclid=IwAR2tF5yHFLF1ymRYFaUuHUc6uxV1k6F24bZe_Cdki54bGfKXndHmgt0ne_I#/apps/55/access).
+- Bli med i facebookgruppen [R for statsvitenskap ved UiO](https://www.facebook.com/groups/427792970608618).
+- [Discord server for STV](https://discord.gg/CAP9TbdWFa)
+- [R-workbench for UiO-brukere](https://rstudio-workbench.uio.no/)
+- [RStudio Keyboard Shortcuts for Windows, Linux and Mac](https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts)  hjelper deg å kode raskere.
+- [Stack overflow](https://stackoverflow.com/questions/tagged/r) er et forum hvor folk stiller spørsmål og får hjelp til ulike utfordringer med R. Om du lurer på noe så vil du som regel finne svar her. 
+- [Rstudio community forum](https://community.rstudio.com/) er litt i samme gate som Stack overflow. 
+- [Using projects](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects) gir en introduksjon til hvordan dere kan bruke prosjekter i Rstudio. 
+- Se et [forslag til mappestruktur](https://nicercode.github.io/blog/2013-04-05-projects/).
+- [The tidyverse style guide for R](https://style.tidyverse.org/) inneholder mange tips for å skrive forståelig og god kode. 
+- [R for Data Science](https://r4ds.had.co.nz/) er en veldig god bok for dere som vil fordype dere videre. 
+- [RStudio Cheatsheets](https://rstudio.com/resources/cheatsheets/) oppsummerer pakker eller oppgaver i R som for eksempel ggplot2. Gevinsten i disse juksearkene er størst når en har litt forståelse for hva pakken gjør.
+- [Oslo UseR! group](https://www.meetup.com/Oslo-useR-Group/) og [R-Ladies Oslo](https://www.meetup.com/rladies-oslo/) arrangerer jevnlig interessante foredrag og workshops om R.

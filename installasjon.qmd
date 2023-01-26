@@ -1,10 +1,10 @@
-# 2. Installasjonsguide
+# 2. Installasjonsguide {#installasjon}
 
 ## Hvordan innstallere og oppdatere R og Rstudio? 
 
 Du må installere R og Rstudio før første seminar. Dersom du allerede har installert R og Rstudio så er det fint om du oppdaterer til siste versjon før seminar. Om alle har samme versjon så vil seminarene gå mye smidigere. 
 
-Dersom du trenger hjelp eller har problemer med installasjon/oppdatering så kan du komme på [kodekafé](https://www.sv.uio.no/isv/english/research/courses/coffee-and-coding/).
+Dersom du trenger hjelp eller har problemer med installasjon/oppdatering så kan du komme på `r emo::ji("hot_beverage")` [kodekafé](https://www.sv.uio.no/isv/english/research/courses/coffee-and-coding/) `r emo::ji("hot_beverage")`.
 
 Har du R og Rstudio installert? 
 
@@ -13,7 +13,7 @@ Har du R og Rstudio installert?
 
 ## Hvordan installere R og Rstudio
 
-*Windows*:
+`r emo::ji("computer")` *Windows* `r emo::ji("computer")`
 
 1. Åpne en nettleser og gå til [www.r-project.org](https://www.r-project.org). 
 2. Klikk på "download R" lenken. Den er i første avsnitt under "Getting started". 
@@ -23,7 +23,7 @@ Har du R og Rstudio installert?
 6. Klikk på "Download R for Windows" og lagre filen på maskinen din. Når nedlastningen er ferdig så åpner du .exe-filen og følger installasjonsveiledningen. 
 7. Nå kan du laste ned Rstudio. 
 
-*Mac*: 
+`r emo::ji("apple")` *Mac* `r emo::ji("apple")` 
 
 1. Åpne en nettleser og gå til [www.r-project.org](https://www.r-project.org). 
 2. Klikk på "download R" lenken. Den finner du i første avsnitt under "Getting started". 
@@ -33,7 +33,7 @@ Har du R og Rstudio installert?
 6. Klikk på lenken som matcher din versjon og lagre filen på maskinen. Når nedlastningen er ferdig så åpner du filen og følger installasjonsveiledningen. 
 7. Nå kan du laste ned Rstudio. 
 
-*Linux (Ubuntu 20.04+)*
+`r emo::ji("penguin")` *Linux (Ubuntu 20.04+)* `r emo::ji("penguin")`
 
 1. Installere dependencies:
 
@@ -77,7 +77,7 @@ Har du R versjon 4.2.2 installert?
 
 ## Oppdatere R og RStudio
 
-*Windows*
+`r emo::ji("computer")` *Windows* `r emo::ji("computer")`
 
 For å oppdatere R på en Windows maskin så kan du prøve å bruke pakken `installr`. 
 
@@ -89,7 +89,7 @@ For å oppdatere R på en Windows maskin så kan du prøve å bruke pakken `inst
 
 Nå er du klar for første R-seminar!
 
-*Mac*
+`r emo::ji("apple")` *Mac* `r emo::ji("apple")` 
 
 På Mac så laster du selv ned og installerer den nyeste versjonen av R. Når du restarter Rstudio så vil den  oppdaterte versjonen av R automatisk bli tatt i bruk. *NB! Her er det snakk om den nyeste versjonen av R som er kompatibel med din Mac.* 
 
@@ -97,7 +97,7 @@ På Mac så laster du selv ned og installerer den nyeste versjonen av R. Når du
 
 2. For å oppdatere Rstudio så åpner du Rstudio, velger Help > Check for Updates. Dette vil sende deg til Rstudios nettside hvor du kan laste ned den nyeste versjonen. 
 
-*Linux (Ubuntu)*
+`r emo::ji("penguin")` *Linux (Ubuntu 20.04+)* `r emo::ji("penguin")`
 
 R oppdateres som alt annet på Ubuntu:
 1. `sudo apt update`

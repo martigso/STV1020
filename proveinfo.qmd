@@ -1,5 +1,13 @@
 # 5. Informasjon om R-prøven
 
+## Er prøven vanskelig å bestå?
+
+Nei.
+
+## Burde jeg bruke energi på å bekymre meg over prøven istedenfor å lære meg R?
+
+Nei.
+
 ## Hvor finner jeg R- prøven?
 
 Prøven blir gjort tilgjengelig som en oppgave på i Canvas kl. 9 – 15 prøvedagen. 
@@ -12,12 +20,7 @@ heller litt fri etterpå.
 
 ## Hvordan leverer jeg R-prøven?
 
-Du laster opp et R-script (R-fil/.R) som et svar på oppgaven innen klokken 15 
-prøvedagen. Det er bare mulig å laste opp besvarelsen i tidsrommet 9-15 så pass 
-på å laste opp i god tid. Du kan laste opp flere ganger i dette tidsrommet dersom 
-du finner noe du vil rette på.
-
-Har du problemer med opplastning i Canvas så ta kontakt med seminarleder.
+[TBD! Vi har ikke bestemt dette enda.]
 
 ## Hva skal jeg levere?
 
@@ -41,7 +44,7 @@ alle må levere sitt eget script med egne kommentarer.
 
 Nei. På prøven er det spesifisert hvor mange poeng du må få for å bestå. 
 
-## Hva skjer om jeg er syk?
+## Hva skjer om jeg er syk? `r emo::ji("sneezing_face")`
 
 Hvis du er syk så må du søke om utsatt obligatorisk aktivitet her: 
 https://www.uio.no/studier/eksamen/obligatoriske-aktiviteter/sv-fraver-fra-obligatorisk-aktivitet.html 
@@ -50,7 +53,7 @@ Dersom du får godkjent utsatt obligatorisk aktivitet så vil du få en ny prøv
 
 ## Tips og triks til prøvedagen
 
-Husk å laste inn de nødvendige pakkene ved hjelp av library(). Gjør det først 
+Husk å laste inn de nødvendige pakkene ved hjelp av `library()`. Gjør det først 
 i scriptet så er du ferdig med det. Om du ikke vet hvilken funksjon du skal 
 bruke for å løse en oppgave så slå opp  i materiale eller søk på nett.
 

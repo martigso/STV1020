@@ -2,7 +2,7 @@
 
 ## Guide for å åpne RStudio Workbench
 
-1. Åpne nettleseren din og gå til https://rstudio-workbench.uio.no/ 
+1. Åpne nettleseren din og gå til [https://rstudio-workbench.uio.no/](https://rstudio-workbench.uio.no/)
 2. Velg Universitetet i Oslo/University of Oslo under tilknytning/affiliation.
 
 ![](./bilder/workbenchveil1.JPG)

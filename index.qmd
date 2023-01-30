@@ -10,9 +10,23 @@ I denne lille notatboka finner du litt informasjon om praktisk ting og tang. Det
 4. [Guide for RStudio Workbench](workbench.qmd)
 5. [Informasjon om R-prøven](proveinfo.qmd)
 
-## Forventninger og forberedelser
+## Om R-seminarene
 
-Her kommer litt informasjon om R-seminarene. R-seminarene blir etterfulgt av en digital prøve [[DATO ikke satt]] som du må bestå for å kunne gå opp til eksamen i STV1020. Dersom du ikke består på første forsøk så får du et nytt forsøk [[DATO ikke satt]]. På grunn av dagens korona-situasjon vil det ikke være mulig å bruke UiO-pcene på seminarene. Alle må derfor ha med egen laptop. 
+Her kommer litt informasjon om R-seminarene. I STV1020 har vi 6 seminarer der vi går gjennom grunnleggende funksjoner og måter å jobbe med R på. Tema for seminarene er:
+
+1. Grunnleggende R -- kalkulator, indeksering, objekter, osv
+2. Data -- laste inn, lage deskriptiv statistikk og visualisering
+3. Datamanipulering -- omkoding, tabeller, visualisering
+4. Bivariate sammenhenger -- korrelasjon, krysstabulering og visualisering
+5. Bivariat regresjon -- OLS
+6. Multivariat regresjon -- OLS
+
+Det er mye å sette seg inn i når man starter helt fra bunn, men å bruke litt innsats på R nå, kan gi gevinster senere. Mange ender opp med å skrive kvantitative oppgaver i andre kurs eller bacheloroppgave, mens andre kan få bruk for kunnskapen i jobbsammenheng. På kort sikt har vi sett at å jobbe godt med R i STV1020 også gjør læringen i resten av kurset noe mer lettfattelig.
+
+R-seminarene blir etterfulgt av en digital prøve [[DATO ikke satt]] som du må bestå for å kunne gå opp til eksamen i STV1020. Dersom du ikke består på første forsøk så får du et nytt forsøk [[DATO ikke satt]]. Man kan enten bruke egen laptop (anbefalt om mulig) eller en stasjonær UiO-PC (alle maskiner på Eilert Sundt skal ha R og RStudio installert) når man skal bruke R.
+
+
+## Forventninger:
 
 Før første seminar så forventer vi:
 

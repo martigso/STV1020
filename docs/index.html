@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.446">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,29 +11,35 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 </style>
+
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
-<meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
 <link href="./installasjon.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link id="quarto-text-highlighting-styles" href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -63,7 +69,7 @@ ul.task-list{list-style: none;}
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">(Untitled)</h1>
+      <h1 class="quarto-secondary-nav-title">STV1020</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -111,13 +117,14 @@ ul.task-list{list-style: none;}
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
   <li><a href="#introduksjon" id="toc-introduksjon" class="nav-link active" data-scroll-target="#introduksjon">1. Introduksjon</a>
   <ul class="collapse">
-  <li><a href="#forventninger-og-forberedelser" id="toc-forventninger-og-forberedelser" class="nav-link" data-scroll-target="#forventninger-og-forberedelser">Forventninger og forberedelser</a></li>
+  <li><a href="#om-r-seminarene" id="toc-om-r-seminarene" class="nav-link" data-scroll-target="#om-r-seminarene">Om R-seminarene</a></li>
+  <li><a href="#forventninger" id="toc-forventninger" class="nav-link" data-scroll-target="#forventninger">Forventninger:</a></li>
   <li><a href="#nyttige-lenker" id="toc-nyttige-lenker" class="nav-link" data-scroll-target="#nyttige-lenker">Nyttige lenker</a></li>
   </ul></li>
   </ul>
@@ -139,9 +146,22 @@ ul.task-list{list-style: none;}
 <li><a href="./workbench.html">Guide for RStudio Workbench</a></li>
 <li><a href="./proveinfo.html">Informasjon om R-prøven</a></li>
 </ol>
-<section id="forventninger-og-forberedelser" class="level2">
-<h2 class="anchored" data-anchor-id="forventninger-og-forberedelser">Forventninger og forberedelser</h2>
-<p>Her kommer litt informasjon om R-seminarene. R-seminarene blir etterfulgt av en digital prøve [[DATO ikke satt]] som du må bestå for å kunne gå opp til eksamen i STV1020. Dersom du ikke består på første forsøk så får du et nytt forsøk [[DATO ikke satt]]. På grunn av dagens korona-situasjon vil det ikke være mulig å bruke UiO-pcene på seminarene. Alle må derfor ha med egen laptop.</p>
+<section id="om-r-seminarene" class="level2">
+<h2 class="anchored" data-anchor-id="om-r-seminarene">Om R-seminarene</h2>
+<p>Her kommer litt informasjon om R-seminarene. I STV1020 har vi 6 seminarer der vi går gjennom grunnleggende funksjoner og måter å jobbe med R på. Tema for seminarene er:</p>
+<ol type="1">
+<li>Grunnleggende R – kalkulator, indeksering, objekter, osv</li>
+<li>Data – laste inn, lage deskriptiv statistikk og visualisering</li>
+<li>Datamanipulering – omkoding, tabeller, visualisering</li>
+<li>Bivariate sammenhenger – korrelasjon, krysstabulering og visualisering</li>
+<li>Bivariat regresjon – OLS</li>
+<li>Multivariat regresjon – OLS</li>
+</ol>
+<p>Det er mye å sette seg inn i når man starter helt fra bunn, men å bruke litt innsats på R nå, kan gi gevinster senere. Mange ender opp med å skrive kvantitative oppgaver i andre kurs eller bacheloroppgave, mens andre kan få bruk for kunnskapen i jobbsammenheng. På kort sikt har vi sett at å jobbe godt med R i STV1020 også gjør læringen i resten av kurset noe mer lettfattelig.</p>
+<p>R-seminarene blir etterfulgt av en digital prøve [[DATO ikke satt]] som du må bestå for å kunne gå opp til eksamen i STV1020. Dersom du ikke består på første forsøk så får du et nytt forsøk [[DATO ikke satt]]. Man kan enten bruke egen laptop (anbefalt om mulig) eller en stasjonær UiO-PC (alle maskiner på Eilert Sundt skal ha R og RStudio installert) når man skal bruke R.</p>
+</section>
+<section id="forventninger" class="level2">
+<h2 class="anchored" data-anchor-id="forventninger">Forventninger:</h2>
 <p>Før første seminar så forventer vi:</p>
 <ul>
 <li><p>💾 At du har lastet ned og installert R og Rstudio før første seminar. Følg gjerne <a href="./installasjon.html">installasjonsguiden</a> på denne siden. 💻</p></li>
@@ -180,6 +200,24 @@ ul.task-list{list-style: none;}
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -201,7 +239,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -229,31 +284,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

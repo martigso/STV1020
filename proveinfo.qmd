@@ -8,15 +8,17 @@ Nei.
 
 Nei.
 
-## Hvor finner jeg R- prøven?
+## Hvor finner jeg R-prøven?
 
-Prøven blir gjort tilgjengelig som en oppgave på i Canvas kl. 9 – 15 prøvedagen. 
-Finner du den ikke så sjekk seminarsiden i Canvas. Selv om dere har seks timer 
-så vil prøven ha samme omfang som en prøve som ville blitt løst på et to timers 
-seminar dersom den var fysisk. Dere har altså god tid. Grunnen til at vi har satt 
-av seks timer er at det skal være rom for å dra et annet sted dersom internett 
-plutselig forsvinner e.l. Begynn tidlig i tilfelle noe skulle inntreffe og ta 
-heller litt fri etterpå.
+[TBD! Vi jobber med løsning på dette.]
+
+<!-- Prøven blir gjort tilgjengelig som en oppgave på i Canvas kl. 9 – 15 prøvedagen.  -->
+<!-- Finner du den ikke så sjekk seminarsiden i Canvas. Selv om dere har seks timer  -->
+<!-- så vil prøven ha samme omfang som en prøve som ville blitt løst på et to timers  -->
+<!-- seminar dersom den var fysisk. Dere har altså god tid. Grunnen til at vi har satt  -->
+<!-- av seks timer er at det skal være rom for å dra et annet sted dersom internett  -->
+<!-- plutselig forsvinner e.l. Begynn tidlig i tilfelle noe skulle inntreffe og ta  -->
+<!-- heller litt fri etterpå. -->
 
 ## Hvordan leverer jeg R-prøven?
 

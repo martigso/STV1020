@@ -6,11 +6,11 @@ Når du skal laste inn et datasett til RStudio, og det oppstår problemer, kan d
 
 ### Riktig *working directory*?
 
-Pass på at du enten åpner prosjektfilen din eller setter *working directory* til en mappe du finner igjen. For eksempel kan du lage en mappe som heter "R-seminar" på skrivebordet, og så lage undermapper for hvert seminar. Dere kan sette *working directory* som vist under, eller bruke koden `setwd()`. Hvis dere vil dobbeltsjekke, bruk koden `getwd()`.
+Pass på at du enten åpner prosjektfilen din eller setter *working directory* til en mappe du finner igjen. For eksempel kan du lage en mappe som heter "R-seminar" på skrivebordet, og så lage undermapper for hvert seminar. Dere kan sette *working directory* som vist under, eller bruke koden `setwd()`. Hvis dere vil dobbeltsjekke, bruk funksjonen `getwd()`.
 
 ![](./bilder/dataveil1.jpg)
 
-Det aller viktigste er å finne en god måte å strukturere prosjektene sine på. Eksempelvis [R Best Practices"](https://kdestasio.github.io/post/r_best_practices/). Ta gjerne også en titt på RStudios/posit egen side for [hvordan man bruker prosjekter](https://support.posit.co/hc/en-us/articles/200526207-Using-Projects).
+Det aller viktigste er å finne en god måte å strukturere prosjektene sine på. Eksempelvis ["R Best Practices"](https://kdestasio.github.io/post/r_best_practices/). Ta gjerne også en titt på RStudios/posit egen side for [hvordan man bruker prosjekter](https://support.posit.co/hc/en-us/articles/200526207-Using-Projects).
 
 ### Plassere datasettfil
 
@@ -18,16 +18,15 @@ Pass på at datasettfilen ligger i mappen du prøver å hente den fra. For eksem
 
 ![](./bilder/dataveil2.jpg)
 
+Du kan også sjekke hvilke filer som ligger i mappen du jobber fra i R med funksjonen `list.files()`
+
 ### Sjekk koden for feil
 
 Dobbeltsjekk koden du skriver i RStudio, sjekk for skrivefeil, parenteser og hermetegn, og at filnavnet er det samme som du har lagret filen som. 
 
-Bruk gjerne tab for å finne frem filen din for å unngå problemer med skrivefeil. Still markøren i hermetegnene i koden for å laste inn data og trykk på tab-knappen (hvilken knapp det er kan du google) for å liste opp mapper og filer i working directory/prosjektmappen din. Om datafilen er lagret i working directory/prosjektmappen så bør den komme opp i en liste som vist i bildene under.
+Bruk gjerne tab for å finne frem filen din for å unngå problemer med skrivefeil. Still markøren i hermetegnene i koden for å laste inn data og trykk på tab-knappen (hvilken knapp det er kan du google) for å liste opp mapper og filer i working directory/prosjektmappen din. Om datafilen er lagret i working directory/prosjektmappen så kommer den opp i en liste som vist på bildet under.
 
 ![](./bilder/dataveil3.jpg)
-
-
-![](./bilder/dataveil4.jpg)
 
 
 ## Koder for å laste inn ulike filtyper
@@ -85,12 +84,11 @@ Hvis dere har fulgt stegene over, men likevel ikke får lastet inn datasettet:
 
 1. Sjekk om pakkene du har installert er oppdatert. 
     - For å undersøke om noen av pakkene trenger en oppdatering, kan dere trykke på ‘tools’ og ‘check for package updates’.
-    - Eller kjøre koden `update.packages(ask = FALSE)`
+    - Eller kjøre funksjonen `update.packages(ask = FALSE)`
 2.	Hvis du har Mac, sjekk at maskinen din er oppdatert. 
     - Er du usikker på hvordan så se på [Apple sine support-sider](https://support.apple.com/en-us/HT201541)
 3.	Sjekk at du har riktig versjon av R og Rstudio for maskinen din 
     - Er du usikker så sjekk [installasjonsveiledningen](installasjon.qmd)
-
 
 Hvis dere har gått gjennom alle stegene, og likevel ikke får lastet inn datasettene så er neste steg å gå innom [kodekafé](https://www.sv.uio.no/isv/english/research/courses/coffeeandcode.html) for å få hjelp.
 

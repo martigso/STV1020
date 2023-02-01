@@ -1,6 +1,7 @@
 project:
   type: website
-  output-dir: _site
+  output-dir: .
+  
 
 website:
   title: "STV1020"

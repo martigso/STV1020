@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.446">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,29 +11,38 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 </style>
+
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
-<meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./seminar/seminar1.html" rel="next">
 <link href="./workbench.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link id="quarto-text-highlighting-styles" href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -63,7 +72,7 @@ ul.task-list{list-style: none;}
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">(Untitled)</h1>
+      <h1 class="quarto-secondary-nav-title">STV1020</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -77,53 +86,113 @@ ul.task-list{list-style: none;}
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">STV1020</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
     </div>
       </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Informasjon</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">1. Introduksjon</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Introduksjon</a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./installasjon.html" class="sidebar-item-text sidebar-link">2. Installasjonsguide</a>
+  <a href="./installasjon.html" class="sidebar-item-text sidebar-link">Installasjonsguide</a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./laste_data.html" class="sidebar-item-text sidebar-link">3. Guide for innlastning av datasett</a>
+  <a href="./rogrstudio.html" class="sidebar-item-text sidebar-link">Hva er R og RStudio?</a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./workbench.html" class="sidebar-item-text sidebar-link">4. Guide for RStudio Workbench</a>
+  <a href="./laste_data.html" class="sidebar-item-text sidebar-link">Guide for innlastning av datasett</a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./proveinfo.html" class="sidebar-item-text sidebar-link active">5. Informasjon om R-prøven</a>
+  <a href="./workbench.html" class="sidebar-item-text sidebar-link">Guide for RStudio Workbench</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./proveinfo.html" class="sidebar-item-text sidebar-link active">Informasjon om R-prøven</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Seminarer</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./seminar/seminar1.html" class="sidebar-item-text sidebar-link">Seminar 1 – Velkommen!</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./seminar/seminar2.html" class="sidebar-item-text sidebar-link">Seminar 2 – Laste og jobbe med data</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./seminar/seminar3.html" class="sidebar-item-text sidebar-link">Seminar 3 – Omkoding, subsetting og visualisering</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./seminar/seminar4.html" class="sidebar-item-text sidebar-link">seminar4.html</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./seminar/seminar5.html" class="sidebar-item-text sidebar-link">seminar5.html</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./seminar/seminar6.html" class="sidebar-item-text sidebar-link">seminar6.html</a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#informasjon-om-r-prøven" id="toc-informasjon-om-r-prøven" class="nav-link active" data-scroll-target="#informasjon-om-r-prøven">5. Informasjon om R-prøven</a>
+  <li><a href="#informasjon-om-r-prøven" id="toc-informasjon-om-r-prøven" class="nav-link active" data-scroll-target="#informasjon-om-r-prøven">Informasjon om R-prøven</a>
   <ul class="collapse">
-  <li><a href="#hvor-finner-jeg-r--prøven" id="toc-hvor-finner-jeg-r--prøven" class="nav-link" data-scroll-target="#hvor-finner-jeg-r--prøven">Hvor finner jeg R- prøven?</a></li>
+  <li><a href="#er-prøven-vanskelig-å-bestå" id="toc-er-prøven-vanskelig-å-bestå" class="nav-link" data-scroll-target="#er-prøven-vanskelig-å-bestå">Er prøven vanskelig å bestå?</a></li>
+  <li><a href="#burde-jeg-bruke-energi-på-å-bekymre-meg-over-prøven-istedenfor-å-lære-meg-r" id="toc-burde-jeg-bruke-energi-på-å-bekymre-meg-over-prøven-istedenfor-å-lære-meg-r" class="nav-link" data-scroll-target="#burde-jeg-bruke-energi-på-å-bekymre-meg-over-prøven-istedenfor-å-lære-meg-r">Burde jeg bruke energi på å bekymre meg over prøven istedenfor å lære meg R?</a></li>
+  <li><a href="#hvor-finner-jeg-r-prøven" id="toc-hvor-finner-jeg-r-prøven" class="nav-link" data-scroll-target="#hvor-finner-jeg-r-prøven">Hvor finner jeg R-prøven?</a></li>
   <li><a href="#hvordan-leverer-jeg-r-prøven" id="toc-hvordan-leverer-jeg-r-prøven" class="nav-link" data-scroll-target="#hvordan-leverer-jeg-r-prøven">Hvordan leverer jeg R-prøven?</a></li>
   <li><a href="#hva-skal-jeg-levere" id="toc-hva-skal-jeg-levere" class="nav-link" data-scroll-target="#hva-skal-jeg-levere">Hva skal jeg levere?</a></li>
   <li><a href="#kan-jeg-bruke-hjelpemidler" id="toc-kan-jeg-bruke-hjelpemidler" class="nav-link" data-scroll-target="#kan-jeg-bruke-hjelpemidler">Kan jeg bruke hjelpemidler?</a></li>
   <li><a href="#kan-vi-samarbeide" id="toc-kan-vi-samarbeide" class="nav-link" data-scroll-target="#kan-vi-samarbeide">Kan vi samarbeide?</a></li>
   <li><a href="#må-jeg-ha-alt-riktig-for-å-bestå" id="toc-må-jeg-ha-alt-riktig-for-å-bestå" class="nav-link" data-scroll-target="#må-jeg-ha-alt-riktig-for-å-bestå">Må jeg ha alt riktig for å bestå?</a></li>
-  <li><a href="#hva-skjer-om-jeg-er-syk" id="toc-hva-skjer-om-jeg-er-syk" class="nav-link" data-scroll-target="#hva-skjer-om-jeg-er-syk">Hva skjer om jeg er syk?</a></li>
+  <li><a href="#hva-skjer-om-jeg-er-syk" id="toc-hva-skjer-om-jeg-er-syk" class="nav-link" data-scroll-target="#hva-skjer-om-jeg-er-syk">Hva skjer om jeg er syk? 🤧</a></li>
   <li><a href="#tips-og-triks-til-prøvedagen" id="toc-tips-og-triks-til-prøvedagen" class="nav-link" data-scroll-target="#tips-og-triks-til-prøvedagen">Tips og triks til prøvedagen</a></li>
   </ul></li>
   </ul>
@@ -135,15 +204,29 @@ ul.task-list{list-style: none;}
 
 
 <section id="informasjon-om-r-prøven" class="level1">
-<h1>5. Informasjon om R-prøven</h1>
-<section id="hvor-finner-jeg-r--prøven" class="level2">
-<h2 class="anchored" data-anchor-id="hvor-finner-jeg-r--prøven">Hvor finner jeg R- prøven?</h2>
-<p>Prøven blir gjort tilgjengelig som en oppgave på i Canvas kl. 9 – 15 prøvedagen. Finner du den ikke så sjekk seminarsiden i Canvas. Selv om dere har seks timer så vil prøven ha samme omfang som en prøve som ville blitt løst på et to timers seminar dersom den var fysisk. Dere har altså god tid. Grunnen til at vi har satt av seks timer er at det skal være rom for å dra et annet sted dersom internett plutselig forsvinner e.l. Begynn tidlig i tilfelle noe skulle inntreffe og ta heller litt fri etterpå.</p>
+<h1>Informasjon om R-prøven</h1>
+<section id="er-prøven-vanskelig-å-bestå" class="level2">
+<h2 class="anchored" data-anchor-id="er-prøven-vanskelig-å-bestå">Er prøven vanskelig å bestå?</h2>
+<p>Nei.</p>
+</section>
+<section id="burde-jeg-bruke-energi-på-å-bekymre-meg-over-prøven-istedenfor-å-lære-meg-r" class="level2">
+<h2 class="anchored" data-anchor-id="burde-jeg-bruke-energi-på-å-bekymre-meg-over-prøven-istedenfor-å-lære-meg-r">Burde jeg bruke energi på å bekymre meg over prøven istedenfor å lære meg R?</h2>
+<p>Nei.</p>
+</section>
+<section id="hvor-finner-jeg-r-prøven" class="level2">
+<h2 class="anchored" data-anchor-id="hvor-finner-jeg-r-prøven">Hvor finner jeg R-prøven?</h2>
+<p>[TBD! Vi jobber med løsning på dette.]</p>
+<!-- Prøven blir gjort tilgjengelig som en oppgave på i Canvas kl. 9 – 15 prøvedagen.  -->
+<!-- Finner du den ikke så sjekk seminarsiden i Canvas. Selv om dere har seks timer  -->
+<!-- så vil prøven ha samme omfang som en prøve som ville blitt løst på et to timers  -->
+<!-- seminar dersom den var fysisk. Dere har altså god tid. Grunnen til at vi har satt  -->
+<!-- av seks timer er at det skal være rom for å dra et annet sted dersom internett  -->
+<!-- plutselig forsvinner e.l. Begynn tidlig i tilfelle noe skulle inntreffe og ta  -->
+<!-- heller litt fri etterpå. -->
 </section>
 <section id="hvordan-leverer-jeg-r-prøven" class="level2">
 <h2 class="anchored" data-anchor-id="hvordan-leverer-jeg-r-prøven">Hvordan leverer jeg R-prøven?</h2>
-<p>Du laster opp et R-script (R-fil/.R) som et svar på oppgaven innen klokken 15 prøvedagen. Det er bare mulig å laste opp besvarelsen i tidsrommet 9-15 så pass på å laste opp i god tid. Du kan laste opp flere ganger i dette tidsrommet dersom du finner noe du vil rette på.</p>
-<p>Har du problemer med opplastning i Canvas så ta kontakt med seminarleder.</p>
+<p>[TBD! Vi har ikke bestemt dette enda.]</p>
 </section>
 <section id="hva-skal-jeg-levere" class="level2">
 <h2 class="anchored" data-anchor-id="hva-skal-jeg-levere">Hva skal jeg levere?</h2>
@@ -162,13 +245,13 @@ ul.task-list{list-style: none;}
 <p>Nei. På prøven er det spesifisert hvor mange poeng du må få for å bestå.</p>
 </section>
 <section id="hva-skjer-om-jeg-er-syk" class="level2">
-<h2 class="anchored" data-anchor-id="hva-skjer-om-jeg-er-syk">Hva skjer om jeg er syk?</h2>
+<h2 class="anchored" data-anchor-id="hva-skjer-om-jeg-er-syk">Hva skjer om jeg er syk? 🤧</h2>
 <p>Hvis du er syk så må du søke om utsatt obligatorisk aktivitet her: https://www.uio.no/studier/eksamen/obligatoriske-aktiviteter/sv-fraver-fra-obligatorisk-aktivitet.html</p>
 <p>Dersom du får godkjent utsatt obligatorisk aktivitet så vil du få en ny prøvedato.</p>
 </section>
 <section id="tips-og-triks-til-prøvedagen" class="level2">
 <h2 class="anchored" data-anchor-id="tips-og-triks-til-prøvedagen">Tips og triks til prøvedagen</h2>
-<p>Husk å laste inn de nødvendige pakkene ved hjelp av library(). Gjør det først i scriptet så er du ferdig med det. Om du ikke vet hvilken funksjon du skal bruke for å løse en oppgave så slå opp i materiale eller søk på nett.</p>
+<p>Husk å laste inn de nødvendige pakkene ved hjelp av <code>library()</code>. Gjør det først i scriptet så er du ferdig med det. Om du ikke vet hvilken funksjon du skal bruke for å løse en oppgave så slå opp i materiale eller søk på nett.</p>
 <p>Om en kodesnutt ikke vil kjøre så:</p>
 <ul>
 <li>last inn nødvendige pakker igjen.</li>
@@ -184,6 +267,139 @@ ul.task-list{list-style: none;}
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -205,7 +421,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -233,41 +466,63 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./workbench.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">4. Guide for RStudio Workbench</span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Guide for RStudio Workbench</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./seminar/seminar1.html" class="pagination-link">
+        <span class="nav-page-text">Seminar 1 – Velkommen!</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

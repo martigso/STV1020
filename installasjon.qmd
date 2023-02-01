@@ -1,4 +1,4 @@
-# 2. Installasjonsguide {#installasjon}
+# Installasjonsguide {#installasjon}
 
 ## Hvordan innstallere og oppdatere R og Rstudio? 
 

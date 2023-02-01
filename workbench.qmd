@@ -1,4 +1,4 @@
-# 4. Guide for RStudio Workbench
+# Guide for RStudio Workbench
 
 ## Guide for å åpne RStudio Workbench
 

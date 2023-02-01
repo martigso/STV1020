@@ -1,6 +1,6 @@
 project:
   type: website
-  output-dir: docs
+  output-dir: _site
 
 website:
   title: "STV1020"
@@ -8,14 +8,30 @@ website:
   sidebar:
     search: false
     contents:
-      - index.qmd
-      - installasjon.qmd
-      - laste_data.qmd
-      - workbench.qmd
-      - proveinfo.qmd
+      - section: "Informasjon"
+        contents: 
+          - index.qmd
+          - installasjon.qmd
+          - rogrstudio.qmd
+          - laste_data.qmd
+          - workbench.qmd
+          - proveinfo.qmd
+      - section: "Seminarer"
+        contents:
+          - seminar/seminar1.qmd
+          - seminar/seminar2.qmd
+          - seminar/seminar3.qmd
+          - seminar/seminar4.qmd
+          - seminar/seminar5.qmd
+          - seminar/seminar6.qmd
 
+      
 format:
   html:
-    theme: lux
+    theme: 
+      light: flatly
+      dark: darkly
     highlight-style: zenburn
     toc: true
+    mainfont: expressway
+    monobackgroundcolor: "#E3E3E3"

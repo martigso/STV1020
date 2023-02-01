@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.446">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,10 +11,15 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -53,7 +58,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -66,7 +71,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -80,24 +85,27 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
-<meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
 <link href="./workbench.html" rel="next">
-<link href="./installasjon.html" rel="prev">
+<link href="./rogrstudio.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link id="quarto-text-highlighting-styles" href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -127,7 +135,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">(Untitled)</h1>
+      <h1 class="quarto-secondary-nav-title">STV1020</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -141,47 +149,110 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">STV1020</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
     </div>
       </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Informasjon</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">1. Introduksjon</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Introduksjon</a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./installasjon.html" class="sidebar-item-text sidebar-link">2. Installasjonsguide</a>
+  <a href="./installasjon.html" class="sidebar-item-text sidebar-link">Installasjonsguide</a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./laste_data.html" class="sidebar-item-text sidebar-link active">3. Guide for innlastning av datasett</a>
+  <a href="./rogrstudio.html" class="sidebar-item-text sidebar-link">Hva er R og RStudio?</a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./workbench.html" class="sidebar-item-text sidebar-link">4. Guide for RStudio Workbench</a>
+  <a href="./laste_data.html" class="sidebar-item-text sidebar-link active">Guide for innlastning av datasett</a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./proveinfo.html" class="sidebar-item-text sidebar-link">5. Informasjon om R-prøven</a>
+  <a href="./workbench.html" class="sidebar-item-text sidebar-link">Guide for RStudio Workbench</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./proveinfo.html" class="sidebar-item-text sidebar-link">Informasjon om R-prøven</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Seminarer</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./seminar/seminar1.html" class="sidebar-item-text sidebar-link">Seminar 1 – Velkommen!</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./seminar/seminar2.html" class="sidebar-item-text sidebar-link">Seminar 2 – Laste og jobbe med data</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./seminar/seminar3.html" class="sidebar-item-text sidebar-link">Seminar 3 – Omkoding, subsetting og visualisering</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./seminar/seminar4.html" class="sidebar-item-text sidebar-link">seminar4.html</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./seminar/seminar5.html" class="sidebar-item-text sidebar-link">seminar5.html</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./seminar/seminar6.html" class="sidebar-item-text sidebar-link">seminar6.html</a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#guide-for-innlastning-av-datasett" id="toc-guide-for-innlastning-av-datasett" class="nav-link active" data-scroll-target="#guide-for-innlastning-av-datasett">3. Guide for innlastning av datasett</a>
+  <li><a href="#guide-for-innlastning-av-datasett" id="toc-guide-for-innlastning-av-datasett" class="nav-link active" data-scroll-target="#guide-for-innlastning-av-datasett">Guide for innlastning av datasett</a>
   <ul class="collapse">
-  <li><a href="#veiledning-for-innlastning-av-data" id="toc-veiledning-for-innlastning-av-data" class="nav-link" data-scroll-target="#veiledning-for-innlastning-av-data">Veiledning for innlastning av data</a></li>
+  <li><a href="#veiledning-for-innlastning-av-data" id="toc-veiledning-for-innlastning-av-data" class="nav-link" data-scroll-target="#veiledning-for-innlastning-av-data">Veiledning for innlastning av data</a>
+  <ul class="collapse">
+  <li><a href="#riktig-working-directory" id="toc-riktig-working-directory" class="nav-link" data-scroll-target="#riktig-working-directory">Riktig <em>working directory</em>?</a></li>
+  <li><a href="#plassere-datasettfil" id="toc-plassere-datasettfil" class="nav-link" data-scroll-target="#plassere-datasettfil">Plassere datasettfil</a></li>
+  <li><a href="#sjekk-koden-for-feil" id="toc-sjekk-koden-for-feil" class="nav-link" data-scroll-target="#sjekk-koden-for-feil">Sjekk koden for feil</a></li>
+  </ul></li>
   <li><a href="#koder-for-å-laste-inn-ulike-filtyper" id="toc-koder-for-å-laste-inn-ulike-filtyper" class="nav-link" data-scroll-target="#koder-for-å-laste-inn-ulike-filtyper">Koder for å laste inn ulike filtyper</a>
   <ul class="collapse">
   <li><a href="#excel-fil-slutter-på-f.eks.-.xlsx" id="toc-excel-fil-slutter-på-f.eks.-.xlsx" class="nav-link" data-scroll-target="#excel-fil-slutter-på-f.eks.-.xlsx">Excel-fil (slutter på f.eks. .xlsx)</a></li>
@@ -190,7 +261,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#stata-fil-slutter-på-.dta" id="toc-stata-fil-slutter-på-.dta" class="nav-link" data-scroll-target="#stata-fil-slutter-på-.dta">Stata-fil (slutter på .dta)</a></li>
   <li><a href="#spss-fil-slutter-på-.sav" id="toc-spss-fil-slutter-på-.sav" class="nav-link" data-scroll-target="#spss-fil-slutter-på-.sav">SPSS-fil (slutter på .sav)</a></li>
   </ul></li>
-  <li><a href="#undersøke-at-tidyverse-er-installert" id="toc-undersøke-at-tidyverse-er-installert" class="nav-link" data-scroll-target="#undersøke-at-tidyverse-er-installert">Undersøke at <code>tidyverse</code> er installert</a></li>
+  <li><a href="#undersøke-om-tidyverse-er-installert" id="toc-undersøke-om-tidyverse-er-installert" class="nav-link" data-scroll-target="#undersøke-om-tidyverse-er-installert">Undersøke om <code>tidyverse</code> er installert</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -201,24 +272,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <section id="guide-for-innlastning-av-datasett" class="level1">
-<h1>3. Guide for innlastning av datasett</h1>
+<h1>Guide for innlastning av datasett</h1>
 <section id="veiledning-for-innlastning-av-data" class="level2">
 <h2 class="anchored" data-anchor-id="veiledning-for-innlastning-av-data">Veiledning for innlastning av data</h2>
-<p>Når du skal laste inn et datasett til RStudio, og det oppstår problemer, bør du først sjekke disse tingene:</p>
-<ol type="1">
-<li>Pass på at du enten åpner prosjektfilen din eller setter «working directory» til en mappe du finner igjen. F.eks kan du lage en mappe som heter «R-seminar» på skrivebordet, og så lage undermapper for hvert seminar. Dere kan sette working directory som vist under, eller bruke koden <code>setwd()</code>. Hvis dere vil dobbeltsjekke, bruk koden <code>getwd()</code>.</li>
-</ol>
+<p>Når du skal laste inn et datasett til RStudio, og det oppstår problemer, kan du sjekke tipsene under. Her er eksemplene fra en Mac, men de samme løsningene vil finnes også på Windows og Linux.</p>
+<section id="riktig-working-directory" class="level3">
+<h3 class="anchored" data-anchor-id="riktig-working-directory">Riktig <em>working directory</em>?</h3>
+<p>Pass på at du enten åpner prosjektfilen din eller setter <em>working directory</em> til en mappe du finner igjen. For eksempel kan du lage en mappe som heter “R-seminar” på skrivebordet, og så lage undermapper for hvert seminar. Dere kan sette <em>working directory</em> som vist under, eller bruke koden <code>setwd()</code>. Hvis dere vil dobbeltsjekke, bruk funksjonen <code>getwd()</code>.</p>
 <p><img src="./bilder/dataveil1.jpg" class="img-fluid"></p>
-<ol start="2" type="1">
-<li>Legg datasett-filen i samme mappe som du har lagret prosjektfilen din i eller som du har satt som working directory. På bildet under ser dere hvordan jeg har gjort det.</li>
-</ol>
+<p>Det aller viktigste er å finne en god måte å strukturere prosjektene sine på. Eksempelvis <a href="https://kdestasio.github.io/post/r_best_practices/">“R Best Practices”</a>. Ta gjerne også en titt på RStudios/posit egen side for <a href="https://support.posit.co/hc/en-us/articles/200526207-Using-Projects">hvordan man bruker prosjekter</a>.</p>
+</section>
+<section id="plassere-datasettfil" class="level3">
+<h3 class="anchored" data-anchor-id="plassere-datasettfil">Plassere datasettfil</h3>
+<p>Pass på at datasettfilen ligger i mappen du prøver å hente den fra. For eksempel er det lurt å ha datasett i en egen datamappe der prosjektfilen din er lagret. På bildet under ser dere hvordan det er gjort i dette eksempelet.</p>
 <p><img src="./bilder/dataveil2.jpg" class="img-fluid"></p>
-<ol start="3" type="1">
-<li>Dobbeltsjekk koden du skriver i RStudio, sjekk for skrivefeil, parenteser og hermetegn, og at filnavnet er det samme som du har lagret filen som.</li>
-</ol>
-<p>Bruk gjerne tab for å finne frem filen din for å unngå problemer med skrivefeil. Still markøren i hermetegnene i koden for å laste inn data og trykk på tab-knappen (hvilken knapp det er kan du google) for å liste opp mapper og filer i working directory/prosjektmappen din. Om datafilen er lagret i working directory/prosjektmappen så bør den komme opp i en liste som vist i bildene under.</p>
+<p>Du kan også sjekke hvilke filer som ligger i mappen du jobber fra i R med funksjonen <code>list.files()</code></p>
+</section>
+<section id="sjekk-koden-for-feil" class="level3">
+<h3 class="anchored" data-anchor-id="sjekk-koden-for-feil">Sjekk koden for feil</h3>
+<p>Dobbeltsjekk koden du skriver i RStudio, sjekk for skrivefeil, parenteser og hermetegn, og at filnavnet er det samme som du har lagret filen som.</p>
+<p>Bruk gjerne tab for å finne frem filen din for å unngå problemer med skrivefeil. Still markøren i hermetegnene i koden for å laste inn data og trykk på tab-knappen (hvilken knapp det er kan du google) for å liste opp mapper og filer i working directory/prosjektmappen din. Om datafilen er lagret i working directory/prosjektmappen så kommer den opp i en liste som vist på bildet under.</p>
 <p><img src="./bilder/dataveil3.jpg" class="img-fluid"></p>
-<p><img src="./bilder/dataveil4.jpg" class="img-fluid"></p>
+</section>
 </section>
 <section id="koder-for-å-laste-inn-ulike-filtyper" class="level2">
 <h2 class="anchored" data-anchor-id="koder-for-å-laste-inn-ulike-filtyper">Koder for å laste inn ulike filtyper</h2>
@@ -264,19 +339,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>navn <span class="ot">&lt;-</span> <span class="fu">read_sav</span>(<span class="st">"file"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Vær obs på at variabler som egentlig er faktorer kan bli lest som numeriske ved bruk av <code>haven</code>. Derfor er det ekstra viktig å sjekke kodebok og/eller labels.</p>
-<p>Hvis dere har fulgt stegene over, men likevel ikke får lastet inn data-settet:</p>
+<p>Hvis dere har fulgt stegene over, men likevel ikke får lastet inn datasettet:</p>
 <ol type="1">
-<li>Sjekk om pakkene du har installert er oppdatert. For å undersøke om noen av pakkene trenger en oppdatering, kan dere trykke på ‘tools’ og ‘check for package updates’.</li>
-<li>Hvis du har mac, sjekk at macen din er oppdatert. Er du usikker på hvordan så se på <a href="https://support.apple.com/en-us/HT201541">Apple sine support-sider</a><br>
-</li>
-<li>Sjekk at du har riktig versjon av R og Rstudio for Mac-en din (er du usikker så sjekk <a href="https://github.com/liserodland/STV1020/blob/main/doc/Installasjonsguide.md">installasjonsveiledningen</a></li>
+<li>Sjekk om pakkene du har installert er oppdatert.
+<ul>
+<li>For å undersøke om noen av pakkene trenger en oppdatering, kan dere trykke på ‘tools’ og ‘check for package updates’.</li>
+<li>Eller kjøre funksjonen <code>update.packages(ask = FALSE)</code></li>
+</ul></li>
+<li>Hvis du har Mac, sjekk at maskinen din er oppdatert.
+<ul>
+<li>Er du usikker på hvordan så se på <a href="https://support.apple.com/en-us/HT201541">Apple sine support-sider</a></li>
+</ul></li>
+<li>Sjekk at du har riktig versjon av R og Rstudio for maskinen din
+<ul>
+<li>Er du usikker så sjekk <a href="./installasjon.html">installasjonsveiledningen</a></li>
+</ul></li>
 </ol>
 <p>Hvis dere har gått gjennom alle stegene, og likevel ikke får lastet inn datasettene så er neste steg å gå innom <a href="https://www.sv.uio.no/isv/english/research/courses/coffeeandcode.html">kodekafé</a> for å få hjelp.</p>
 </section>
 </section>
-<section id="undersøke-at-tidyverse-er-installert" class="level2">
-<h2 class="anchored" data-anchor-id="undersøke-at-tidyverse-er-installert">Undersøke at <code>tidyverse</code> er installert</h2>
-<p>For å undersøke om tidyverse er installert kan dere kjøre denne koden. Du skal få opp et plot nederst til høyre når du kjører koden:</p>
+<section id="undersøke-om-tidyverse-er-installert" class="level2">
+<h2 class="anchored" data-anchor-id="undersøke-om-tidyverse-er-installert">Undersøke om <code>tidyverse</code> er installert</h2>
+<p>For å undersøke om tidyverse er installert kan dere kjøre koden under. Du skal få opp et plot nederst til høyre i RStudio når du kjører koden:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install.packages er ikke nødvendig å kjøre om du allerede har installert pakken</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>) </span>
@@ -295,6 +379,139 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -316,7 +533,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -344,43 +578,62 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./installasjon.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">2. Installasjonsguide</span>
+      <a href="./rogrstudio.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Hva er R og RStudio?</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./workbench.html" class="pagination-link">
-        <span class="nav-page-text">4. Guide for RStudio Workbench</span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text">Guide for RStudio Workbench</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

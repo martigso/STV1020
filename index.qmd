@@ -1,8 +1,15 @@
-# Introduksjon
+---
+author: 
+  - Lise Rødland
+  - Solveig Bjørkholt 
+  - Martin Søyland
+title: "Introduksjon"
+---
 
 `r emo::ji("wave")` Velkommen til R-seminarer i STV1020! `r emo::ji("wave")`
 
-I denne lille notatboka finner du litt informasjon om praktisk ting og tang. Det kan være lurt å se over de forskjellige sidene i venstremargen:
+I denne lille notatboka^[Siden dette materialet har blitt utviklet kontinuerlig siden de første bachelorseminarene i R ble holdt ved ISV, er det veldig mange som har bidratt til dette materialet over lang tid. Vi takker og hyller derfor: Haakon Gjerløw, Erlend Langørgen, Louisa Boulaziz, Knut-Andreas Christophersen, Bjørn Høyland, Eli Baltzersen, Eric Gabo Ekeberg Nilsen, og og alle andre som har bidratt til å utvikle og forbedre innholder i sin rolle som seminarledere i STV1020]
+finner du litt informasjon om praktisk ting og tang. Det kan være lurt å se over de forskjellige sidene i venstremargen:
 
 1. Introduksjon (det er der du er nå)
 2. [Installasjonsguide for R](installasjon.qmd)
@@ -12,7 +19,7 @@ I denne lille notatboka finner du litt informasjon om praktisk ting og tang. Det
 
 ## Om R-seminarene
 
-Her kommer litt informasjon om R-seminarene. I STV1020 har vi 6 seminarer der vi går gjennom grunnleggende funksjoner og måter å jobbe med R på. Tema for seminarene er:
+Boka inneholder også fundamentet for det vi skal gå gjennom i seminarene. I STV1020 har vi 6 seminarer der vi går gjennom grunnleggende funksjoner og måter å jobbe med R på. Tema for seminarene er:
 
 1. Grunnleggende R -- kalkulator, indeksering, objekter, osv
 2. Data -- laste inn, lage deskriptiv statistikk og visualisering
@@ -23,10 +30,10 @@ Her kommer litt informasjon om R-seminarene. I STV1020 har vi 6 seminarer der vi
 
 Det er mye å sette seg inn i når man starter helt fra bunn, men å bruke litt innsats på R nå, kan gi gevinster senere. Mange ender opp med å skrive kvantitative oppgaver i andre kurs eller bacheloroppgave, mens andre kan få bruk for kunnskapen i jobbsammenheng. På kort sikt har vi sett at å jobbe godt med R i STV1020 også gjør læringen i resten av kurset noe mer lettfattelig.
 
-R-seminarene blir etterfulgt av en digital prøve [[DATO ikke satt]] som du må bestå for å kunne gå opp til eksamen i STV1020. Dersom du ikke består på første forsøk så får du et nytt forsøk [[DATO ikke satt]]. Man kan enten bruke egen laptop (anbefalt om mulig) eller en stasjonær UiO-PC (alle maskiner på Eilert Sundt skal ha R og RStudio installert) når man skal bruke R.
+R-seminarene blir etterfulgt av en digital prøve som du må bestå for å kunne gå opp til eksamen i STV1020 ([se emneside for STV1020](https://www.uio.no/studier/emner/sv/statsvitenskap/STV1020/)). Dersom du ikke består på første forsøk så får du et nytt forsøk. Man kan enten bruke egen laptop (anbefalt) eller en stasjonær UiO-PC (alle maskiner på Eilert Sundt skal ha R og RStudio installert) når man skal bruke R. For de som har PCer som ikke kjører så godt, kan [workbench](workbench.qmd) være et godt alternativ.
 
 
-## Forventninger:
+## Forventninger
 
 Før første seminar så forventer vi:
 

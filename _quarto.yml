@@ -7,11 +7,11 @@ website:
   title: "STV1020"
   page-navigation: true
   sidebar:
-    search: false
+    search: true
     contents:
+      - index.qmd
       - section: "Informasjon"
         contents: 
-          - index.qmd
           - installasjon.qmd
           - rogrstudio.qmd
           - laste_data.qmd

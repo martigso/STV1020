@@ -48,8 +48,7 @@ Nei. På prøven er det spesifisert hvor mange poeng du må få for å bestå.
 
 ## Hva skjer om jeg er syk? `r emo::ji("sneezing_face")`
 
-Hvis du er syk så må du søke om utsatt obligatorisk aktivitet her: 
-https://www.uio.no/studier/eksamen/obligatoriske-aktiviteter/sv-fraver-fra-obligatorisk-aktivitet.html 
+[Hvis du er syk så må du søke om utsatt obligatorisk aktivitet](https://www.uio.no/studier/eksamen/obligatoriske-aktiviteter/sv-fraver-fra-obligatorisk-aktivitet.html).
 
 Dersom du får godkjent utsatt obligatorisk aktivitet så vil du få en ny prøvedato. 
 

@@ -5,7 +5,7 @@
 
 # Gamle script
 ./script/old/*
-./src/*
+src
 
 # Quarto
 /.quarto/

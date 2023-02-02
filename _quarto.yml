@@ -25,7 +25,13 @@ website:
           - seminar/seminar4.qmd
           - seminar/seminar5.qmd
           - seminar/seminar6.qmd
-
+    tools:       
+      - icon: github
+        menu:
+          - text: "Kildekode"
+            url:  https://github.com/martigso/STV1020
+          - text: "Meld fra om feil"
+            url:  mailto:martin.soyland@stv.uio.no
       
 format:
   html:

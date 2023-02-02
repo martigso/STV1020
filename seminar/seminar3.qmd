@@ -7,6 +7,8 @@ knitr::opts_chunk$set(tidy.opts=list(width.cutoff=60), tidy=TRUE)
 
 # Seminar 3 -- Omkoding, subsetting og visualisering
 
+**OBS! DETTE KAPITTELET ER IKKE FERDIG**
+
 På dette seminaret skal vi gjennom:
 1.	Repetisjon: om laste inn data
 2.	Omkoding av variabler 

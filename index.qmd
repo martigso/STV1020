@@ -8,8 +8,7 @@ title: "Introduksjon"
 
 `r emo::ji("wave")` Velkommen til R-seminarer i STV1020! `r emo::ji("wave")`
 
-I denne lille notatboka^[Siden dette materialet har blitt utviklet kontinuerlig siden de første bachelorseminarene i R ble holdt ved ISV, er det veldig mange som har bidratt til dette materialet over lang tid. Vi takker og hyller derfor: Haakon Gjerløw, Erlend Langørgen, Louisa Boulaziz, Knut-Andreas Christophersen, Bjørn Høyland, Eli Baltzersen, Eric Gabo Ekeberg Nilsen, og og alle andre som har bidratt til å utvikle og forbedre innholder i sin rolle som seminarledere i STV1020]
-finner du litt informasjon om praktisk ting og tang. Det kan være lurt å se over de forskjellige sidene i venstremargen:
+I denne lille notatboka^[Siden dette materialet har blitt utviklet kontinuerlig siden de første bachelorseminarene i R ble holdt ved ISV, er det veldig mange som har bidratt til dette materialet over lang tid. Vi takker og hyller derfor: Haakon Gjerløw, Erlend Langørgen, Louisa Boulaziz, Knut-Andreas Christophersen, Bjørn Høyland, Eli Baltzersen, Eric Gabo Ekeberg Nilsen, og og alle andre som har bidratt til å utvikle og forbedre innholder i sin rolle som seminarledere i STV1020] finner du litt informasjon om praktisk ting og tang. Det kan være lurt å se over de forskjellige sidene i venstremargen:
 
 1. Introduksjon (det er der du er nå)
 2. [Installasjonsguide for R](installasjon.qmd)

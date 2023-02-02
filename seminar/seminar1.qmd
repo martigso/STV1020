@@ -474,7 +474,7 @@ Dette var bare en kort introduksjon. Som vi skal se på senere så finnes det ut
 
 
 ```{r generere_script, eval=FALSE, echo=FALSE}
-knitr::purl("./doc/seminar1/seminar1.Rmd", 
-            output = "./script/seminar1.R", 
+knitr::purl("./seminar/seminar1.qmd", 
+            output = "./src/seminar1.R", 
             documentation = 1)
 ```

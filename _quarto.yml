@@ -25,6 +25,14 @@ website:
           - seminar/seminar4.qmd
           - seminar/seminar5.qmd
           - seminar/seminar6.qmd
+      - section: "Oppgaver"
+        contents:
+          - oppgaver/oppgaver1.qmd
+          - oppgaver/oppgaver2.qmd
+          - oppgaver/oppgaver3.qmd
+          - oppgaver/oppgaver4.qmd
+          - oppgaver/oppgaver5.qmd
+          - oppgaver/oppgaver6.qmd
     tools:       
       - icon: github
         menu:

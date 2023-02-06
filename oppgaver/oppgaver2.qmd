@@ -1,0 +1,8 @@
+---
+title: "Seminar 2 -- Oppgaver"
+format: 
+  html:
+    code-fold: true
+---
+
+Kommer snart!

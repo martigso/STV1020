@@ -470,7 +470,9 @@ ggplot(data = navnestat, aes(x = per_tusen)) +
 
 Dette var bare en kort introduksjon. Som vi skal se på senere så finnes det utallige måter å fikse på plot på. 
 
- 
+# Link til script 
+
+[Du kan laste ned scriptet for dette kapittelet her.](https://github.com/martigso/STV1020/blob/main/script/seminar1.R)
 
 
 ```{r generere_script, eval=FALSE, echo=FALSE}

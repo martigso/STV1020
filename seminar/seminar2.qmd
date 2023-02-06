@@ -415,7 +415,7 @@ ggplot(data = ess_subset, aes(x = news)) +
 Hvis dere vil utforske hvordan man kan tilpasse de ulike diagrammene vi har sett på og mange andre, kan denne siden være nyttig: https://www.r-graph-gallery.com/index.html
 
 ```{r generere_script, eval=FALSE, echo=FALSE}
-knitr::purl("./doc/seminar2/seminar2.Rmd", 
-            output = "./script/seminar2.R", 
+knitr::purl("./seminar/seminar2.qmd", 
+            output = "./src/seminar2.R", 
             documentation = 1)
 ```

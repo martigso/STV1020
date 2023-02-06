@@ -1,0 +1,59 @@
+---
+title: "Seminar 1 -- Oppgaver"
+format: 
+  html:
+    code-fold: true
+---
+
+
+1. Sett navn, alder, hjemby og favorittfilm til de andre på gruppa inn i ett datasett. 
+2. Finn gjennomsnitt, standardavvik, og median av alder i datasettet ditt.
+3. Finn avstanden fra hjembyene til Oslo, og legg inn dette som en ny kolonne i datasettet. Er du usikker på hvordan, se om du finner ut av det på google. 
+4. Finn ut hvem i datasettet som er lengst hjemmefra (med kode).
+5. Lag et plot som viser fordelingen av alder. Om du skriver `geom_` og så trykker på tab-knappen så vil du kunne bla igjennom alle de forskjellige plottypene. Velg det du synes passer best, og prøv deg frem. 
+
+
+# Løsningsforslag
+
+Du kan trykke på knappen under for å se på løsningsforslag
+
+```{r losning, class.source = "hide", eval=FALSE}
+
+# Oppgave 1
+folk <- data.frame(navn = c("Eric", "Eli", "Amalie", "Martin"),
+                   alder = c(25, 17, 72, 55),
+                   favorittfilm = c("Finding Nemo", "Scream 2", "Gruffalo", "Folk og røvere i Kardemomme by"),
+                   by = c("Bærum", "Dalen", "Senja", "Frøyland"))
+
+# Oppgave 2
+summary(folk$alder)
+sd(folk$alder)
+## Gj.snitt = 42.25
+## Median = 40
+## Std.av = 25.7
+
+
+# Oppgave 3
+# Brukker sykkelavstand via google maps
+folk$avstand <- c(22.1, 219, 1710, 438)
+
+# Oppgave 4
+max(folk$avstand) # 1710 er lengst
+
+## Alternativ 1
+folk %>% arrange(avstand) # Amalie har lengst avstand
+
+## Alternativ 2
+folk$navn[which.max(folk$avstand)]
+
+
+# Oppgave 5
+
+library(tidyverse) # laster inn tidyverse for å få ggplot
+
+ggplot(folk, aes(x = navn, y = avstand)) +
+  geom_point() +
+  labs(x = "Navn", y = "Avstand")
+
+```
+

@@ -1,0 +1,8 @@
+---
+title: "Seminar 6 -- Oppgaver"
+format: 
+  html:
+    code-fold: true
+---
+
+Kommer snart!

@@ -248,6 +248,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
     </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Oppgaver</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../oppgaver/oppgaver1.html" class="sidebar-item-text sidebar-link">Seminar 1 – Oppgaver</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../oppgaver/oppgaver2.html" class="sidebar-item-text sidebar-link">Seminar 2 – Oppgaver</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../oppgaver/oppgaver3.html" class="sidebar-item-text sidebar-link">Seminar 3 – Oppgaver</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../oppgaver/oppgaver4.html" class="sidebar-item-text sidebar-link">Seminar 4 – Oppgaver</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../oppgaver/oppgaver5.html" class="sidebar-item-text sidebar-link">Seminar 5 – Oppgaver</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../oppgaver/oppgaver6.html" class="sidebar-item-text sidebar-link">Seminar 6 – Oppgaver</a>
+  </div>
+</li>
+    </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -379,7 +419,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
    1952    1966    1980    1980    1993    2007 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># spennet er 2007-1952, dvs. 55 år</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2007</span> <span class="sc">-</span> <span class="dv">1952</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2007-1952</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 55</code></pre>
 </div>
@@ -453,17 +493,18 @@ TRUE &lt;NA&gt;
 <p>Den funksjonen jeg bruker mest til omkoding, er <code>ifelse()</code>. Funksjonen kan brukes på numeriske og kategoriske variabler. Syntaksen til denne funksjonen kan forklares som følger:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>nyvar <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="at">test =</span> data<span class="sc">$</span>variabel <span class="sc">==</span> <span class="st">"some logical condition"</span>,</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">yes =</span> <span class="st">"what to return if 'some condition' is TRUE"</span>, <span class="at">no =</span> <span class="st">"what to return if 'some condition' is FALSE"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">yes  =</span> <span class="st">"what to return if 'some condition' is TRUE"</span>,</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">no   =</span> <span class="st">"what to return if 'some condition' is FALSE"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>ifelse()</code> kan for eksempel bruker til å lage en ny variabel som tar verdien 1 om observasjonen har en verdi som er større enn gjennomsnittet og null ellers. Gjennomsnittet finner du ved å bruke funksjonen <code>mean()</code>. Under fyller jeg inn betingelsen (condition), hvilken verdi ny variabel skal dersom betingelsen er oppfylt (yes) og hvilken verdi ny variabel skal ha dersom betingelsen ikke er oppfylt (no). Vanligvis vil vi ikke skrive <code>test =</code>, <code>yes =</code> og <code>no =</code>, men jeg har tatt det med her for å gjøre det lettere å koble de to:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>gapminder<span class="sc">$</span>lifeExp_2 <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="at">test =</span> gapminder<span class="sc">$</span>lifeExp <span class="sc">&gt;</span> <span class="fu">mean</span>(gapminder<span class="sc">$</span>lifeExp,</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">yes =</span> <span class="dv">1</span>, <span class="at">no =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>gapminder<span class="sc">$</span>lifeExp_2 <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="at">test =</span> gapminder<span class="sc">$</span>lifeExp <span class="sc">&gt;</span> <span class="fu">mean</span>(gapminder<span class="sc">$</span>lifeExp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">yes =</span> <span class="dv">1</span>,</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">no =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Jeg bruker en kombinasjon av en tabell og en logisk test (se forklaringer fra første seminar om logiske tester) for å sjekke at det ble riktig:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(gapminder<span class="sc">$</span>lifeExp_2, gapminder<span class="sc">$</span>lifeExp <span class="sc">&gt;</span> <span class="fu">mean</span>(gapminder<span class="sc">$</span>lifeExp,</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">useNA =</span> <span class="st">"always"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(gapminder<span class="sc">$</span>lifeExp_2, gapminder<span class="sc">$</span>lifeExp <span class="sc">&gt;</span> <span class="fu">mean</span>(gapminder<span class="sc">$</span>lifeExp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">useNA =</span> <span class="st">"always"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      
        FALSE TRUE &lt;NA&gt;
@@ -477,8 +518,9 @@ TRUE &lt;NA&gt;
 <h2 class="anchored" data-anchor-id="omkoding-med-recode">Omkoding med <code>recode()</code></h2>
 <p>Dersom vi vil omkode en variabel med flere variabler så kan vi gjøre det med flere <code>ifelse()</code> nøstet i hverandre. Det kan imidlertid bli veldig mye kode. Et alternativ er å kombinere <code>mutate()</code> og <code>recode()</code>. <code>mutate()</code> er en funksjon i tidyverse vi bruker for å lage nye variabler. <code>recode()</code> er også en del av tidyverse og den brukes til å endre verdier på variabler. Syntaksen til kombinasjonen av <code>mutate()</code> og <code>recode()</code> er:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">nyvariabel =</span> <span class="fu">recode</span>(gammelvariabel, <span class="at">gammel_verdi1 =</span> ny_verdi1,</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">gammel_verdi2 =</span> ny_verdi2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">nyvariabel =</span> <span class="fu">recode</span>(gammelvariabel, </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">gammel_verdi1 =</span> ny_verdi1, </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">gammel_verdi2 =</span> ny_verdi2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>I dette eksempelet skal vi lage en ny variabel <code>continent2</code> med tallverdier i steden for kontinentnavn. Ettersom funksjonen vi skal bruker ligger i pakken <code>tidyverse</code> så må vi aller først laste inn pakken med <code>library()</code></p>
 <div class="cell">
@@ -493,9 +535,13 @@ TRUE &lt;NA&gt;
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>gapminder <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">continent2 =</span> <span class="fu">recode</span>(continent, <span class="at">Africa =</span> <span class="dv">1</span>, <span class="at">Americas =</span> <span class="dv">2</span>,</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">Asia =</span> <span class="dv">3</span>, <span class="at">Europe =</span> <span class="dv">4</span>, <span class="at">Oceania =</span> <span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>gapminder <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">continent2 =</span> <span class="fu">recode</span>(continent, </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">Africa =</span> <span class="dv">1</span>, </span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>                             <span class="at">Americas =</span> <span class="dv">2</span>, </span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>                             <span class="at">Asia =</span> <span class="dv">3</span>, </span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>                             <span class="at">Europe =</span> <span class="dv">4</span>, </span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>                             <span class="at">Oceania =</span> <span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Vi sjekker med en tabell at det ble riktig:</p>
 <div class="cell">
@@ -517,24 +563,25 @@ TRUE &lt;NA&gt;
 <h1>Subsetting av datasett</h1>
 <p>Å subsette betyr å lage et nytt datasett basert på et gammelt. Dette gikk vi gjennom i seminar 2, men jeg repeterer det her. For å subsette så bruker vi funksjoner i pakken <code>tidyverse</code>. Vi bruker pipes angitt ved <code>%&gt;%</code> for å binde sammen ulike operasjoner vi vil utføre på et datasett. Dette kalles for piping. Det er en effektiv og ryddig måte å kode på. Derfor kommer jeg ofte til å bruke pipes i seminarene. Pakken installerte vi i andre seminar, men vi må laste den inn for å bruke den:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages('tidyverse')</span></span>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("tidyverse")</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Den første funksjonen <code>select()</code> brukes til å velge ut hvilke variabler du vil ha med i det nye datasettet:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>gapminder_pop <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(pop)</span>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>gapminder_pop <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(pop)</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>gapminder_sub <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(pop, country, year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(pop, country, year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Du kan også bruke funksjonen <code>filter()</code> til å velge ut spesielle observasjoner som tilfredsstiller de kravene du setter. Under har jeg brukt funksjonen til å bare ta med observasjonene med verdien 1954 på variabelen <code>year</code> og som har en verdi høyere end gjennomsnittet på variablene <code>pop</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>gapminder_1952 <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">1952</span>)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">1952</span>)</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>gapminder_1952pop <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">1952</span>, pop <span class="sc">&gt;</span> <span class="fu">mean</span>(pop))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>gapminder_1952pop <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">1952</span>, </span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>         pop <span class="sc">&gt;</span> <span class="fu">mean</span>(pop))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Nå har du fått fire nye objekter i environment; <code>data_pop</code>, <code>data_sub</code>, <code>data_1952</code> og <code>data_1952pop</code>. Legg merke til at disse har ulikt antall observasjoner (obs.) og variabler (variables).</p>
 <p>Vi skal ikke bruke disse videre så vi fjerner dem med <code>rm()</code> for å rydde litt opp:</p>
@@ -574,7 +621,8 @@ TRUE &lt;NA&gt;
 <h2 class="anchored" data-anchor-id="steg-3-fortell-ggplot-hvordan-du-vil-illustrere-sammenhengen">Steg 3: Fortell ggplot hvordan du vil illustrere sammenhengen</h2>
 <p>Når vi kjører koden, så ser vi at kontinentene er på plass, men vi får likevel ikke noe særlig informasjon fra plottet. Hva mangler? Vi må skrive hva slags plott vi vil lage. Vi vil lage et stolpediagram, og velger <code>geom_bar()</code>. Hvis du prøver å skrive inn <code>geom_</code> vil du se at du får en hel rekke forslag til ulike plott. Flere av disse skal vi komme tilbake til.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> gapminder, <span class="fu">aes</span>(<span class="at">x =</span> continent)) <span class="sc">+</span> <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> gapminder, <span class="fu">aes</span>(<span class="at">x =</span> continent)) <span class="sc">+</span> </span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="seminar3_files/figure-html/geom_bar-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -589,8 +637,8 @@ TRUE &lt;NA&gt;
 </div>
 <p>Det ser fint ut. Vi kan også legge inn andre typer av aestetics i mappingen. Her er det flere muligheter, som dere vil bli kjent med etter hvert. Én av dem er å bruke ulike farger for å gi informasjon. Hvis vi vil at hvert kontinent skal få sin egen farge, så kan vi gjøre det slik:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> gapminder, <span class="fu">aes</span>(<span class="at">x =</span> continent, <span class="at">fill =</span> continent)) <span class="sc">+</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> gapminder, <span class="fu">aes</span>(<span class="at">x =</span> continent, <span class="at">fill =</span> continent)) <span class="sc">+</span> </span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="seminar3_files/figure-html/geom_bar_fill-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -600,13 +648,14 @@ TRUE &lt;NA&gt;
 <h2 class="anchored" data-anchor-id="steg-4-legg-til-geom_-etter-behov-en-etter-en.">Steg 4: Legg til <code>geom_</code> etter behov en etter en.</h2>
 <p>Vi kan legge til flere <code>geom_</code>-elementer i plottet vårt ved å bruke <code>+</code>. Jeg kan for eksempel legge til en linje som indikerer gjennomsnittlig antall observasjoner per land. Da legger vi først til en variabel som angir antall observasjoner per land i datasettet. Dette gjør vi ved hjelp av funksjonen <code>add_count()</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>gapminder <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">add_count</span>(continent)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>gapminder <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_count</span>(continent)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Vi kan se i datasettet vårt at vi har fått en ny variabel <code>n</code>. Denne angir antall observasjoner per kontinent i datasettet vårt. For å legge til en linje som indikerer gjenomsnittlig antall observasjoner bruker vi <code>geom_hline()</code> (h for horisontal linje). I <code>aes()</code> gir vi ggplot informasjon om hvor denne linjen skal krysse y-aksen:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> gapminder, <span class="fu">aes</span>(<span class="at">x =</span> continent, <span class="at">fill =</span> continent)) <span class="sc">+</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>() <span class="sc">+</span> <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept =</span> <span class="fu">mean</span>(n)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> gapminder, <span class="fu">aes</span>(<span class="at">x =</span> continent, <span class="at">fill =</span> continent)) <span class="sc">+</span> </span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept =</span> <span class="fu">mean</span>(n)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="seminar3_files/figure-html/geom_hline-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -616,10 +665,15 @@ TRUE &lt;NA&gt;
 <h2 class="anchored" data-anchor-id="steg-5-bruk-funksjoner-til-å-justere-skala-etiketter-tittel-o.l..">Steg 5: Bruk funksjoner til å justere skala, etiketter, tittel o.l..</h2>
 <p>Vi kan også endre teksten på x- og y-aksen, og gi plottet en tittel ved å legge til <code>labs()</code>, fjerne boksen med informasjon om farger og navn på høyre side ved hjelp av <code>theme(legend.position = "none")</code> og gjøre bakgrunnen litt penere med <code>theme_bw()</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gapminder, <span class="fu">aes</span>(<span class="at">x =</span> continent, <span class="at">fill =</span> continent)) <span class="sc">+</span> <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept =</span> <span class="fu">mean</span>(n))) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> <span class="st">"Antall land-år-observasjoner"</span>,</span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Antall observasjoner per kontinent"</span>, <span class="at">caption =</span> <span class="st">"Gjennomsnittlig antall observasjoner er gitt ved den horisontale linjen"</span>) <span class="sc">+</span></span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gapminder, <span class="fu">aes</span>(<span class="at">x =</span> continent, <span class="at">fill =</span> continent)) <span class="sc">+</span> </span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept =</span> <span class="fu">mean</span>(n))) <span class="sc">+</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">""</span>, </span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Antall land-år-observasjoner"</span>, </span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Antall observasjoner per kontinent"</span>,</span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Gjennomsnittlig antall observasjoner er gitt ved den horisontale linjen"</span>) <span class="sc">+</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="seminar3_files/figure-html/pynte_figur-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -638,7 +692,8 @@ TRUE &lt;NA&gt;
 <h2 class="anchored" data-anchor-id="histogrammer">Histogrammer</h2>
 <p>Når vi undersøker ulike plot kan vi skrive <code>plot_le +</code> i stedet for <code>ggplot(data, aes(lifeExp)) +</code> fordi sistnevne informasjon er lagret i førstnevnte objekt. Dette sparer oss for en del kode. For en kontinuerlig variabel så kan det være mer nyttig med et histogram, som lager stolper for intervaller:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>plot_le <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>plot_le <span class="sc">+</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 </div>
@@ -648,15 +703,19 @@ TRUE &lt;NA&gt;
 </div>
 <p>Hvis vi ikke sier noe annet, så kommer ggplot til å velge hvor stort hvert intervall skal være. Vi kan sette hver stolpe til å være ett år bred ved å skrive inn binwidth = 1:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>plot_le <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>plot_le <span class="sc">+</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="seminar3_files/figure-html/endre_binwidth-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Hvis vi vil se hvordan dette fordeler seg på hvert kontinent, så kan vi legge inn fill:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>plot_le <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">fill =</span> continent), <span class="at">binwidth =</span> <span class="dv">1</span>,</span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>plot_le <span class="sc">+</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">fill =</span> continent),</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">binwidth =</span> <span class="dv">1</span>, </span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="seminar3_files/figure-html/endre_tema-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -667,15 +726,21 @@ TRUE &lt;NA&gt;
 <h2 class="anchored" data-anchor-id="boxplot">Boxplot</h2>
 <p>for å lage et boxplot så spesifiserer vi y-aksen ved hjelp av <code>aes(y = continent)</code> i <code>geom_boxplot</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>plot_le <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> continent))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>plot_le <span class="sc">+</span> </span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> continent))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="seminar3_files/figure-html/geom_boxplot-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Her er et eksempel på hvor mye finere plottet kan bli med litt flere kodelinjer:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>plot_le <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> continent)) <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Boxplot for forventet levealder per kontinent"</span>,</span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Forventet levealder"</span>, <span class="at">y =</span> <span class="st">""</span>) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>plot_le <span class="sc">+</span> </span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> continent)) <span class="sc">+</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Boxplot for forventet levealder per kontinent"</span>,</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Forventet levealder"</span>,</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">""</span>) <span class="sc">+</span></span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="seminar3_files/figure-html/pynte_boxplot-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -685,14 +750,16 @@ TRUE &lt;NA&gt;
 <h2 class="anchored" data-anchor-id="density-plottettshetsplot">Density plot/tettshetsplot</h2>
 <p>En annen metode kan være å bruke et density plot/tetthetsplott:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>plot_le <span class="sc">+</span> <span class="fu">geom_density</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>plot_le <span class="sc">+</span> </span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="seminar3_files/figure-html/geom_density-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Inne i parentesen til plottypen kan vi legge til spesifikasjoner om tykkelse på linja, farge osv.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>plot_le <span class="sc">+</span> <span class="fu">geom_density</span>(<span class="at">size =</span> <span class="fl">1.5</span>, <span class="at">fill =</span> <span class="st">"pink"</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>plot_le <span class="sc">+</span> </span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">size=</span><span class="fl">1.5</span>, <span class="at">fill=</span><span class="st">"pink"</span>, <span class="at">alpha=</span><span class="fl">0.3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
 ℹ Please use `linewidth` instead.</code></pre>
@@ -703,15 +770,18 @@ TRUE &lt;NA&gt;
 </div>
 <p>Hva skjer hvis vi endrer 1) alpha til 1 og 2) size til 0.5?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>plot_le <span class="sc">+</span> <span class="fu">geom_density</span>(<span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">fill =</span> <span class="st">"pink"</span>, <span class="at">alpha =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>plot_le <span class="sc">+</span> </span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">size=</span><span class="fl">0.5</span>, <span class="at">fill=</span><span class="st">"pink"</span>, <span class="at">alpha=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="seminar3_files/figure-html/tweeks_boxplot-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Hvis du ønsker å separere plottene, slik at de ulike kontinentene ikke ligger over hverandre, men får hvert sitt plott, så kan du legge til en facet_wrap:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>plot_le <span class="sc">+</span> <span class="fu">geom_density</span>(<span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">fill =</span> <span class="st">"pink"</span>, <span class="at">alpha =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(continent)) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>plot_le <span class="sc">+</span> </span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">size=</span><span class="fl">0.5</span>, <span class="at">fill=</span><span class="st">"pink"</span>, <span class="at">alpha=</span><span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(continent)) <span class="sc">+</span></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="seminar3_files/figure-html/facet_wrap-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -721,15 +791,18 @@ TRUE &lt;NA&gt;
 <h2 class="anchored" data-anchor-id="spredningsplot">Spredningsplot</h2>
 <p>Med et spredningsplot (scatterplot) kan vi vise sammenhengen mellom to kontinuerlige variabler. Her må vi gi ggplot informasjon om hvilken variabel som skal mappes på x-aksen og på y-aksen. For å lage scatterplottet bruker vi geom_point.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gapminder, <span class="fu">aes</span>(<span class="at">x =</span> lifeExp, <span class="at">y =</span> gdpPercap)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gapminder, </span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> lifeExp, <span class="at">y =</span> gdpPercap)) <span class="sc">+</span> </span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="seminar3_files/figure-html/geom_point-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Vi kan legge til en linje som viser gjennomsnittet i observasjonene ved å bruke geom_smooth:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gapminder, <span class="fu">aes</span>(<span class="at">x =</span> lifeExp, <span class="at">y =</span> gdpPercap)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gapminder, <span class="fu">aes</span>(<span class="at">x =</span> lifeExp, <span class="at">y =</span> gdpPercap)) <span class="sc">+</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = "cs")'</code></pre>
 </div>
@@ -739,8 +812,10 @@ TRUE &lt;NA&gt;
 </div>
 <p>Skille kontinentene fra hverandre ved bruk av ulike farger:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gapminder, <span class="fu">aes</span>(<span class="at">x =</span> lifeExp, <span class="at">y =</span> gdpPercap, <span class="at">col =</span> continent)) <span class="sc">+</span></span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gapminder, </span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>lifeExp, <span class="at">y=</span>gdpPercap, <span class="at">col=</span>continent)) <span class="sc">+</span></span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using method = 'loess' and formula = 'y ~ x'</code></pre>
 </div>
@@ -750,9 +825,13 @@ TRUE &lt;NA&gt;
 </div>
 <p>Vi kan legge inn en <code>facet_wrap()</code> for at det skal se litt ryddigere ut, og samtidig gi <code>geom_smooth()</code> en farge som vises bedre.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gapminder, <span class="fu">aes</span>(<span class="at">x =</span> lifeExp, <span class="at">y =</span> gdpPercap, <span class="at">col =</span> continent)) <span class="sc">+</span></span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">colour =</span> <span class="st">"black"</span>) <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>continent) <span class="sc">+</span></span>
-<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gapminder, </span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> lifeExp, <span class="at">y =</span> gdpPercap, <span class="at">col =</span> continent)) <span class="sc">+</span></span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">colour=</span><span class="st">"black"</span>) <span class="sc">+</span> </span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>continent) <span class="sc">+</span></span>
+<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using method = 'loess' and formula = 'y ~ x'</code></pre>
 </div>
@@ -762,10 +841,16 @@ TRUE &lt;NA&gt;
 </div>
 <p>Her kan vi repetere hvordan vi legger til nye titler til x- og y-aksen, samt tittel for hele plottet:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gapminder, <span class="fu">aes</span>(<span class="at">x =</span> lifeExp, <span class="at">y =</span> gdpPercap, <span class="at">col =</span> continent)) <span class="sc">+</span></span>
-<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">colour =</span> <span class="st">"black"</span>) <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(continent)) <span class="sc">+</span></span>
-<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Forventet levealder"</span>, <span class="at">y =</span> <span class="st">"GDP per capita"</span>, <span class="at">title =</span> <span class="st">"Et plot med Gapminderdata"</span>) <span class="sc">+</span></span>
-<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gapminder, </span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> lifeExp, <span class="at">y =</span> gdpPercap, <span class="at">col =</span> continent)) <span class="sc">+</span></span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">colour=</span><span class="st">"black"</span>) <span class="sc">+</span> </span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(continent)) <span class="sc">+</span></span>
+<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Forventet levealder"</span>, </span>
+<span id="cb66-7"><a href="#cb66-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"GDP per capita"</span>, </span>
+<span id="cb66-8"><a href="#cb66-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Et plot med Gapminderdata"</span>) <span class="sc">+</span></span>
+<span id="cb66-9"><a href="#cb66-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb66-10"><a href="#cb66-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using method = 'loess' and formula = 'y ~ x'</code></pre>
 </div>
@@ -781,17 +866,16 @@ TRUE &lt;NA&gt;
 <div class="cell">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For png-format:</span></span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="st">"gdplevealder.png"</span>)</span>
-<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a> </span>
 <span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a><span class="co"># For pdf-format:</span></span>
 <span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="st">"gdplevealder.pdf"</span>)</span>
 <span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb68-7"><a href="#cb68-7" aria-hidden="true" tabindex="-1"></a><span class="co"># For jpeg-format:</span></span>
 <span id="cb68-8"><a href="#cb68-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="st">"gdplevealder.jpeg"</span>)</span>
 <span id="cb68-9"><a href="#cb68-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-10"><a href="#cb68-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-11"><a href="#cb68-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Du trenger egentlig ikke skrive 'filename' så lenge du</span></span>
-<span id="cb68-12"><a href="#cb68-12" aria-hidden="true" tabindex="-1"></a><span class="co"># bruker ggsave:</span></span>
-<span id="cb68-13"><a href="#cb68-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"gdplevealder.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb68-10"><a href="#cb68-10" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb68-11"><a href="#cb68-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Du trenger egentlig ikke skrive "filename" så lenge du bruker ggsave:</span></span>
+<span id="cb68-12"><a href="#cb68-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"gdplevealder.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>For å lagre et plott som er et objekt gjør du følgende:</p>
 <div class="cell">

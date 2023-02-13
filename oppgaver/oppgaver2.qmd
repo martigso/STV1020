@@ -19,8 +19,9 @@ knitr::opts_chunk$set(echo = TRUE)
 8. Er det forskjell mellom hvor mange kvinner og menn som stemte? Vis dette ved hjelp av en graf. 
 9. Er det en forskjell i spredningen av alder for de som stemte og de som ikke stemte? Vis dette ved hjelp av en graf. Hint: her kan det være lurt å kombinere et av plottene vi har sett på for kontinuerlige variabler med `fill = vote`.  
 
+# Løsningsforslag
 
-```{r losning, class.source = "hide", eval=TRUE}
+```{r losning, class.source = "hide", eval=FALSE}
 # Laster inn nødvendige pakker
 library(tidyverse)
 library(haven)
@@ -58,8 +59,11 @@ ggplot(ess_sub, aes(x = poltil)) +
   geom_bar()
 
 # Oppgave 8
-ggplot(ess_sub, aes(x = vote, y = kjonn)) +
-  geom_boxplot()
+ess_sub$kjonn <- factor(ess_sub$kjonn)
+ess_sub$vote <- factor(ess_sub$vote)
+
+ggplot(ess_sub, aes(x = kjonn, fill = vote)) +
+  geom_bar(position = position_dodge())
 
 # Oppgave 9
 ggplot(ess_sub, aes(x = alder, y = kjonn)) +
@@ -68,5 +72,7 @@ ggplot(ess_sub, aes(x = alder, y = kjonn)) +
 # evt.
 
 ggplot(ess_sub, aes(x = alder, fill = kjonn)) +
-  geom_histogram()
+  geom_density(alpha = .3)
+
+
 ```

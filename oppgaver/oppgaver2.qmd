@@ -5,4 +5,68 @@ format:
     code-fold: true
 ---
 
-Kommer snart!
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+1. Les inn datasettet `ESS9NO.dta`. Du kan laste det ned på Canvas eller [github](https://github.com/martigso/STV1020/raw/main/data/ESS9NO.dta)
+2. Variabelen `trstplt` måler tillit til politikere og variabelen `gndr` inneholder informasjon om respondentens kjønn. Gi disse to variablene samt `yrbrn` nye navn. Du skal bruke dine egne navn på variablene i de neste oppgavene der det står `trstplt`, `gndr` og `yrbrn`. 
+3. Bruk `yrbrn` til å lage en ny variabel med informasjon om respondentens alder. Hint: dette er runde 9 av European Social Survey.
+4. Lag et datasett som bare inneholder `trstplt`, `gndr`, `yrbrn`, `vote` og den nye aldersvariabelen.
+5. Hvilken klasse har `trstplt` og `gndr`? (Bonusspørsmål: hvilket målenivå har de?)
+6. Hvor mange verdier har `trstplt`? Hvor mange har svart at de har høyest verdi ("Complete trust") til politikere? Finn svaret med kode!
+7. Lag et barplot/søylediagram som viser fordelingen til `trstplt`. Si noe kort om hvordan verdiene fordeler seg. 
+8. Er det forskjell mellom hvor mange kvinner og menn som stemte? Vis dette ved hjelp av en graf. 
+9. Er det en forskjell i spredningen av alder for de som stemte og de som ikke stemte? Vis dette ved hjelp av en graf. Hint: her kan det være lurt å kombinere et av plottene vi har sett på for kontinuerlige variabler med `fill = vote`.  
+
+
+```{r losning, class.source = "hide", eval=TRUE}
+# Laster inn nødvendige pakker
+library(tidyverse)
+library(haven)
+
+# Oppgave 1
+ess <- read_dta("../data/ESS9NO.dta")
+
+# Oppgave 2
+ess <- ess %>% 
+  rename(poltil = trstplt,
+         kjonn = gndr,
+         aar_fodt = yrbrn)
+
+# Oppgave 3
+ess$alder <- 2018 - ess$aar_fodt
+summary(ess$alder)
+
+# Oppgave 4
+ess_sub <- ess %>% 
+  select(poltil, kjonn, aar_fodt, vote, alder)
+
+head(ess_sub)
+
+# Oppgave 5
+class(ess_sub$poltil)
+class(ess_sub$kjonn)
+
+# Oppgave 6
+table(ess_sub$poltil)
+labels(ess_sub$poltil)
+
+# Oppgave 7
+
+ggplot(ess_sub, aes(x = poltil)) +
+  geom_bar()
+
+# Oppgave 8
+ggplot(ess_sub, aes(x = vote, y = kjonn)) +
+  geom_boxplot()
+
+# Oppgave 9
+ggplot(ess_sub, aes(x = alder, y = kjonn)) +
+  geom_boxplot()
+
+# evt.
+
+ggplot(ess_sub, aes(x = alder, fill = kjonn)) +
+  geom_histogram()
+```

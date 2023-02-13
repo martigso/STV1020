@@ -1,4 +1,9 @@
-
+---
+title: "Seminar 1 -- Velkommen!"
+format: 
+  html:
+    code-fold: false
+---
 
 
 ```{r setup, include=FALSE}
@@ -6,8 +11,6 @@ knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_chunk$set(tidy.opts=list(width.cutoff=70), tidy=TRUE)
 
 ```
-
-# Seminar 1 -- Velkommen! 
 
 Gjennom 6 seminarganger skal vi nå gå igjennom alt fra hva R og Rstudio er og hvordan det fungerer, til å kjøre våre helt egne regresjonsanalyser. Vi gleder oss! 
 

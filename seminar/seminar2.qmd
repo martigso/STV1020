@@ -210,7 +210,7 @@ Vi kan sjekke hvilken klasse variabelen har ved hjelp av `class()`
 class(ess_subset$vote)
 ```
 
-Her får vi opp klassene `haven_labelled`, `vctrs_vctr` og `double`. `haven_labelled` indikerer at datasettet også inneholder informasjon om verdilabels, mens `double` betyr at variabelen nå er lagret som en numerisk variabel. På variabler med kategorisk eller ordinalt målenivå såkan vi bruke funksjonen `table()` til å få oversikt over verdiene: 
+Her får vi opp klassene `integer` som betyr heltall, mens `double` betyr at variabelen nå er lagret som en numerisk variabel. På variabler med kategorisk eller ordinalt målenivå kan vi bruke funksjonen `table()` til å få oversikt over verdiene:
 
 ```{r variabeltabell}
 table(ess_subset$vote)
@@ -248,7 +248,7 @@ Vi kan sjekke klasse til denne variabelen også:
 class(ess_subset$interest)
 ```
 
-Som vi ser er også denne variabelen også registrert som klassene `haven_labelled`, `vctrs_vctr` og `double` av R. Dersom vi vil bruke denne variabelen som en kategorisk variabel så kan vi igjen bruke `as.factor` for å få variabelens klasse til å samsvare med målenivået: 
+Som vi ser er også denne variabelen også registrert som `integer`. Dersom vi vil bruke denne variabelen som en kategorisk variabel så kan vi igjen bruke `as.factor` for å få variabelens klasse til å samsvare med målenivået: 
 
 ```{r konvertere_til_faktor2}
 ess_subset$interest_factor <- as.factor(ess_subset$interest)

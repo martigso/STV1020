@@ -561,7 +561,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>[1] "integer"</code></pre>
 </div>
 </div>
-<p>Her får vi opp klassene <code>haven_labelled</code>, <code>vctrs_vctr</code> og <code>double</code>. <code>haven_labelled</code> indikerer at datasettet også inneholder informasjon om verdilabels, mens <code>double</code> betyr at variabelen nå er lagret som en numerisk variabel. På variabler med kategorisk eller ordinalt målenivå såkan vi bruke funksjonen <code>table()</code> til å få oversikt over verdiene:</p>
+<p>Her får vi opp klassene <code>integer</code> som betyr heltall, mens <code>double</code> betyr at variabelen nå er lagret som en numerisk variabel. På variabler med kategorisk eller ordinalt målenivå kan vi bruke funksjonen <code>table()</code> til å få oversikt over verdiene:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(ess_subset<span class="sc">$</span>vote)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -606,7 +606,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>[1] "integer"</code></pre>
 </div>
 </div>
-<p>Som vi ser er også denne variabelen også registrert som klassene <code>haven_labelled</code>, <code>vctrs_vctr</code> og <code>double</code> av R. Dersom vi vil bruke denne variabelen som en kategorisk variabel så kan vi igjen bruke <code>as.factor</code> for å få variabelens klasse til å samsvare med målenivået:</p>
+<p>Som vi ser er også denne variabelen også registrert som <code>integer</code>. Dersom vi vil bruke denne variabelen som en kategorisk variabel så kan vi igjen bruke <code>as.factor</code> for å få variabelens klasse til å samsvare med målenivået:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>ess_subset<span class="sc">$</span>interest_factor <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(ess_subset<span class="sc">$</span>interest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>

@@ -1,13 +1,15 @@
+---
+title: "Seminar 3 -- Omkoding, subsetting og visualisering"
+format: 
+  html:
+    code-fold: false
+---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_chunk$set(tidy.opts=list(width.cutoff=60), tidy=FALSE)
 
 ```
-
-# Seminar 3 -- Omkoding, subsetting og visualisering
-
-**OBS! DETTE KAPITTELET ER IKKE FERDIG**
 
 På dette seminaret skal vi gjennom:
 1.	Repetisjon: om laste inn data
@@ -18,18 +20,21 @@ På dette seminaret skal vi gjennom:
 7.	Lagring av plott
 
 # Laste inn data
-I dag skal vi bruke et datasett som ligger i en pakke som heter gapminder. For å gjøre det må vi først installere pakken og åpne den. 
+
+Mange av ekstrapakkene vi bruker i R har med seg innebygde datasett -- ofte fordi de kan brukes til å illustrere hva funksjonene i pakken gjør, men noen pakker er også "datapakker". I dag skal vi bruke en slik pakke: `gapminder`. Du kan lese mer om bakgrunnen til Gapminder [her](https://www.gapminder.org/).
+
+For å bruke data i pakken, må vi først installere pakken og åpne den. Husk fra [seminar 1](seminar1.qmd) at man bare trenger å bruke `install.packages()` en gang, mens man må bruke `library()` hver gang man starter en ny `rsession` (hver gang du åpner RStudio etter du har lukka det).
 
 ```{r installere_gapminder, eval = FALSE}
 install.packages("gapminder")
-library(gapminder)
 ```
 
-```{r laste_inn_gapminder, include  = FALSE}
+```{r laste_inn_gapminder}
 library(gapminder)
 ```
 
 Nå er datasettet tilgjengelig i R. For å lagre datasettet som et objekt i environment kjører vi denne koden: 
+
 ```{r gapminder_data}
 data(gapminder, package = "gapminder")
 ```
@@ -37,7 +42,7 @@ data(gapminder, package = "gapminder")
 Nå er datasettet klart til bruk, men for å øve på å lagre og laste inn datasett skal vi lagre dette datasettet i et Rdata-format ved å bruke funksjonen `save()`. Husk at når man laster inn og lagrer data så vil koden være avhengig av hvilken type dataformat du har og den må tilpasses din mappestruktur. Dersom du ikke jobber i prosjekt så er det første du må gjøre å sette working directory ved å bruke koden `setwd("filbane")`. Deretter bruker du `save()` til å lagre datasettet.
 
 ```{r lagre_gapminder, eval = FALSE}
-save(gapminder, file = "../data/gapminder.Rdata")
+save(gapminder, file = "../data/gapminder.RData")
 ```
 
 Du vil nå se datasettet i den mappen du har bedt R om å lagre det i. Før vi laster inn datasettet på nytt så skal vi rydde litt i environment, altså vi skal fjerne noen objekter vi ikke har bruk for lengre for å få bedre oversikt. Det gjør vi ved hjelp av funksjonen `rm()`.  `rm()` kan brukes til å fjerne et objekt, flere objekter eller alle objektene fra environment:
@@ -54,34 +59,35 @@ rm(objektnavn1, objektnavn2)
 
 ```
 
-For å fjerne alt så kan du også trykke på ikonet med en feiekost på i environment. Merk at dersom du ikke har lagret objektene på maskinen din så må du kjøre koden på nytt for å få tilbake de objektene du fjerner. Her fjerner jeg dataobjektet mitt før jeg laster det inn på nytt ved hjelp av `load()`:
+For å fjerne alt så kan du også trykke på ikonet med en feiekost på i environment. Merk at dersom du ikke har lagret objektene på maskinen din så må du kjøre koden på nytt for å få tilbake de objektene du fjerner. Her fjerner vi dataobjektet vårt før vi laster det inn på nytt ved hjelp av `load()`:
 
 ```{r, laste_Rdata}
 rm(gapminder)
 
-load("../data/gapminder.Rdata")
+load("../data/gapminder.RData")
 ```
 
 
 # Omkoding av variabler 
 
-Når vi omkoder variabler i et datasett, bør vi opprette en ny variabel. Dersom vi ikke gjør dette, erstatter vi informasjonen i den opprinnelige variabelen. Vi trenger informasjonen i den opprinnelige variabelen for å sjekke at omkodingen har fungert som vi ønsker. Vi kan også gjøre feil som vi ikke kan rette opp uten den opprinnelige variabelen. Først bruker jeg funksjonene `names()`, `head()` og `summary()` for å få litt oversikt over data. Du kan også trykke på datasettet i environment:
+Når vi omkoder variabler i et datasett, bør vi opprette en ny variabel. Dersom vi ikke gjør dette, erstatter vi informasjonen i den opprinnelige variabelen. Vi trenger informasjonen i den opprinnelige variabelen for å sjekke at omkodingen har fungert som vi ønsker. Vi kan også gjøre feil som vi ikke kan rette opp uten den opprinnelige variabelen. Først bruker vi funksjonene `names()`, `head()` og `summary()` for å få litt oversikt over data. Du kan også trykke på datasettet i environment:
 
 ```{r oversikt_gapminder}
-names(gapminder)
-head(gapminder)
-summary(gapminder)
+names(gapminder)    # Variabelnavnene i datasettet
+head(gapminder)     # Første 6 radene i dataseettet
+summary(gapminder)  # Summerende statistikk på alle variablene i datasettet
 ```
 
 ## Matematisk omkoding
 
-Først skal vi lære å kode om variablene ved å bruke matematiske omkoding. For å vise dette bruker jeg variabelem `year`. Ved hjelp av `summary()` så finner jeg ut at den laveste verdien på variabelen er året 1952. Det er året observasjonen ble gjort. Jeg vil gjøre dette året til år null, mens de andre verdiene på variablen skal bli hvor mange år etter år null ble observasjonen gjort.
+Først skal vi lære å kode om variablene ved å bruke matematiske omkoding. For å vise dette bruker vi variabelem `year`. Ved hjelp av `summary()` så finner vi ut at den laveste verdien på variabelen er året 1952. Det er året observasjonen ble gjort. Vi vil gjøre dette året til år null, mens de andre verdiene på variablen skal bli hvor mange år etter år null ble observasjonen gjort.
 
 ```{r endre_årstallvariabel}
 # Sjekker summary for opprinnelige variabel
 summary(gapminder$year)
+
 # spennet er 2007-1952, dvs. 55 år
-2007-1952
+2007 - 1952
 
 # Legger til ny variabel i datasettet
 gapminder$year_1952 <- gapminder$year - 1952
@@ -91,21 +97,21 @@ summary(gapminder$year_1952)
 
 ```
 
-Så undersøker jeg om omkodingen er blitt gjort riktig ved å bruke funksjonen table(). Jeg gjør dette på to måter. 
+Så undersøker vi om omkodingen er blitt gjort riktig ved å bruke funksjonen `table()`. Ofte, men ikke alltid, når man omkoder en variabel og krysstabulerer den nye variabelen med den gamle, vil frekvensene legge seg langs diagonalen i tabellen som her: 
 
 ```{r sjekke_variabel_med_tabell}
 # Lager en tabell med opprinnelig og ny variabel:
 table(gapminder$year_1952, gapminder$year, useNA = "always")
-
-# Lager en tabell med en logisk test:
-table((gapminder$year_1952 + 1952) == gapminder$year, useNA = "always")
 ```
 
-Jeg kan også endre retningen på verdienes ved matematisk omkoding. Da ganger jeg variablene med (-1) og plusser på antall verdier variablene har. Nå blir 2007 år null. 
+Vi kan også endre retningen på verdienes ved matematisk omkoding. Da ganger vi variablene med (-1) og plusser på antall verdier variablene har. Nå blir 2007 år null. 
 
 ```{r baklengs_år}
 # Endrer retning på variabelen:
 gapminder$year_2007 <- (gapminder$year_1952 * -1) + 55
+
+# Alternativt:
+gapminder$year_2007 <- 55 - gapminder$year_1952
 
 # Sjekker at det ble riktig med table():
 table(gapminder$year_1952, gapminder$year_2007, useNA = "always")
@@ -115,7 +121,7 @@ table(gapminder$year_1952, gapminder$year_2007, useNA = "always")
 
 ## Omkoding med `ifelse()` 
 
-Den funksjonen jeg bruker mest til omkoding, er `ifelse()`. Funksjonen kan brukes på numeriske og kategoriske variabler. Syntaksen til denne funksjonen kan forklares som følger:
+Den funksjonen vi bruker mest til omkoding, er `ifelse()`. Funksjonen kan brukes på numeriske og kategoriske variabler. Syntaksen til denne funksjonen kan forklares som følger:
 
 ```{r ifelse_eksempel, eval=FALSE}
 data$nyvar <- ifelse(test = data$variabel == "some logical condition",
@@ -123,57 +129,49 @@ data$nyvar <- ifelse(test = data$variabel == "some logical condition",
                      no   = "what to return if 'some condition' is FALSE")
 ```
 
-`ifelse()` kan for eksempel bruker til å lage en ny variabel som tar verdien 1 om observasjonen har en verdi som er større enn gjennomsnittet og null ellers. Gjennomsnittet finner du ved å bruke funksjonen `mean()`. Under fyller jeg inn betingelsen (condition), hvilken verdi ny variabel skal dersom betingelsen er oppfylt (yes) og hvilken verdi ny variabel skal ha dersom betingelsen ikke er oppfylt (no). Vanligvis vil vi ikke skrive `test =`, `yes =` og `no =`, men jeg har tatt det med her for å gjøre det lettere å koble de to:
+`ifelse()` kan for eksempel bruker til å lage en ny variabel som tar verdien 1 om observasjonen har en verdi som er større enn gjennomsnittet og null ellers. Gjennomsnittet finner du ved å bruke funksjonen `mean()`. Under fyller vi inn betingelsen (condition), hvilken verdi ny variabel skal dersom betingelsen er oppfylt (yes) og hvilken verdi ny variabel skal ha dersom betingelsen ikke er oppfylt (no). Vanligvis vil vi ikke skrive `test =`, `yes =` og `no =`, men vi har tatt det med her for å gjøre det lettere å koble de to:
 
 ```{r ifelse_omkoding}
-gapminder$lifeExp_2 <- ifelse(test = gapminder$lifeExp > mean(gapminder$lifeExp, na.rm = TRUE),
-                         yes = 1,
-                         no = 0)
+gapminder$lifeExp_num <- ifelse(test = gapminder$lifeExp > mean(gapminder$lifeExp, na.rm = TRUE),
+                                yes = 1,
+                                no = 0)
 ```
 
+Her har vi laget en ny variabel -- `gapminder$lifeExp_num` -- som tar verdien 1 om land-år-enheten har over gjennomsnittlig verdi på variabelen `gapminder$lifeExp` og verdien 0 hvis land-år-enheten ikke har over gjennomsnittlig verdi på `gapminder$lifeExp`.
 
-Jeg bruker en kombinasjon av en tabell og en logisk test (se forklaringer fra første seminar om logiske tester) for å sjekke at det ble riktig: 
+## Omkoding med `case_match()`
 
-```{r sjekke_variabel_med_tabell2}
-table(gapminder$lifeExp_2, gapminder$lifeExp > mean(gapminder$lifeExp, na.rm = TRUE), useNA = "always")
-
-```
-
-## Omkoding med `recode()`
-
-Dersom vi vil omkode en variabel med flere variabler så kan vi gjøre det med flere `ifelse()` nøstet i hverandre. Det kan imidlertid bli veldig mye kode. Et alternativ er å kombinere `mutate()` og `recode()`. `mutate()` er en funksjon i tidyverse vi bruker for å lage nye variabler. `recode()` er også en del av tidyverse og den brukes til å endre verdier på variabler. Syntaksen til kombinasjonen av `mutate()` og `recode()` er:
+Dersom vi vil omkode en variabel med flere variabler så kan vi gjøre det med flere `ifelse()` nøstet i hverandre. Det kan imidlertid bli veldig mye kode. Et alternativ er å kombinere `mutate()` og `case_match()`. `mutate()` er en funksjon i tidyverse vi bruker for å lage nye variabler. `case_match()` er også en del av tidyverse og den brukes til å endre verdier på variabler. Syntaksen til kombinasjonen av `mutate()` og `case_match()` er:
 
 ```{r mutate_eksempel, eval = FALSE}
-mutate(nyvariabel = recode(gammelvariabel, 
-                           gammel_verdi1 = ny_verdi1, 
-                           gammel_verdi2 = ny_verdi2))
+data %>% 
+  mutate(nyvariabel = case_match(gammelvariabel, 
+                                 gammel_verdi1 ~ ny_verdi1, 
+                                 gammel_verdi2 ~ ny_verdi2))
 
 ```
 
-I dette eksempelet skal vi lage en ny variabel `continent2` med tallverdier i steden for kontinentnavn. Ettersom funksjonen vi skal bruker ligger i pakken `tidyverse` så må vi aller først laste inn pakken med `library()`
+I dette eksempelet skal vi lage en ny variabel `lifeExp_char` der vi omkoder `lifeExp_num` til "high" dersom den gamle variabelen er 1 og "low" dersom den er 0. Ettersom funksjonen vi skal bruker ligger i pakken `tidyverse` så må vi aller først laste inn pakken med `library()`
 
-```{r mutate_omkoding}
+```{r mutate_omkoding, message=FALSE}
 library(tidyverse)
 
 gapminder <- gapminder %>% 
-  mutate(continent2 = recode(continent, 
-                             Africa = 1, 
-                             Americas = 2, 
-                             Asia = 3, 
-                             Europe = 4, 
-                             Oceania = 5))
+  mutate(lifeExp_char = case_match(lifeExp_num, 
+                               1  ~ "high", 
+                               0  ~ "low"))
 ```
 
 Vi sjekker med en tabell at det ble riktig: 
 
 ```{r sjekke_variabel_med_tabell3}
-table(gapminder$continent, gapminder$continent2, useNA = "always")
+table(gapminder$lifeExp_char, gapminder$lifeExp_num)
 ```
 
 
 # Subsetting av datasett
 
-Å subsette betyr å lage et nytt datasett basert på et gammelt. Dette gikk vi gjennom i seminar 2, men jeg repeterer det her. For å subsette så bruker vi funksjoner i pakken `tidyverse`. Vi bruker pipes angitt ved `%>%` for å binde sammen ulike operasjoner vi vil utføre på et datasett. Dette kalles for piping. Det er en effektiv og ryddig måte å kode på. Derfor kommer jeg ofte til å bruke pipes i seminarene. Pakken installerte vi i andre seminar, men vi må laste den inn for å bruke den: 
+Å subsette betyr å lage et nytt datasett basert på et gammelt. Dette gikk vi gjennom i seminar 2, men vi repeterer det her. For å subsette så bruker vi funksjoner i pakken `tidyverse`. Vi bruker pipes angitt ved `%>%` for å binde sammen ulike operasjoner vi vil utføre på et datasett. Dette kalles for piping. Det er en effektiv og ryddig måte å kode på. Derfor kommer vi ofte til å bruke pipes i seminarene. Pakken installerte vi i andre seminar, men vi må laste den inn for å bruke den: 
 
 ```{r laste_inn_tidyverse}
 # install.packages("tidyverse")
@@ -191,7 +189,7 @@ gapminder_sub <- gapminder %>%
 
 ```
 
-Du kan også bruke funksjonen `filter()` til å velge ut spesielle observasjoner som tilfredsstiller de kravene du setter. Under har jeg brukt funksjonen til å bare ta med observasjonene med verdien 1954 på variabelen `year` og som har en verdi høyere end gjennomsnittet på variablene `pop`:
+Du kan også bruke funksjonen `filter()` til å velge ut spesielle observasjoner som tilfredsstiller de kravene du setter. Under har vi brukt funksjonen til å bare ta med observasjonene med verdien 1954 på variabelen `year` og som har en verdi høyere end gjennomsnittet på variablene `pop`:
 
 ```{r subsette_datasett}
 gapminder_1952 <- gapminder %>%
@@ -216,7 +214,7 @@ rm(gapminder_pop, gapminder_sub, gapminder_1952, gapminder_1952pop)
 
 Det finnes flere ulike måter å plotte på i R. Pakken som vi skal bruke heter `ggplot2`, og er en del av `tidyverse`-universet. Når vi laster inn `tidyverse` så er altså `ggplot2` en del av pakka. 
 
-Det første vi skal gjøre nå er å bli litt kjent med hvordan vi bygger figurer med ggplot2. Kort fortalt må vi sette sammen flere argumenter, eller deler med informasjon, for at ggplot skal vite hva slags figur vi ønsker å lage. Når jeg går gjennom dette nå så kommer jeg gradvis til å legge på flere lag i plottet. Når dere koder selv så trenger dere ikke kjøre hver kodebit separat, alt kan kjøres samlet på én gang, slik det ser ut i den siste koden vi lager. Nå deler jeg det opp kun for å forklare. 
+Det første vi skal gjøre nå er å bli litt kjent med hvordan vi bygger figurer med ggplot2. Kort fortalt må vi sette sammen flere argumenter, eller deler med informasjon, for at ggplot skal vite hva slags figur vi ønsker å lage. Når vi går gjennom dette nå så kommer vi gradvis til å legge på flere lag i plottet. Når dere koder selv så trenger dere ikke kjøre hver kodebit separat, alt kan kjøres samlet på én gang, slik det ser ut i den siste koden vi lager. Nå deler vi det opp kun for å forklare. 
 
 PS: Dette trenger dere ikke tenke så mye på akkurat nå, men til en annen gang så er det lurt å huske på at ggplot2 vil ha dataene i et “tidy” format, dvs. at hver rad (vannrett) er en observasjon, og hver kolonne er ulike variabler (loddrett). Dette kan dere lese mer om i kapittel 3 i Healy-boka på pensum.
 
@@ -241,6 +239,7 @@ Hva skjer når vi kjører koden nå? Vi får et helt tomt plott. Mer info må ti
 ## Steg 2: Fortell ggplot hvilken sammenheng vi vil plotte
  
 Det neste vi gjør er å fortelle ggplot hva vi vil måle på x- og y-aksen. Nå skal vi starte med et stolpediagram, der vi vil se hvor mange observasjoner det er i datasettet fordelt på de fem kontinentene. Da trenger vi bare å gi ggplot beskjed om at vi vil ha `continent` på x-aksen. Y-aksen vår blir automatisk til antall (count).  Senere i dette seminaret skal vi se på et eksempel hvor vi gir informasjon om begge aksene. 
+
 Inne i `ggplot()` hvor vi har fortalt hvilket datasett vi vil bruke, så legger vi til en `mapping`. `aes()` står for aestethics, og det vi gjør ved bruk av `aes()` er å fortelle ggplot hvilke variabler vi vil visualisere. Vi forteller ggplot at vi vil at variabelen `continent` skal vises på x-aksen.
 
 ```{r ggplot_aes, eval = TRUE}
@@ -255,10 +254,9 @@ Det vi skriver i `aes()` kobler variabler til ting du ser i plottet. Det kan for
 Når vi kjører koden, så ser vi at kontinentene er på plass, men vi får likevel ikke noe særlig informasjon fra plottet. Hva mangler? Vi må skrive hva slags plott vi vil lage. Vi vil lage et stolpediagram, og velger `geom_bar()`. Hvis du prøver å skrive inn `geom_` vil du se at du får en hel rekke forslag til ulike plott. Flere av disse skal vi komme tilbake til.
  
 ```{r geom_bar, eval = TRUE}
-ggplot(data = gapminder, aes(x = continent)) + 
+ggplot(gapminder, aes(x = continent)) + 
   geom_bar()
 ```
-
 
 Da har vi fått opp et plott som viser observasjonene i datasettet fordelt på kontinenter. Vi kan dobbeltsjekke at dette ser riktig ut ved å lage et summary av variabelen. 
 
@@ -270,7 +268,7 @@ Det ser fint ut. Vi kan også legge inn andre typer av aestetics i mappingen. He
 
 
 ```{r geom_bar_fill, eval = TRUE}
-ggplot(data = gapminder, aes(x = continent, fill = continent)) + 
+ggplot(gapminder, aes(x = continent, fill = continent)) + 
   geom_bar()
 
 ```
@@ -278,7 +276,7 @@ ggplot(data = gapminder, aes(x = continent, fill = continent)) +
 
 ## Steg 4: Legg til `geom_` etter behov en etter en.
 
-Vi kan legge til flere `geom_`-elementer i plottet vårt ved å bruke `+`. Jeg kan for eksempel legge til en linje som indikerer gjennomsnittlig antall observasjoner per land. Da legger vi først til en variabel som angir antall observasjoner per land i datasettet. Dette gjør vi ved hjelp av funksjonen `add_count()`:
+Vi kan legge til flere `geom_`-elementer i plottet vårt ved å bruke `+`. Vi kan for eksempel legge til en linje som indikerer gjennomsnittlig antall observasjoner per land. Da legger vi først til en variabel som angir antall observasjoner per land i datasettet. Dette gjør vi ved hjelp av funksjonen `add_count()`:
 
 ```{r legge_til_n}
 gapminder <- gapminder %>% 
@@ -312,7 +310,7 @@ ggplot(gapminder, aes(x = continent, fill = continent)) +
 
 ```
 
-Da har vi gått gjennom det helt grunnleggende i ggplot. Dette er en pakke med veldig mange ulike muligheter, og man blir bedre kjent med de for hver gang man bruker den. Jeg anbefaler dere å prøve dere fram, og sjekke ut noen av ressursene som jeg linker til i bunnen av dokumentet. Kjør gjerne deler av plottet for å se hva de ulike linjene gjør, google dere frem osv. 
+Da har vi gått gjennom det helt grunnleggende i ggplot. Dette er en pakke med veldig mange ulike muligheter, og man blir bedre kjent med de for hver gang man bruker den. Vi anbefaler dere å prøve dere fram, og sjekke ut noen av ressursene som vi linker til i bunnen av dokumentet. Kjør gjerne deler av plottet for å se hva de ulike linjene gjør, google dere frem osv. 
  
 
 # Ulike typer plott
@@ -394,22 +392,21 @@ Inne i parentesen til plottypen kan vi legge til spesifikasjoner om tykkelse på
 
 ```{r size_fill_alpha, eval = TRUE}
 plot_le + 
-  geom_density(size=1.5, fill="pink", alpha=0.3)
+  geom_density(linewidth = 1.5, fill = "pink", alpha = 0.3)
 ```
 
 Hva skjer hvis vi endrer 1) alpha til 1 og 2) size til 0.5?
 
 ```{r tweeks_boxplot, eval = TRUE}
 plot_le + 
-  geom_density(size=0.5, fill="pink", alpha=1)
+  geom_density(linewidth = 0.5, fill = "pink", alpha = 1)
 ```
-
 
 Hvis du ønsker å separere plottene, slik at de ulike kontinentene ikke ligger over hverandre, men får hvert sitt plott, så kan du legge til en facet_wrap: 
 
 ```{r facet_wrap, eval = TRUE}
 plot_le + 
-  geom_density(size=0.5, fill="pink", alpha=1) + 
+  geom_density(linewidth = 0.5, fill = "pink", alpha = 1) +
   facet_wrap(vars(continent)) +
   theme_bw()
 
@@ -421,13 +418,12 @@ plot_le +
 Med et spredningsplot (scatterplot) kan vi vise sammenhengen mellom to kontinuerlige variabler. Her må vi gi ggplot informasjon om hvilken variabel som skal mappes på x-aksen og på y-aksen. For å lage scatterplottet bruker vi geom_point.  
 
 ```{r geom_point, eval = TRUE}
-ggplot(gapminder, 
-       aes(x = lifeExp, y = gdpPercap)) + 
+ggplot(gapminder, aes(x = lifeExp, y = gdpPercap)) + 
   geom_point()
 
 ```
 
-Vi kan legge til en linje som viser gjennomsnittet i observasjonene ved å bruke geom_smooth: 
+Vi kan legge til en linje som viser trenden^[`geom_smooth()` bruker (vanligvis) lokale regresjoner for å beregne linja.] i observasjonene ved å bruke geom_smooth: 
 
 ```{r geom_smooth, eval = TRUE}
 ggplot(gapminder, aes(x = lifeExp, y = gdpPercap)) +
@@ -439,8 +435,7 @@ ggplot(gapminder, aes(x = lifeExp, y = gdpPercap)) +
 Skille kontinentene fra hverandre ved bruk av ulike farger: 
 
 ```{r farge_points_smooth, eval = TRUE}
-ggplot(gapminder, 
-       aes(x=lifeExp, y=gdpPercap, col=continent)) +
+ggplot(gapminder, aes(x = lifeExp, y = gdpPercap, col = continent)) +
   geom_point() + 
   geom_smooth()
 
@@ -449,11 +444,10 @@ ggplot(gapminder,
 Vi kan legge inn en `facet_wrap()` for at det skal se litt ryddigere ut, og samtidig gi `geom_smooth()` en farge som vises bedre. 
 
 ```{r tweeks_smooth_figur, eval = TRUE}
-ggplot(gapminder, 
-       aes(x = lifeExp, y = gdpPercap, col = continent)) +
+ggplot(gapminder, aes(x = lifeExp, y = gdpPercap, col = continent)) +
   geom_point() + 
-  geom_smooth(colour="black") + 
-  facet_wrap(~continent) +
+  geom_smooth(colour = "black") + 
+  facet_wrap(~ continent) +
   theme_bw() +
   theme(legend.position = "none")
 
@@ -465,7 +459,7 @@ Her kan vi repetere hvordan vi legger til nye titler til x- og y-aksen, samt tit
 ggplot(gapminder, 
        aes(x = lifeExp, y = gdpPercap, col = continent)) +
   geom_point() + 
-  geom_smooth(colour="black") + 
+  geom_smooth(colour = "black") + 
   facet_wrap(vars(continent)) +
   labs(x = "Forventet levealder", 
        y = "GDP per capita", 
@@ -489,7 +483,6 @@ ggsave(filename = "gdplevealder.pdf")
 # For jpeg-format:
 ggsave(filename = "gdplevealder.jpeg")
 
- 
 # Du trenger egentlig ikke skrive "filename" så lenge du bruker ggsave:
 ggsave("gdplevealder.png")
 ```
@@ -512,7 +505,7 @@ Ressurser for ggplot2:
 - [#tidytuesday på twitter](https://twitter.com/hashtag/tidytuesday)
  
 ```{r generere_script, eval=FALSE, echo=FALSE}
-knitr::purl("./doc/seminar3/seminar3.Rmd", 
-            output = "./script/seminar3.R", 
+knitr::purl("./seminar/seminar3.qmd", 
+            output = "./src/seminar3.R", 
             documentation = 1)
 ```

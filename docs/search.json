@@ -242,7 +242,7 @@
     "href": "seminar/seminar3.html",
     "title": "Seminar 3 – Omkoding, subsetting og visualisering",
     "section": "",
-    "text": "På dette seminaret skal vi gjennom: 1. Repetisjon: om laste inn data 2. Omkoding av variabler 4. Subsetting av datasett 5. Plotting: Intro til ggplot2 6. Ulike typer plott 7. Lagring av plott"
+    "text": "På dette seminaret skal vi gjennom:"
   },
   {
     "objectID": "seminar/seminar3.html#matematisk-omkoding",

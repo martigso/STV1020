@@ -12,12 +12,13 @@ knitr::opts_chunk$set(tidy.opts=list(width.cutoff=60), tidy=FALSE)
 ```
 
 På dette seminaret skal vi gjennom:
-1.	Repetisjon: om laste inn data
-2.	Omkoding av variabler 
-4.	Subsetting av datasett 
-5.	Plotting: Intro til ggplot2
-6.	Ulike typer plott
-7.	Lagring av plott
+
+1. Repetisjon: om laste inn data
+2. Omkoding av variabler 
+4. Subsetting av datasett 
+5. Plotting: Intro til ggplot2
+6. Ulike typer plott
+7. Lagring av plott
 
 # Laste inn data
 

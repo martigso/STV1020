@@ -51,9 +51,9 @@ folk$navn[which.max(folk$avstand)]
 
 library(tidyverse) # laster inn tidyverse for å få ggplot
 
-ggplot(folk, aes(x = navn, y = avstand)) +
+ggplot(folk, aes(x = navn, y = alder)) +
   geom_point() +
-  labs(x = "Navn", y = "Avstand")
+  labs(x = "Navn", y = "Alder")
 
 ```
 

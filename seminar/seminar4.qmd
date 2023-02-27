@@ -1,2 +1,565 @@
+---
+title: "Seminar 3 -- Missingverdier, statistikk og bivariate sammenhenger"
+format: 
+  html:
+    code-fold: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(tidy.opts=list(width.cutoff=60), tidy=TRUE)
+
+```
 
 **OBS! DETTE KAPITTELET ER IKKE FERDIG**
+
+I løpet av dette seminaret skal vi: 
+
+1. Repetere litt om pakker og innlastning av data. 
+2. Missingverdier (NA).
+3. Statistiske mål.
+4. Bivariat hypotesetest
+
+# Repetisjon 
+
+## Pakker og funksjoner
+
+Når vi jobber i R så bruker vi mange funksjoner. Noen av disse, som for eksempel `mean()` og `load()` er en del av base R. Det betyr at vi ikke trenger å installere og laste inn noen ekstra pakker for at de skal virker. Andre funksjoner som for eksempel `%>%`, `read.dta()` og `ggplot()` ligger i pakker. Da må vi installere og laste inn disse pakkene for å kunne bruke funksjonen. 
+
+*Installere pakker*: Vi bruker `install.packages("pakkenavn")` for å installere pakker. Dette trenger vi bare å gjøre en gang. 
+
+*Laste inn pakker*: Vi bruker `library(pakkenavn)` for å laste inn en pakke. Dette må vi gjøre hver gang vi åpner Rstudio på nytt eller åpner en ny sesjon. Dersom du får opp en feilmelding som "Error in library(pakkenavn) : there is no package called ‘pakkenavn’" så indikerer det at du ikke har installert pakken. Da må du kjøre `install.packages("pakkenavn")` før du forsøker `library(pakkenavn)` igjen.  
+
+Først installerer vi nye pakker og laster inn pakkene vi skal bruke i dagens seminar: 
+
+```{r installere_pakker, eval = FALSE}
+# Installerer nye pakker
+install.packages("stargazer")
+install.packages("gmodels")
+install.packages("scales")
+```
+
+```{r laste_inn_pakker}
+# Laster inn pakker 
+library(tidyverse)
+library(stargazer)
+library(gmodels)
+library(scales)
+```
+
+# Laste inn data
+
+Det neste vi skal gjøre er å laste inn data. Som vi allerede har snakket om så finnes det mange typer data og hver type krever egne koder for innlastning. I dag skal vi bruke noen ulike datasett; et fra ESS og to fra Kellstedt og Whitten. Det første skal vi laste inn data i csv.-format ved hjelp av funksjonen `read.csv`:  
+
+```{r laste_inn_csv}
+# For å laste inn .csv-filer
+ess <- read.csv("../data/internett.csv")
+
+```
+
+
+```{r skrive_csv, eval = FALSE}
+# For å lagre .csv-filer
+write.csv(datasett, file = "der/du/vil/lagre")
+
+```
+
+Datasettet heter `internett.csv` og omhandler internettbruken til italienere. Det betstår av et utvalg variabler hentet fra European Social Survey (ESS) runde 9 (2018). Enhetene er italienske statsborgere og samlet innholder datasettet 2745 observasjoner og 5 variable: 
+
+| Variabel      | Verdi | Beskrivelse |
+|:--------------|:-----:|:-------------------------------------------------:|
+| internettbruk | 1     | Aldri                                             |
+|               | ...   | ...                                               |
+|               | 5     | Hver dag                                          |
+| kjonn         | 1     | Mann                                              | 
+|               | 2     | Kvinne                                            |
+| alder         | 16-90 | Respondentens alder                               |
+| utdanning     | 0-37  | Ant. år med fullført utdanning                    | 
+| tillit        | 0     | Ingen tillitt til det italienske parlamentet      |
+|               | ...   | ...                                               |
+|               | 10    | Fullstendig tillit til det italienske parlamentet |
+
+Før vi går videre vil vi se på dataene våre. Disse kodene har vi sett på tidligere, men vi repeterer det igjen. 
+
+Vi kan bruke `View()` til å åpne en egen fane med datasettet vårt:
+```{r se_på_data, eval = FALSE}
+View(data)
+```
+
+Vi kan bruke `head()` til å undersøke de seks første observasjonene og `tail()` til å undersøke de seks siste observasjonene: 
+
+```{r head_tail} 
+head(data)
+tail(data)
+```
+
+Vi kan bruke `summary()` på et datasett-objekt for å se målenivå, antall missingverdier og beskrivende statistikk: 
+
+```{r oversikt_data} 
+summary(data) 
+```
+
+
+# Missing (NA/Not available)
+
+Det finnes mange grunner til at det er tomme celler/manglende verdier/svar i dataene. I datasett basert på spørreundersøkelser som ESS så kan det hende at noen respondenter ikke har ønsket å svare på alle spørsmål. I andre tilfeller kan det hende vi rett og slett mangler dataen. Vi skal nå se på hvordan vi kan finne missing-verdier og hva vi kan gjøre med dem i R. Når dere skal gjøre egne analyser så er det er viktig å teoretisk begrunne hvordan man håndterer NA-verdier på bakgrunn av utvalget av populasjonen. Er missing-verdiene systematiske eller er de tilfeldige? 
+
+Når vi skal finne missing er det mest vanlig er å bruke funksjonen `is.na()`. `is.na()` tar utgangspunkt i en logisk test. For hver observasjon i et datasett eller en variabel så sjekker `is.na()` om det finnes missingverdier. Under ser dere et eksempel der jeg spør R om rad 1:6 i datasettet `data` har missingverdier. `slice_head(n = 6)` avgrenser datasettet til de seks første observasjonene: 
+
+```{r finne_missing}
+is.na(data %>% 
+        slice_head(n = 6))
+```
+Som dere ser er verdiene i datasettet nå byttet ut med `FALSE` og `TRUE`. `TRUE` indikerer at observasjonen mangler data om denne variabelen. Et eksempel er observasjon/rad nummer 4 som mangler data på tillit-variabelen. `FALSE` indikerer at det finnes data. 
+
+Vi kan kombinere `is.na()` med `sum()` for å finne totalt antall missingverdier. `sum()` kan brukes til å summere, for eksempel:
+
+```{r sum_av_vektor}
+sum(2,2,6)
+```
+
+Når `sum()` kombineres med `is.na()` så kan vi tenke oss at `TRUE` gir verdien 1 og `FALSE` gir verdien 0. Det betyr at en observasjon får verdien 1 på en gitt variabel dersom informasjonen mangler og 0 om den ikke mangler. R summerer så opp alle disse verdiene og summen angir antall observasjoner med verdien 1, altså med manglende informasjon.  
+
+```{r sum_na}
+# Finner ut om de seks første observasjonene har missing på variabelen tilitt
+is.na(data %>% 
+        slice_head(n = 6) %>%  # Beholder bare de seks første observasjonene
+        select(tillit))        # Beholder bare variabelen tillit
+
+
+# Teller antall missing blant de seks første observasjonene
+sum(is.na(data %>% 
+            slice_head(n = 6) %>% 
+            select(tillit)))
+```
+Vi kan kombinere `sum()` og `is.na()` til å telle totalt antall missingverdier i datasettet vårt. En rad, eller en observasjon, kan ha missing på flere variabler. Denne funksjonen vil telle alle disse. 
+
+```{r sum_na2}
+sum(is.na(data)) 
+```
+
+Vi kan kombinere `sum()`, `is.na()` og indeksering ved hjelp av `$` til å hente ut antall missingverdier på en variabel: 
+
+```{r sum_na_variabel}
+sum(is.na(data$internettbruk)) # Viser hvor mange missing det er på en variabel
+```
+
+Vi kan kombinere `sum()` med en funksjon som heter `complete.cases()` for å finne ut hvor mange observasjoner vi *ikke* mangler noe informasjon på noen variabler om. Først skal vi se litt på hvilken informasjon `complete.cases()` gir oss: 
+
+```{r fullstendige_enheter}
+complete.cases(data %>% 
+                 slice_head(n = 6)) # Henter ut informasjon om de seks første observasjonene
+```
+
+Fra dette kan vi lese at de tre første og de to siste observasjonene ikke har noen missing, men den fjerde obsevarsjonen mangler informasjon på minst en variabel. Fra før vet vi at denne observasjonen mangler informasjon på variabelen tillit. Nå kombinerer vi `sum()` og `complete.cases()` for å finne antall observasjoner uten noen missing i datasettet vårt:
+
+```{r sum_fullstendige_enheter}
+sum(complete.cases(data)) 
+```
+
+Du kan også lese antall missing på hver variabel ut fra `summary`. Legg merke til at NAs (missingverdier) kommer til sist:
+
+```{r oversikt_enkeltvariabel}
+# For alle variabler i datasettet
+summary(data)
+
+# For variabelen internettbrukt
+summary(data$internettbruk)
+
+```
+
+I en oppgave så vil en vanligvis kommenterer missingverdier. Vi må også velge hva vi skal gjøre med dem. Det er vanlig å fjerne NA hvis de er 'missing at random' eller 'missing completely at random'. Dersom informasjonen mangler systematisk kan du imidlertid ha et problem. Det kan skje dersom du for eksempel vil se på effekten av demokrati på BNP per capita, men bare har informasjon om BNP per capita for vestlige demokratier. Da kan ikke analysene dine si noe om effekten av demokrati på BNP per capita i alle land, men bare vestlige demokratier. Det samme kan en si for spørreundersøkelser dersom det er spesielle kjennetegn ved de som ikke har svart. 
+
+Du kan velge å fjerne alle missing verdier eller bare missing verdier på spesifikke variable. Det er som når vi beregner gjennomsnittet - man kan ikke regne gjennomsnittet av missing, derfor må vi si til R hvordan R skal håndtere missing. 
+
+Dersom en ønsker et datasett uten missingverdier så kan du bruke funksjonen `drop_na()`: 
+
+```{r fjerne_na}
+# Fjerne alle observajoner med minst en missing  
+data1 <- data %>% 
+  drop_na() 
+
+# Fjerne alle observasjoner med missing på en variabel (eller fler) 
+data2 <- data %>% 
+  drop_na(internettbruk) # Du kan legge til flere variable med komma
+
+# Vi skal ikke bruke data1 og data2 mer så jeg fjerner dem fra environment
+rm(data1, data2)
+
+```
+
+Når dere skal skrive egne oppgaver så er det veldig viktig å lese kodeboken nøye. Noen ganger kommer manglende data kodet som for eksempel 999 eller 9999. Da kan R tror at dette er en faktisk verdi og ikke en missingverdi. I slike tilfeller må du omkode variabelen før du bruker den i analyser. 
+
+
+# Statistiske mål
+       
+Statistiske mål forteller oss noe om fordelingen til ulike variabler, som for eksempel gjennomsnitt, median og standardavvik, men også minimum- og maksimumverdier, typetall og frekvens. Statistiske mål på sentraltendens er gjennomsnitt, median og modus. Disse har vi sett på i tidligere seminarer. Som vi har sett tidligere så kan vi få informasjon om dette ved å bruke samlefunksjonen `summary()` eller ved å bruke enkeltfunksjoner som for eksempel `mean()`, `min()` og `max()`. Ved bruk av enkeltfunksjonene så må vi huske å spesifisere `na.rm = TRUE` så R vet hvordan vi ønsker å håndtere missingverdier.  
+
+Statistiske mål på spredning i dataene er standardavviket og varians. Standardavviket viser respondentenes gjennomsnittlige avstand fra gjennomsnittet. Vi kan bruke funksjonen `sd()`. Også her må vi spesifisere `na.rm = TRUE` for at R skal vite hvordan vi ønsker å håndtere missingverdier. Syntaksen for `sd()` er som `mean()`:
+
+```{r standardavvik, eval = FALSE}
+sd(data$variabel, na.rm = TRUE)
+```
+
+Om vi ønsker å regne ut standardavviket for internettbruk så skriver vi: 
+
+```{r standardavvik2}
+sd(data$internettbruk, na.rm = TRUE)
+```
+
+Variansen er standardavviket opphøyd i annen. Dermed er standardavviket kvadratroten av variansen. Det er enklere å tolke standardavvik enn varians. Jeg viser likevel hvordan man finner variansen:
+
+```{r varians}
+# Lagrer variansen i et eget objekt
+varians <- var(data$internettbruk, na.rm = TRUE)
+
+varians
+```
+
+Vi kan bruke en logisk test for å sjekke om kvadratroten av variansen gir samme tall som standardavviket:
+
+```{r lagre_standardavvik}
+# Lagrer først standardavviket i et objekt: 
+stdavvik <- sd(data$internettbruk, na.rm = TRUE)
+
+# Bruker logisk test for å spørre R om standardavviket er det samme som kvadrat-
+# roten (sqrt) av variansen
+stdavvik == sqrt(varians)
+
+```
+
+Vi skal ikke bruke objektene `stdavvik` og `varians` noe mer så vi fjerner dem fra environment:
+
+```{r fjerne_objekter1}
+rm(stdavvik, varians)
+```
+
+I en større oppgave ønsker man ofte å presentere alle variablenes deskriptive statistikk i en felles tabell. Funksjonen `stargazer()` er fin til å gjøre dette. 
+
+```{r lagre_tabell}
+stargazer(data,
+          type = "text")
+```
+
+For å lagre en tabell med deskriptiv statistikk som vi kan bruke i for eksempel word så må vi spesifisere `type = "html"` og `out = "filnavn.htm"`. Da vil en fil lagre seg i mappen din. Denne kan du høyreklikke på og velge åpne i word for å redigere i word. Under er et eksempel på en slik kode: 
+
+```{r lagre_deskriptiv_tabell, eval = FALSE}
+stargazer(data,
+          type = "html",
+          out = "sem4_desktab.htm")
+```
+
+         
+# Bivariat hypotesetesting
+
+Kellstedt og Whitten presenterer tre typer hypotesetester for bivariate sammenhenger som vi skal se på i seminar i dag. Hvilken test som passer avhenger av målenivået på avhengig og uavhengig variabel:
+
+- Kategorisk avhengig og uavhengig variabel: tabellanalyse
+- Kontinuelig avhengig og kategorisk uavhengig variabel: sammenligne gjennomsnitt
+- Kontinuerlig avhengig og uavhengig variabel: korrelasjonskoeffisient
+
+Bivariat analyse brukes når man analyserer to variabler. Bivariat analyse er nyttig for å få oversikt over sammenhengen mellom to variabler, i tillegg til at det forteller oss noe om hvor mye to variabler korrelerer, altså hvor mye de henger sammen. Bivariat statistikk er også nyttig for å teste korrelasjonens statistiske signifikans. 
+
+
+## Tabellanalyse
+Dersom hypotesen vår består av to kategoriske variabler så kan vi presentere og teste sammenhengen ved hjelp av en krysstabell. Da bruker vi funksjonen `table()`. I dette eksempelet skal vi bruke samme data som Kellsted og Whitten bruker i sitt eksempel. Hypotesen vi vil teste er altså om kjønn (X) har en sammenheng med hvordan man stemmer (Y) i amerikanske presidentvalg.  
+
+Det første vi gjør er å laste inn datasettet `ANES2016small`. Dette er samme datasett som Kellstedt og Whitten bruker. Datasettet er i .Rdata-format så da bruker vi funksjonen `load` til å laste inn data:
+
+```{r laste_inn_rdata}
+# Bytt ut det som står i hermetegn med filbanen og filnavnet på din maskin:
+load("../../data/ANES2016small.RData")
+```
+
+Vi skal omkode variablene så verdiene blir litt mer intuitive. Det gjør vi ved hjelp av `mutate()` og `recode`. `mutate()` forteller R at vi vil opprette nye variabler. Vi skriver inn navnet på den nye variabelen, et likhetstegn og så hva den nye variabelen skal inneholde. Ved hjelp av `recode()` forteller vi R at den nye variabelen skal ta utgangspunkt i en gammel variabel, men ta andre verdier: 
+
+```{r bivariat_tabell}
+ANES2016small <- ANES2016small %>% 
+  mutate(vote = recode(V2Trump,
+                           `1` = "Trump",
+                           `0` = "Clinton"), 
+         gender = recode(female, 
+                         `0` = "Male", 
+                         `1` = "Female"))
+
+# Sjekker at omkodingen ble riktig:
+table(ANES2016small$female, ANES2016small$gender, useNA = "always")
+
+# Sjekker at omkodingen ble riktig:
+table(ANES2016small$V2Trump, ANES2016small$vote, useNA = "always")
+```
+
+Det neste vi skal gjøre er å lage en krysstabell med absolutte antall. Da bruker vi funksjonen `table()`. I dag skal vi lagre krysstabellen i et eget objekt for å bruke den videre. Når vi lagrer krysstabellen som et objekt vil den ikke bli printet automatisk i console. For å printe tabellen i console er det bare å skrive inn objektnavnet og kjøre koden. 
+
+Når vi lager krysstabeller så utgjør den første variabelen radene og den andre kolonnene. Kellstedt og Whitten anbefaler at avhengig variabel representeres ved radene og uavhengig variabel i kolonnene. Jeg kaller objektet `krysstabell` og fyller ut variablene i `table`:
+
+```{r bivar_tabell_objekt}
+krysstabell <- table(ANES2016small$vote, ANES2016small$gender)
+
+krysstabell
+```
+
+Denne tabellen oppgir frekvensfordelingen i absolutte tall. Vi kan også finne relative tall, altså andeler ved hjelp av `prop.table()`. `prop.table()` krever et table-objekt og vi bruker derfor `krysstabell.` I tillegg spesifiserer vi `margin = 2` for å si at vi vil ha andeler per kolonne. Vi vil altså beregne hvor stor andel av henholdvis menn og kvinner som stempte på Trump eller Clinton. 
+       
+```{r proporsjonstabell}
+prop.table(krysstabell, margin = 2)
+```
+Dersom vi spesifiserer `margin = 1` så får vi andeler per rad. I dette tilfelle betyr det at du får informasjon om hvor stor andel av de som stemte på henholdsvis Trump og Clinton som var kvinner og menn. Dersom du ikke tar med argumentet `margin` så får du en tabell der andel er regnet ut fra alle cellene. 
+
+Kjikvadrattesten tester sammenhengen mellom to kategoriske variabler. Den sammenlikner krysstabellen vi har med en hypotetisk tabell fra et annet utvalg der det ikke er noen sammeheng mellom variablene. Så tester den sannsynligheten for at tabellen vår er generert ved en tilfeldighet. Vi bruker funksjonen `chisq.test()`:
+       
+```{r kjikvadrattest}
+chisq.test(krysstabell)
+```
+
+X-squared, altså kjikvadratet er på 19.371 og p-verdien er godt under 0.05. Har vi støtte for hypotesen vår?
+
+En alternativ måte å gjøre dette på er å bruke funksjonen `CrossTable()` fra pakken `gmodels` som vi installerte og lastet inn tidligere i seminar. Da får vi en tabell med betraktelig mer informasjon: 
+
+```{r krysstabell}
+CrossTable(ANES2016small$vote, ANES2016small$gender, chisq = T)
+```
+
+Vi kan lage søylediagrammer for å presentere sammenhengen grafisk. Igjen, det er alltid lurt, også for deg selv. Det er mer intuitivt å tolke, og lettere å se sammenhenger raskt. 
+       
+```{r absoluttetall_plot, eval = FALSE}
+# Absolutte tall:
+ggplot(ANES2016small, aes(x = vote,
+                          fill = gender)) + 
+  geom_bar(position = "dodge") +
+  labs(x = element_blank(),
+       y = "Antall") +
+  theme(legend.title = element_blank()) +
+  theme_bw()
+```
+
+```{r lagre_figur1, include = FALSE}
+# Absolutte tall:
+ggplot(ANES2016small, aes(x = vote,
+                          fill = gender)) + 
+  geom_bar(position = "dodge") +
+  labs(x = element_blank(),
+       y = "Antall") +
+  theme(legend.title = element_blank()) +
+  theme_bw()
+
+ggsave("../../output/sem4_fig1.png")
+```
+
+![](../../output/sem4_fig1.png)
+
+
+```{r andelsplot, eval = FALSE}
+# Andeler:
+ggplot(ANES2016small, aes(x = vote,
+                          group = gender)) + 
+  geom_bar(aes(y = ..prop..),
+           position = "dodge") +
+  labs(x = element_blank(),
+       y = element_blank(),
+       title = "Stemmegivning og kjønn") +
+  theme(legend.title = element_blank()) +
+  scale_y_continuous(labels = scales::percent) +
+  theme_bw() + 
+  facet_wrap(~gender)
+
+```
+
+```{r lagre_figur2, include = FALSE}
+# Andeler:
+ggplot(ANES2016small, aes(x = vote,
+                          group = gender)) + 
+  geom_bar(aes(y = ..prop..),
+           position = "dodge") +
+  labs(x = element_blank(),
+       y = element_blank(),
+       title = "Stemmegivning og kjønn") +
+  theme(legend.title = element_blank()) +
+  scale_y_continuous(labels = scales::percent) +
+  theme_bw() + 
+  facet_wrap(~gender)
+
+ggsave("../../output/sem4_fig2.png")
+
+```
+![](../../output/sem4_fig2.png)
+
+## Sammenligne gjennomsnitt med t-test
+
+Når den avhengige variabelen vår er kontinuerlig og den uavhengige er katerogisk så kan vi bruke en t-test til å sjekke om gruppegjennomsnittene er singifikant forskjellige. Før vi gjør det kan vi undersøke sammenhengen i et boxplot. Nå skal vi bruke ESS-datasettet vi lastet inn først i seminaret igjen.  I ESS-datasettet er kjonn registrert som en numerisk variabel. For å fortelle R at dette er en kategorisk variabel så kan vi skrive `as.factor(kjonn)`. Prøv gjerne å lage plottet uten `as.factor()` for å se hva som skjer. Vi lager et boksplot: 
+
+
+```{r boxplot, eval = FALSE}
+ggplot(data, aes(x = utdanning, fill = as.factor(kjonn))) +
+  geom_boxplot()
+```
+
+```{r lagre_figur3, include = FALSE}
+ggplot(data, aes(x = utdanning, fill = as.factor(kjonn))) +
+  geom_boxplot()
+
+ggsave("../../output/sem4_boxplot.png")
+
+```
+
+![](../../output/sem4_boxplot.png)
+
+For å gjennomføre en tohalet t-test bruker vi funksjonen `t.test()`:
+
+```{r t_test}
+t.test(utdanning ~ as.factor(kjonn), data = data, var.equal = TRUE)
+```
+Hva forteller p-verdien (p-value) oss her? 
+
+Oversikt over t-tester:
+```{r t_test2}
+# Enhalet test
+# Tester om menn (verdi 1) har signifikant mindre utdanning enn kvinner:
+t.test(utdanning ~ as.factor(kjonn), 
+       data = data, 
+       alternative = "less",
+       var.equal = TRUE)
+
+# Enhalet test
+# Tester om menn (verdi 1) har signifikant mer utdanning enn kvinner:
+t.test(utdanning ~ as.factor(kjonn), 
+       data = data, 
+       alternative = "greater",
+       var.equal = TRUE)
+
+
+# Tohalet test
+# Tester om menn (verdi 1) har signifikant forskjellig utdanning fra kvinner:
+t.test(utdanning ~ as.factor(kjonn), 
+       data = data, 
+       alternative = "two.sided",
+       var.equal = TRUE)
+```
+## Korrelasjonskoeffisient
+Vi avslutter med bivariat analyse med to kontinuerlige variabler. Dette er en forsmak på bivariat regresjonsanalyse som vi skal se mer på neste gang. Hensikten med dette  er å beskrive korrelasjonen eller samvariasjonen mellom variablene. Vi kan beskrive denne sammenhengen med Pearsons r og teste om korrelasjonen er statistisk signifikant.  
+       
+I dette eksempelet skal vi gjøre det samme som Kellstedt og Whitten gjør. Vi skal teste hypotesen om det er en positiv  sammenheng mellom økonomisk vekst og stemmeandel til den sittende presidentens parti i amerikanske presidentvalg.  
+
+Til dette skal vi igjen laste inn samme datasett som Kellstedt og Whitten bruker. Dette er også det datasettet vi skal bruke neste gang når vi skal se på regresjon. Også dette datasettet er i .Rdata-format så vi bruker `load()` for å laste det inn:
+
+```{r laste_inn_rdata2}
+load("../../data/FairFPSR3.RData")
+```
+
+Kellstedt og Whitten skriver om kovarians og korrelasjon. Kovarians kan vi finne ved å bruke funksjonen `cov()`. I `cov()` må vi spesifisere variablene vi ønsker å se på kovariansen til. I tillegg spesifiserer vi argumentet `use = "complete.obs"` for å fortelle R at vi bare vil se på de observasjonene der vi har data for begge variablene: 
+
+```{r bivariat_korrelasjon}
+cov(x = FairFPSR3$growth,
+    y = FairFPSR3$inc_vote, 
+    use = "pairwise.complete.obs")
+```
+
+Hva forteller denne kovariansen oss? 
+
+Vi kan også hente ut en kovariansmatrise for alle variablene i datasettet:
+
+```{r kovariansmatrise}
+cov(FairFPSR3,
+    use = "pairwise.complete.obs")
+```
+
+Som Kellstedt og Whitten skriver så kan kovarians fortelle oss noe om sammenhengens retning, men den forteller oss ingenting om hvor sikre vi kan være på at denne samvariasjonen skiller seg fra det vi ville fått om det ikke fantes en sammenheng i populasjonen vi ønsker å undersøke. Til det bruker vi Pearson's r. 
+
+Pearsons r beskriver styrken og retningen til korrelasjonen mellom to variabler. Den varierer fra -1 (negativ sammenheng) til 1 (positiv sammenheng). 0 indikerer ingen sammenheng. Pearson's r finner vi ved hjelp av funksjonen `cor()`. Vi spesifiserer det samme som vi gjorde i `cov`; avhengig variabel (`y = `), uavhengig variabel (`x =`) og hva vi skal gjøre med missingverdier (`use = "pairwise.complete.obs`):
+
+```{r pairwise_missing_korrelasjon}
+# Korrelasjon mellom vekst og stemmeandel
+cor(x = FairFPSR3$growth,
+    y = FairFPSR3$inc_vote, 
+    use = "pairwise.complete.obs")
+
+```
+Hvordan kan vi tolke korrelasjonen? 
+
+```{r korrelasjon_sig_test}
+# tester om korrelasojnen er statistisk signifikant
+cor.test(FairFPSR3$inc_vote, 
+         FairFPSR3$growth, 
+         use = "pairwise.complete.obs")
+```
+
+Hva er sannsynligheten for at denne sammenhengen skyldes tilfeldigheter med denne p-verdien? 
+
+Vi kan også sette opp en korrelasjonsmatrise for å utforske alle de bivariate korrelasjonene i datasettet mellom de akutelle variablene. 
+       
+```{r korrelasjonsmatrise}
+cor(FairFPSR3, use = "pairwise.complete.obs")
+
+```
+         
+Til slutt skal vi se på hvordan et spredningsdiagram kan brukes til å undersøke sammenhengen mellom to kontinuerlige variabler. Til det bruker vi `ggplot`. Husk at i `ggplot` så spesifiserer vi datasett vi ønsker å hente informasjon fra med `data =` og hvilke variabler vi ønsker å plotte i `aes(x = variabelx, y = variabely)`. Etter dette forteller vi ggplot hvilket plot vi ønsker. For å få et spredningsplot bruker vi `geom_point()`:
+
+```{r growth_stemmer_plot, eval = FALSE}
+ggplot(data = FairFPSR3, 
+       aes(x = growth, y = inc_vote)) +
+  geom_point()
+```
+
+```{r lagre_figur4, include = FALSE}
+ggplot(data = FairFPSR3, 
+       aes(x = growth, y = inc_vote)) +
+  geom_point()
+
+ggsave("../../output/sem4_scatter.png")
+```
+![](../../output/sem4_scatter.png)
+Vi kan også tilpasse plottet ved å endre form på punktene (`geom_point(shape = 1)`), endre bakgrunn (`theme_bw()`) og legge til titler på aksene: 
+
+```{r endre_punktform, eval = FALSE}
+ggplot(FairFPSR3, aes(x=growth, y=inc_vote)) +
+  geom_point(shape=1) +
+  theme_bw() +
+  labs(x = "Percentage Change in Real DGP Per Capita",
+       y = "Incumbent Party Vote Percentage")
+```
+
+```{r lagre_figur5, include = FALSE}
+ggplot(FairFPSR3, aes(x=growth, y=inc_vote)) +
+  geom_point(shape=1) +
+  theme_bw() +
+  labs(x = "Percentage Change in Real DGP Per Capita",
+       y = "Incumbent Party Vote Percentage")
+
+ggsave("../../output/sem4_scatter2.png")
+```
+
+![](../../output/sem4_scatter2.png)
+
+Under overskriften **Point** på [denne siden](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html) finner dere en oversikt ove rulike former dere kan velge på punktene. 
+
+Til slutt så kan vi også legge til en prediksjonslinje ved hjelp av `geom_smooth()`. Ved å spesifisere `geom_smooth(method = lm)` så forteller vi R at vi vil se prediksjonslinjen for en lineær sammenheng: 
+
+```{r prediksjonslinje_plot, eval = FALSE}
+ggplot(FairFPSR3, aes(x=growth, y=inc_vote)) +
+  geom_point(shape=1) +
+  theme_bw() +
+  labs(x = "Percentage Change in Real DGP Per Capita",
+       y = "Incumbent Party Vote Percentage") +
+  geom_smooth(method = "lm", color = "black")
+```
+
+```{r lagre_plot6, include = FALSE}
+ggplot(FairFPSR3, aes(x=growth, y=inc_vote)) +
+  geom_point(shape=1) +
+  theme_bw() +
+  labs(x = "Percentage Change in Real DGP Per Capita",
+       y = "Incumbent Party Vote Percentage") +
+  geom_smooth(method = "lm", color = "black")
+
+ggsave("../../output/sem4_scatter3.png")
+
+```
+![](../../output/sem4_scatter3.png)
+
+Dette er begynnelsen på en regresjonsanalyse, som er tema for neste seminar. 
+
+```{r generere_script, eval=FALSE, echo=FALSE}
+knitr::purl("./doc/seminar4/seminar4.Rmd", 
+            output = "./script/seminar4.R", 
+            documentation = 1)
+```

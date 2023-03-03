@@ -10,6 +10,7 @@ website:
     search: true
     contents:
       - index.qmd
+      - text: "----"
       - section: "Informasjon"
         contents: 
           - installasjon.qmd
@@ -17,6 +18,7 @@ website:
           - laste_data.qmd
           - workbench.qmd
           - proveinfo.qmd
+      - text: "----"
       - section: "Seminarer"
         contents:
           - seminar/seminar1.qmd
@@ -25,6 +27,7 @@ website:
           - seminar/seminar4.qmd
           - seminar/seminar5.qmd
           - seminar/seminar6.qmd
+      - text: "----"
       - section: "Oppgaver"
         contents:
           - oppgaver/oppgaver1.qmd
@@ -46,7 +49,6 @@ format:
     theme: 
       light: flatly
       dark: darkly
-    highlight-style: zenburn
+    highlight-style: arrow
     toc: true
     mainfont: expressway
-    monobackgroundcolor: "#E3E3E3"

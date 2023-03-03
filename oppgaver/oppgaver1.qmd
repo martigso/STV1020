@@ -5,6 +5,7 @@ format:
     code-fold: true
 ---
 
+# Oppgaver 
 
 1. Sett navn, alder, hjemby og favorittfilm til de andre på gruppa inn i ett datasett. 
 2. Finn gjennomsnitt, standardavvik, og median av alder i datasettet ditt.

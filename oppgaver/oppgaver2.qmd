@@ -9,6 +9,8 @@ format:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# Oppgaver
+
 1. Les inn datasettet `ESS9NO.dta`. Du kan laste det ned på Canvas eller [github](https://github.com/martigso/STV1020/raw/main/data/ESS9NO.dta)
 2. Variabelen `trstplt` måler tillit til politikere og variabelen `gndr` inneholder informasjon om respondentens kjønn. Gi disse to variablene samt `yrbrn` nye navn. Du skal bruke dine egne navn på variablene i de neste oppgavene der det står `trstplt`, `gndr` og `yrbrn`. 
 3. Bruk `yrbrn` til å lage en ny variabel med informasjon om respondentens alder. Hint: dette er runde 9 av European Social Survey.

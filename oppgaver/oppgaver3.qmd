@@ -5,6 +5,8 @@ format:
     code-fold: true
 ---
 
+# Oppgaver 
+
 Legg gjerne til flere endringer på plottene i oppgavene enn det som står. Lek deg med ulike design ved å se hva som kommer opp når du taste `theme_` etterfulgt av tab, eller se på ulike farger. 
 
 1. Last inn datasettet gapminder.
@@ -26,6 +28,8 @@ Legg gjerne til flere endringer på plottene i oppgavene enn det som står. Lek 
 **Ekstraoppgave** 
 
 Opprett et datasett hvor du kun inkluderer afrikanske land fra året 1952 som har en høyere forventet levealder en gjennomsnittet for alle afrikanske landene i 1952. (Datasettet skal bestå av 25 observasjoner. Får du flere eller mindre enheter har du gjort noe feil. Denne oppgaven er litt vanskelig, men prøv før du ser på fasiten)
+
+# Løsningsforslag
 
 ```{r losning, class.source = "hide", eval=FALSE}
 

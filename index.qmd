@@ -51,7 +51,7 @@ Dette er viktig for at seminarene skal gå så smidig som mulig og for at dere s
 ## Nyttige lenker
 
 - [Coffee & Coding](https://www.sv.uio.no/isv/english/research/courses/coffee-and-coding/)
-- Øve deg på R direkte relatert til STV1020 i [denne tutorialen](https://shinyibv02.uio.no/content/28f2ac6a-7573-42df-99c5-be08fd17bac7).
+- Øve deg på R direkte relatert til STV1020 i [denne tutorialen](https://shinyibv02.uio.no/stv-1020/).
 - Bli med i facebookgruppen [R for statsvitenskap ved UiO](https://www.facebook.com/groups/427792970608618).
 - [Discord server for STV](https://discord.gg/CAP9TbdWFa)
 - [R-workbench for UiO-brukere](https://rstudio-workbench.uio.no/)

@@ -21,7 +21,7 @@ Datasettet inneholder følgende variabler:
 
 ## Oppgaver 
 
-1. Last inn datasettet wvs_us17.csv og oppgi antall enheter og variabler i datasettet. 
+1. Last inn datasettet wvs_us17.csv. Du kan finne det [her](https://raw.githubusercontent.com/martigso/STV1020/gh-pages/data/wvs_us17.csv). Oppgi antall enheter og variabler i datasettet. 
 
 2. Finn navn på variablene i datasettet.
 
@@ -53,7 +53,7 @@ Datasettet inneholder følgende variabler:
 library(tidyverse)
 
 # Oppgave 1
-wvs <- read.csv("./data/wvs_us17.csv")
+wvs <- read.csv("https://raw.githubusercontent.com/martigso/STV1020/gh-pages/data/wvs_us17.csv")
 
 # Oppgave 2
 names(wvs)

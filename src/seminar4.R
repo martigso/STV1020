@@ -11,7 +11,7 @@ library(gmodels)
 library(scales)
 
 ##### Laste inn .csv-filer #####
-ess <- read.csv("../data/internett.csv")
+ess <- read.csv("./data/internett.csv")
 
 ##### Lagre .csv-filer #####
 # write.csv(ess, file = "der/du/vil/lagre")
@@ -21,6 +21,9 @@ ess <- read.csv("../data/internett.csv")
 
 # View(ess)
 head(ess)
+mean(c(3,2,9,NA), na.rm = TRUE)
+
+
 tail(ess)
 glimpse(ess)
 
@@ -28,9 +31,13 @@ summary(ess)
 
 
 ##### Telle NA-verdier #####
+library(tidyverse)
 ess %>% 
   slice_head(n = 6) %>% 
   is.na()
+
+ess_nona <- ess %>% 
+  filter(is.na(tillit) == FALSE)
 
 sum(2, 2, 6)
 
@@ -57,6 +64,7 @@ ess %>%
   is.na() %>% 
   sum()
 
+200 / 2745
 
 ##### Antall NA på 1 variabel #####
 ess$internettbruk %>% 
@@ -67,21 +75,28 @@ ess$internettbruk %>%
 ##### Enheter uten NA på noen variabler #####
 ess %>% 
   slice_head(n = 6) %>% 
-  complete.cases()
+  filter(complete.cases(.))
+
+ess$internettbruk %>% 
+  mean(na.rm = TRUE)
+
 
 ##### Antall uten NA på noen variabler #####
 ess %>% 
   complete.cases() %>% 
   sum()
-
+2562 / 2745
 
 ##### Summaerende stats #####
 # For alle variabler i datasettet
 summary(ess)
+# kjonn	
+# 1	Mann
+# 2	Kvinne
+
 
 # For variabelen internettbrukt
 summary(ess$internettbruk)
-
 
 
 ##### Fjerne NA #####
@@ -95,9 +110,6 @@ ess_nona_internet <- ess %>%
 
 # Vi skal ikke bruke data1 og data2 mer så jeg fjerner dem fra environment
 rm(ess_nona, ess_nona_internet)
-
-
-
 
 ##### Standardavvik #####
 
@@ -125,11 +137,23 @@ rm(stdavvik, varians)
 
 
 ##### Lage tabeller #####
-stargazer(ess,
-          type = "text")
+
+# install.packages("stargazer")
+library(stargazer)
+
+class(ess)
+
+ess <- data.frame(ess)
+class(ess)
+ess %>% 
+  data.frame() %>% 
+  stargazer(., type = "text")
+
+stargazer(ess, type = "text", summary = TRUE)
 
 
 stargazer(ess, type = "html",
+          out = "./tabell.html",
           covariate.labels = c("Internettbruk", "Kjønn", 
                                "Alder", "Utdanning", 
                                "Tillit til parlamentet"))
@@ -138,9 +162,9 @@ stargazer(ess, type = "html",
 
 ##### Laste inn ANES som .RData #####
 # Bytt ut det som står i hermetegn med filbanen og filnavnet på din maskin:
-load("../data/ANES2016small.RData")
+load("./data/ANES2016small.RData")
 
-
+summary(ANES2016small)
 
 ##### Omkode vote og female #####
 ANES2016small <- ANES2016small %>% 
@@ -150,7 +174,8 @@ ANES2016small <- ANES2016small %>%
          gender = case_match(female, 
                              0 ~ "Male", 
                              1 ~ "Female"))
-
+table(ANES2016small$V2Trump, ANES2016small$vote)
+######
 # Sjekker at omkodingen ble riktig:
 table(ANES2016small$female, ANES2016small$gender, useNA = "always")
 
@@ -168,7 +193,7 @@ krysstabell
 
 ##### Proporsjontabell #####
 prop.table(krysstabell, margin = 2)
-
+prop.table(krysstabell, margin = 1)
 
 ##### Kji-kvadrattest#####
 chisq.test(krysstabell)

@@ -6,9 +6,7 @@ library(stargazer)
 
 # Laster inn datasettet
 # Bytt ut det som står mellom "" til å passe din filbane:
-load("../data/FairFPSR3.RData")
-
-
+load("./data/FairFPSR3.RData")
 
 
 # Et alternativ til str()
@@ -31,8 +29,6 @@ table(complete.cases(FairFPSR3))
 table(is.na(FairFPSR3$inflation))
 
 
-
-
 FairFPSR3 <- FairFPSR3 %>% 
   mutate(complete = complete.cases(.),
          inf_na = is.na(inflation))
@@ -52,14 +48,14 @@ table(FairFPSR3$growth_dich, useNA = "always")
 
 
 #### Plot ####
-ggplot(data = FairFPSR3) +
-  geom_histogram(aes(x = growth, fill = growth_dich),
-               binwidth = 1)
+ggplot(FairFPSR3, aes(x = growth, fill = growth_dich)) +
+  geom_histogram(binwidth = 1)
 
 
 #### Finere plot ####
-ggplot(data = FairFPSR3) +
-  geom_point(aes(x = growth, y = inc_vote)) +
+ggplot(data = FairFPSR3, aes(x = growth, y = inc_vote)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
   theme_bw() +
   labs(y = "Incumbent-Party Vote Percentage",
        x = "Percentage change in Real GDP Per Capita")
@@ -73,11 +69,13 @@ ggplot(data = FairFPSR3) +
 ## # På win får du ~ med Alt Gr + ^
 ## # ^ er knappen til venstre for toppen av enter på de fleste tastatur
 
-
+# ?lm
 
 model <- lm(inc_vote ~ growth, 
             data = FairFPSR3,
             na.action = "na.exclude")
+
+0.6248 / 0.1550
 
 
 
@@ -125,16 +123,38 @@ ggplot(data = FairFPSR3) +
   geom_vline(xintercept = mean(FairFPSR3$growth), linetype = "dashed")
 
 
+FairFPSR3$fitted <- fitted(model)
 
 FairFPSR3 <- FairFPSR3 %>% 
   mutate(fitted = fitted(model), 
          residuals = resid(model))
 
 
+
+
+FairFPSR3 %>% 
+  pull(year)
+  head() 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #### Plot ####
 ggplot(data = FairFPSR3) +
   geom_point(aes(x = growth, y = inc_vote)) +
-  geom_line(aes(x = growth, y = fitted)) +
+  geom_point(aes(x = growth, y = fitted), shape = 2) +
   theme_bw() +
   labs(y = "Incumbent-Party Vote Percentage",
        x = "Percentage change in Real GDP Per Capita")

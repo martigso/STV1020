@@ -5,4 +5,104 @@ format:
     code-fold: true
 ---
 
-Kommer snart!
+I dette oppgavesettet, som er en av prøvene fra i fjor, skal vi bruke datasettet "social_survey.RData". 
+Datasettet inneholder surveysvar fra personer i Norden. Variabelforklaring:
+
+| Variabelnavn      | Beskrivelse                                          |
+|:------------------|:-----------------------------------------------------|
+| age               | Alder                                                |
+| gender            | Kjønn                                                |
+| income            | Månedlig inntekt (NOK)                               |
+| pol_influence     | Følelse av mulighet til å ha innflytelse på politikk |
+| trust_politicians | Tillit til politikere                                |
+
+1. Last inn datasettet `social_survey.RData` med `load()` (husk å ha koden i scriptet). Kommenter hvor mange enheter/observasjoner og variabler datasettet inneholder.
+2. Lag et stolpediagram av variabelen for politisk innflytelse (`pol_influence`). Oppgi kategorien med flest observasjoner på variabelen i en kommentar.
+3. Vis hvordan du finner antall menn (`gender`) som har svart på surveyen og oppgi antallet i en kommentar.
+4. Vis hvordan du finner antall missing/NA på variabelen for alder (`age`). Oppgi antallet i en kommentar.
+5. Vis hvordan du sjekker Pearson’s R korrelasjonen mellom inntekt (`income`) og tillit til politikere (`trust_politicians`). Oppgi om korrelasjonen er signifikant i en kommentar.
+6. Lag en krysstabell mellom kjønn (`gender`) og poltisk innflytelse (`pol_influence`). Oppgi antall kvinner som har svart “A great deal” i en kommentar.
+7. Lag en regresjon med inntekt (`income`) som avhengig variabel. Legg til kjønn (`gender`) og alder (`age`) som uavhengige variabler. Tolk konstantleddet substansielt.
+8. Legg inn residualene (`resid()`) og forventede verdier (`fitted()`) fra regresjonen (oppgave 7) i datasettet.
+9. Lag en spredningsplot med residalene på y-aksen og forventede verdier på x-aksen. Kommenter sammenhengen mellom residualene og forventede verdier.
+
+
+## Løsningsforslag
+
+```{r}
+#| label: losning
+#| class-source: "hide"
+#| eval: false
+
+
+### Oppgave 1
+load("./data/social_survey.RData")
+
+dim(social_survey)
+
+# Det er 640 enhter og 5 variabler i datasettet
+
+### Oppgave 2
+library(tidyverse)
+
+ggplot(social_survey, aes(x = pol_influence)) +
+  geom_bar()
+
+# Det er flest observasjoner på kategorien "Some"
+# Altså at man føler man har litt innflytelse på politikk
+
+### Oppgave 3
+table(social_survey$gender)
+
+# Det er 330 menn som har svart på surveyen
+
+### Oppgave 4
+
+social_survey$age %>% 
+  is.na() %>% 
+  sum()
+
+# Det er 7 missingverdier på variabelen "age"
+
+### Oppgave 5
+
+cor.test(social_survey$income, social_survey$trust_politicians)
+
+# Korrelasjonen mellom inntekt og tillit til politikere er
+# signifikant på 5% nivå (p > 0.05 og t > 1.96).
+
+### Oppgave 6
+table(social_survey$gender, social_survey$pol_influence)
+
+# 14 kvinner har svart "A great deal" på spørsmål om
+# hvor mye de innflytelse de føler de har på politikk
+
+### Oppgave 7
+inc_reg <- lm(income ~ gender + age, data = social_survey,
+              na.action = "na.exclude")
+
+summary(inc_reg)
+
+# Konstantleddet viser foventet inntekt til 0 år gamle menn.
+# Altså kan vi forvente at en mann på 0 år har en forventet inntekt
+# på 24370,- i måneden. Dette er ikke en realistisk verdi, fordi minste
+# verdi på alder i datasettet er 16 år.
+
+# En mann på 16 år er forventet å ha 24370.07 + (326.67 * 16) = 29596.79
+# i mndinntekt
+
+### Oppgave 8
+social_survey <- social_survey %>% 
+  mutate(increg_resid = resid(inc_reg),
+         increg_fit = fitted(inc_reg))
+
+### Oppgave 9
+
+ggplot(social_survey, aes(x = increg_resid, y = increg_fit)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Forventede verdier og residualer korrelerer ikke
+
+
+```

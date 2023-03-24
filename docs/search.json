@@ -39,7 +39,14 @@
     "href": "oppgaver/oppgaver5.html",
     "title": "Seminar 5 – Oppgaver",
     "section": "",
-    "text": "Kommer snart!"
+    "text": "Du skal bruke datasettet wvs_us17.csv og lineær regresjon for å undersøke relasjonen mellom avhengig (AV) og uavhengig (UV) variabel. Datasettet er en survey gjennomført i USA i 2017 for World Value Survey. Individer svarer på surveyen. Tilsvarende surveyer er gjort for mange andre land og år (se World Value survey sine nettsider for mer informasjon), men i dag bruker vi et datasett som bare inneholder observasjonene fra USA i 2017.\nDatasettet inneholder følgende variabler:"
+  },
+  {
+    "objectID": "oppgaver/oppgaver5.html#løsningsforslag",
+    "href": "oppgaver/oppgaver5.html#løsningsforslag",
+    "title": "Seminar 5 – Oppgaver",
+    "section": "Løsningsforslag",
+    "text": "Løsningsforslag\n\n\nCode\nlibrary(tidyverse)\n\n### Oppgave 1\nwvs <- read.csv(\"./data/wvs_us17.csv\")\ndim(wvs)\n# Det er 2596 eneheter og 7 variabler\n\n### Oppgave 2\nnames(wvs)\n\n### Oppgave 3\nwvs_sub <- wvs %>% \n  select(imp_democracy, age, income_group)\n\nis.numeric(wvs_sub$imp_democracy)\nis.numeric(wvs_sub$age)\nis.numeric(wvs_sub$income_group)\n\n# evt\napply(wvs_sub, 2, is.numeric)\n\n### Oppgave 4\nwvs_nona <- wvs %>% \n  drop_na()\nnrow(wvs_nona)\n\n# Det er 2508 enheter i datasettet etter vi har fjernet NA\n\n### Oppgave 5\nggplot(wvs, aes(x = age, y = imp_democracy)) +\n  geom_point()\n\n### Oppgave 6\nimp_lm <- lm(imp_democracy ~ age, data = wvs, na.action = \"na.exclude\")\n\n### Oppgave 7\nsummary(imp_lm)\n# En enhets økning i age gir en forventet økning på imp_democracy på 0.037.\n# Altså finner modellen at dess eldre man er, dess mer setter man pris på\n# å leve i et demokrati.\n\n### Oppgave 8\nlibrary(stargazer)\n\nstargazer(imp_lm, out = \"tabell.html\")\n\n### Oppgave 9\n\nggplot(wvs, aes(x = age, y = imp_democracy)) +\n  geom_point() +\n  geom_smooth(method = \"lm\") +\n  labs(x = \"Alder\", \n       y = \"Viktighet av demokrati\", \n       title = \"Sammenheng mellom alder og syn på demokrati\")\nggsave(\"imp_plot.pdf\")\n  \n### Oppgave 10\n\nwvs$gender2 <- ifelse(wvs$gender == 2, \"Kvinne\", \"Mann\")\n\n# Sjekker om det ser riktig ut\ntable(wvs$gender, wvs$gender2)\n\n### Oppgave 11\n\nimp_multreg <- lm(imp_democracy ~ age + gender2, data = wvs, na.action = \"na.exclude\")\n\nsummary(imp_multreg)"
   },
   {
     "objectID": "oppgaver/oppgaver2.html",

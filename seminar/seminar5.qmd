@@ -306,3 +306,10 @@ model_dich <- lm(inc_vote ~ growth_dich,
 stargazer(model_dich, 
           type = "text")
 ```
+
+
+```{r generere_script, eval=FALSE, echo=FALSE}
+knitr::purl("./seminar/seminar5.qmd",
+            output = "./src/seminar5.R",
+            documentation = 1)
+```

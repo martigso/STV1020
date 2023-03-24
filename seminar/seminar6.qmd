@@ -1,2 +1,354 @@
+---
+title: "Seminar 6 -- Multivariat regresjon"
+format: 
+  html:
+    code-fold: false
+---
 
-**OBS! DETTE KAPITTELET ER IKKE FERDIG**
+```{r}
+#| label: setup
+#| include: false
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(tidy.opts = list(width.cutoff = 80), 
+                      tidy = FALSE)
+
+```
+
+I dag skal vi se på fem ting:
+
+1. Laste inn pakker og data (repetisjon)
+2. Bli kjent med data (repetisjon)
+3. Forberede data for analyse 
+4. Multippel regresjonanalyse
+5. Multippel regresjonsanalyse med samspill
+6. Presentasjon av regresjonsresultater i tabell
+
+# Laste inn pakker
+Det aller første vi gjør er å laste inn pakkene vi skal bruke i dag ved hjelp av `library(pakkenavn)`:
+
+```{r}
+#| label: laste_pakker
+#| message: false
+library(tidyverse)
+library(stargazer)
+```
+
+Dersom du ikke har brukt disse pakkene før må du huske å kjøre `install.packages("pakkenavn")` først. Dersom du får en feilmelding av typen "Error in library(pakkenavn) : there is no package called 'pakkenavn'" så kan det indikere at pakken ikke er installert. Prøv å kjøre `install.packages("pakkenavn")` og `library(pakkenavn)` igjen. 
+
+# Laste inn data
+
+Det neste vi skal gjøre er å laste inn datasettet vi skal jobbe med i dag. Vi skal jobbe videre med datasettet fra Kellstedt og Whitten som vi kikket litt på i seminar 4. Disse dataene er i `csv`-format og vi bruker derfor funksjonen `read.csv()`. Husk at hvilken funksjon du bruker for å laste inn data avhenger av hvilket format dataene har. Dersom du er usikker på hvilken funksjon du skal bruke så sjekk dokumentet jeg har lastet opp på Canvas. Vi laster inn data og lagrer som et objekt i environment: 
+
+```{r}
+#| label: lese_data
+
+# Bytt ut det som står i "" med din egen filbane:
+anes96 <- read.csv("../data/ANES1996small.csv")
+
+```
+
+
+# Bli kjent med data
+
+I dag skal vi teste to hypoteser fra kapittel 11 i Kellstedt og Whitten (side 247):
+* Alt annet likt, så vil rikere individer gi Hillary Clinton lavere score.
+* Alt annet likt, så vil kvinner gi Hillary Clinton en høyere score.
+
+Det er alltid lurt å bli litt kjent med datasettet før en begynner å kjøre analyser. Vi har sett på flere koder for dette, blant annet i seminar fem, men vi gjentar noen av dem her. 
+
+Vi finner navnene på variablene:
+
+```{r}
+#| label: variabelnavn
+names(anes96)
+```
+
+Dette er ikke veldig intuitive variabelnavn så senere skal vi endre navn på de vi skal bruke i analysen vår. 
+
+Vi kan bruke `View()` for å undersøke datasettet nærmere: 
+
+```{r}
+#| label: se_på_data
+#| eval: false
+View(anes96)
+```
+
+Et alternativ til view for å bare se noen observasjoner er `head()`:
+
+```{r}
+#| label: dataoversikt
+head(anes96)
+```
+
+Ved å bruke for eksempel `View()` får vi mer informasjon om hva slags struktur datasettet vårt har. Dersom vi jobber i store datasett er det lurt å bruke funksjoner som `head()` og `tail()` isteden for å bruke `View()`.
+
+For å titte på enkeltvariabler bruker vi syntaksen `datasett$variabel`. Det kan også være praktisk å se denne informasjonen i en tabell. Da kan vi bruke table(`datasett$variabel`). For eksempel så vet jeg at variabelen `v960066` er det man kaller en dikotom variabel for kjønn. At en variabel er dikotom betyr bare at den har to verdier. Denne variabelen tar verdien 1 dersom respondenten er en mann og 2 dersom respondenten er en kvinne. Vi kan undersøke den i en tabell:
+
+```{r}
+#| label: variabeltabell
+table(anes96$v960066, useNA = "always")
+```
+
+# Forberede data for analyse
+
+Før vi begynner på regresjonsanalysen så skal vi endre navn på noen av variablene våre så de blir mer intuitive, lage et subset med de variablene vi vil bruke og omkode kjønnsvariabelen til det man kaller en dummyvariabel. En dummyvariabel tar verdiene 0 og 1. 
+
+Først endrer vi navnene på de variabelene vi vil bruke i datasettet vårt ved hjelp av `rename()`. `rename()` har syntaksen `rename(nyttnavn = gammeltnavn)`. I praksis blir det: 
+
+```{r}
+#| label: nytt_navn_til_variabler
+anes96 <- anes96 %>% 
+  rename(hillary_thermo = v960281,
+         income = v960701,
+         womenmvmt_thermo = v961039,
+         gender = v960066,
+         age = v960605)
+```
+
+Vi kan bruke `names()` eller `head()` for å sjekke at omkodingen funket:
+
+```{r}
+#| label: variabelnavn2
+names(anes96)
+```
+
+Det neste vi skal gjøre er å bruke `select()` til lage et subset. I `select()` fyller du ut navnet på de variablene du vil beholde og setter et `-` foran variabler du vil fjerne. Dersom jeg vil lage et nytt datasett med variable var1 og var2 kan jeg skrive:
+
+```{r}
+#| label: velge_variabler
+#| eval: false
+nydata <- data %>% 
+  select(var1, var2)
+```
+
+Dersom jeg vil lage et nytt datasett som inneholder alle variabler bortsett fra var2 så kan jeg skrive: 
+
+```{r}
+#| label: fjerne_variabler
+#| eval: false
+nydata <- data %>% 
+  select(-var2)
+```
+
+Merk at jeg gir datasettet et nytt navn til høyre for assignment operatoren `<-`. Det gjør jeg for å beholde det opprinnelige datasettet i tilfelle jeg vil ha med noe mer eller koden ikke gjør det jeg forventet at den skulle gjøre. Vi vil lage et nytt datasett som bare inneholder de variablene vi ga nye navn. Vi kaller det nye datasettet `anes962` og fyller inn variablene vi vil beholde:
+
+```{r}
+#| label: velge_variabler2
+anes962 <- anes96 %>% 
+  select(hillary_thermo,
+         income,
+         womenmvmt_thermo,
+         gender,
+         age)
+```
+
+Det siste vi skal gjøre er å legge til en ny variabel i datasettet vårt. Den skal hete `female` og ta verdien 1 dersom observasjonen har verdien 1 på `gender` og 0 ellers. Dette er en dummyvariabel og vi kan tenke oss at 0 står for nei og 1 står for ja. For å få til dette kombinerer vi `mutate()` som vi bruker for å opprette nye variabler og `ifelse()`:
+
+```{r}
+#| label: omkode_kjønn
+anes962 <- anes962 %>%
+  mutate(female = ifelse(gender == 1, 0, 1))
+```
+
+I `ifelse()` sier vi at dersom variabelen `gender` har verdien 1, så skal den nye variabelen `female` få verdien 0, dersom `gender` ikke har verdien 1 så skal den nye variabelen `female` få verdien 1. 
+
+Vi sjekker at omkodingen ble riktig ved hjelp av en krysstabell med ny og gammel variabel: 
+
+```{r}
+#| label: sjekke_ny_variabel
+table(anes962$female, anes962$gender, useNA = "always")
+```
+
+Før vi ser på multippel regresjonsanalyse så skal vi se litt nærmere på den avhengige variabelen vår. Den avhengige variabelen er `hillary_thermo`. Dette er en såkalt **thermometer rating** der respontenene i American National Election Study (NES) ble spurt hva de føler (i motsetning til hva de mener) om ulike individer eller grupper. Skalaen går  fra 0 til 100 der en score på 50 indikerer at respondenten hverken har varme eller kalde følelser for individet eller gruppen spørsmålet gjelder. Scorer lavere enn 50 indikerer "kalde" følelser, men scorer over 50 indikerer "varme" følelser. Dette kan dere lese mer om i kapittel 10 og 11 i Kellstedt og Whitten. 
+
+Vi kan bruke `summary()` til å undersøke variabelen nærmere:
+
+```{r}
+#| label: summerende_stat_variabel
+summary(anes96$hillary_thermo)
+```
+
+Fra summary kan vi lese at hele skalaen fra 0 (Min.) til 100 (Max.) er tatt i bruk, at halvparten ga en lavere score enn 60 (Median) og at den gjennomsnittlige scoren var 52.81 (Mean). I tillegg kan vi se at vi mangler informasjon for 29 respondenter (NA's). 
+
+Vi kan også lage et histogram over fordelingen:
+
+```{r}
+#| label: histogram_variabel
+ggplot(anes96, aes(x = hillary_thermo)) +
+  geom_histogram(binwidth = 10) +
+  theme_bw()
+
+```
+
+# Multippel regresjonanalyse
+
+Multippel regresjonsanalyse er regresjonanalyse med flere uavhengige variabler. De uavhengige variablene kan være forklaringsvariabler eller variabler du ønsker å kontrollere for. Vi bruker samme funksjon som vi brukte når vi kjørte en regresjonsanalyse med en uavhengig variabel i seminar 5, nemlig `lm()`. Syntaksen er også veldig lik. Vi skiller mellom avhengig variabel og uavhenig variable med `~` og legger til flere uavhengige variabler med `+`. Syntaksen der vi velger å lagre modellen som et objekt, av er avhengig variabel og uv er uavhengig variable blir:
+
+```{r}
+#| label: multivariat_ols_eksempel
+#| eval: false
+model <- lm(av ~ uv1 + uv2, data = data, na.action = "na.exclude")
+```
+
+Når vi kjører regresjoner så vil vi ofte velge å lagre de som et objekt. Det gjør vi for å kunne presentere resultatene på ulike måter i tabeller og plot, bruke informasjonen i modellen til å hente ut predikerte verdier eller kjøre regresjonsdiagnostikk. 
+
+For ordens skyld så gjentar vi hypotesene som vi vil teste som er beskrevet i Kellstedt og Whitten på side 247:
+* Alt annet likt, så vil rikere individer gi Hillary Clinton lavere score.
+* Alt annet likt, så vil kvinner gi Hillary Clinton en høyere score.
+
+Det betyr at vi vil ha med tre variabler i modellen vår: `hillary_thermo` er avhengig variabel, mens `income` og `female` er de uavhengige variablene. For å kjøre modellen kjører vi følgende kode: 
+
+```{r}
+#| label: multivariat_ols
+thermo_mult <- lm(hillary_thermo ~ income + female, 
+                  data = anes962, 
+                  na.action = "na.exclude")
+```
+
+Vi kan bruke `summary()` og `stargazer()` for å undersøke resultatene: 
+
+```{r}
+#| label: se_på_modell
+summary(thermo_mult)
+```
+
+Ved å bruke `summary` får vi informasjon om koeffisienten (Estimate), standardfeilen (Std. Error), t-verdien (t-value) og p-verdien (Pr(>|t|)). Av summary kan vi derfor lese at koeffisienten til income når vi kontrollerer for female er -0.8408 og p-verdien er 0.00000000000150. P-verdien er lavere enn 0.01 og vi kan derfor si at koeffisienten er signifikant på 1 prosents nivå. Dersom du lurer på hva tallene med e- blir skrevet ut så kan du f.eks. bruke denne siden: [converthere.com/](https://converthere.com/numbers/10e+6-written-out)
+
+```{r}
+#| label: lage_modelltabell
+stargazer(thermo_mult, type = "text")
+```
+
+For å undersøke hva som skjer med koeffisienten til en uavhengig variabel så kan vi kjøre en redusert modell og sammenligne disse i en tabell: 
+
+```{r}
+#| label: bivariat_ols
+thermo_biv <- lm(hillary_thermo ~ income, 
+                 data = anes962, 
+                 na.action = "na.exclude")
+```
+
+For å lage tabellen så bruker vi `stargazer()`:
+
+```{r}
+#| label: tabell_med_to_modell
+stargazer(thermo_biv, thermo_mult, 
+          type = "text")
+```
+
+Vi kan legge til tittel og variabelnavn for at tabellen skal bli mer forståelig:
+
+```{r}
+#| label: tweek_tabell
+#| results: asis
+stargazer(thermo_biv, thermo_mult, 
+          type = "html",
+          title = c("Results from regression analysis"),
+          covariate.labels = c("Income",
+                               "Female",
+                               "Intercept"),
+          dep.var.labels = "Hillary Clinton Thermometer score")
+```
+
+Det er litt mer komplisert å plotte regresjonslinjer når vi har flere uavhengig variabler. Det er fordi verdien på avhengig variabel nå vil avehenge av en kombinasjon av ulike verdier på de uavhengige variablene. Det finnes måter å gjøre det på og det finnes pakker som forenkler denne jobben, men vi kommer ikke til å se på dette i seminar.  
+
+Før vi går videre til modelldiagnostikk så legger vi til en variabel med de predikerte verdiene i datasettet. Jeg lager også en variabel for residualene som vi skal se nærmere på senere:
+
+```{r}
+#| label: legge_inn_pred_resid
+anes962 <- anes962 %>% 
+  mutate(thermo_fit = fitted(thermo_mult),
+         thermo_resid = resid(thermo_mult))
+```
+
+# Multippel regresjon med samspillsledd
+
+Modellene vi har laget til nå har vært additive modeller. Nå skal vi legge til et samspillsledd mellom kjønn og hvordan man stiller seg til kvinnebevegelsen. Hypotesen er presentert i Kellstedt og Whitten på side 256:
+
+> Effekten av hvordan en respondent føler om kvinnebevegelsen på hvordan de føler om  Hillary Clinton vil være sterkere for kvinner enn for menn. 
+
+Eller, sagt på en annen måte; effekten av hvordan man føler om kvinnebevegelsen på termometerskåre man gir Hillary Clinton, er forskjellig mellom kvinner og menn.
+
+Først kjører vi den additive modellen:
+
+```{r}
+#| label: enda_en_modell
+thermo_additiv <- lm(hillary_thermo ~ female + womenmvmt_thermo, 
+                     data = anes962, 
+                     na.action = "na.exclude")
+
+```
+
+Vi legger til samspillsledd i modellen vår ved å bruke `*` mellom de to variablene vi vil undersøke samspillet av:
+
+```{r}
+#| label: samspillsmodell
+thermo_samspill <- lm(hillary_thermo ~ female * womenmvmt_thermo, 
+                      data = anes962, 
+                      na.action = "na.exclude")
+
+summary(thermo_additiv)
+summary(thermo_samspill)
+
+```
+
+# Presentasjon av regresjonsresultater i tabell
+
+Her skal vi se på hvordan vi kan sammenligne de to modellene i en fin tabell. Vi skal bruke `stargazer()`, men kommer til å spesifisere noen flere argumenter enn tidligere. Vi bruker `type =` til å spesifisere hvilket format vi vil ha tabellen i. `covariate.labels` bruker vi til å legge til nye navn til de uavhengige variablene i modellen. Det er veldig viktig å legge inn navnene i samme rekkefølge som i regresjonsmodellen, om ikke risikerer vi å gi feil navn til variablene. `Dep.var.labels` bruker til å gi navn til avhengig variabel:
+
+```{r}
+#| label: enda_en_modelltabell
+#| results: asis
+stargazer(thermo_additiv, thermo_samspill, 
+          type = "html",
+          title = c("Tabell fra Kellstedt og Whitten s. 257"),
+          covariate.labels = c("Female",
+                               "Women's Movement Thermometer",
+                               "WMT x Female",
+                               "Intercept"),
+          dep.var.labels = "Hillary Clinton Thermometer score")
+```
+
+
+# Modelldiagnostikk
+
+Videre skal vi se på noen grafiske verktøy for å vurdere om enkelteforutsetninger for OLS er oppfylt. Hvor mye tid vi bruker på dette på seminar vil avhenge av hvor god tid vi får. Dersom dere vil se nærmere på dette så anbefaler jeg å ta en titt på [denne siden](https://github.com/langoergen/stv4020aR/blob/master/docs/Regresjonsdiagnostikk.md).
+
+Det første vi skal se på er restleddenes fordeling. For å vurdere denne så bruker vi restleddene/residualene som vi lagret i datasettet tidligere. Vi kan bruke `ggplot()` til å vurdere om restleddenes fordelingen:
+
+```{r}
+#| label:  plot_residualer
+#| warning: false
+#| message: false
+ggplot(anes962, aes(x = thermo_resid)) +
+  geom_histogram() +
+  theme_bw()
+```
+
+Vi kan også plotte restleddene mot modellens verdier. Dette gjør vi for å vurdere eventuell hetroskedastisitet. Vi bruker de predikerte verdiene som vi lagret i datasettet på x aksen og modellens restledd på y aksen. Vi legger til de ulike enhetene med `geom_point`, så trekker vi en linje gjennompunktene med `geom_smooth()`.
+
+```{r}
+#| label: resid_vs_fitted
+#| warning: false
+#| message: false
+ggplot(anes962, aes(x = thermo_fit, y = thermo_resid)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  theme_bw()
+```
+
+Slike plott kan være noe vanskelig å tolke. Hvor enkel eller vanskelig tolkningen blir avhenger ofte av hvordan variablene våre er kodet.
+
+Vi kan også bruke plot() for å få ulike figurer for diagnosistikk, vi vil få 4 ulike plot med denne funksjonen. Disse plottene er ikke like fine som de vi lager i ggplot, men de kan hjelpe oss med å få en rask oversikt over ulike diagnosistikk:
+
+```{r}
+#| label: innebygd_plot_modell
+#| eval: false
+plot(thermo_mult)
+```
+
+```{r generere_script, eval=FALSE, echo=FALSE}
+knitr::purl("./seminar/seminar6.qmd",
+            output = "./src/seminar6.R",
+            documentation = 1)
+```

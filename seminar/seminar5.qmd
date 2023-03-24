@@ -49,9 +49,6 @@ Vi bruker `load()` for å laste inn data fordi datasettet er i .Rdata-format.
 Når vi skal kjøre en regresjonsanalyse så er noe av det første vi gjør å undersøke datasettet: 
 
 ```{r dataoversikt}
-# Hent ut informasjon om variabelnavn, klasse m.m.
-str(FairFPSR3)
-
 # Et alternativ til str()
 glimpse(FairFPSR3)
 
@@ -95,7 +92,7 @@ Mer informasjon om missingverdier finner dere i dokumentet som beskriver seminar
 
 Etter at vi har kartlagt datastrukturen og hvilke variabler vi har så må vi vurdere om noen av variablene må omkodes før vi kan gjøre analysen vår. For å få samme resultater som i kapittel ni trenger vi ikke å omkode noe, men for å få noe å sammenligne med skal vi lage en dikotom variabel. 
 
-I `tidyverse` bruker man som regel `mutate()`sammen med andre funksjoner for å opprette nye variabler. Koden over hvor vi opprettet variabler for de logiske testene `complete.cases()` og `is.na()` er eksempler på dette. Nå skal vi også kombinere `mutate()` med `if.else` for å lage en dikotom variabel som tar verdien `Growth` om observasjonen er et år med positiv økonomisk vekst og `No growth` om observasjonen er et år uten
+I `tidyverse` bruker man som regel `mutate()`sammen med andre funksjoner for å opprette nye variabler. Koden over hvor vi opprettet variabler for de logiske testene `complete.cases()` og `is.na()` er eksempler på dette. Nå skal vi også kombinere `mutate()` med `ifelse()` for å lage en dikotom variabel som tar verdien `Growth` om observasjonen er et år med positiv økonomisk vekst og `No growth` om observasjonen er et år uten
 økonomisk vekst: 
 
 ```{r dikotomisering}
@@ -152,6 +149,8 @@ For å kjøre en lineær regresjon i R så bruker vi funksjonen `lm()`.  `lm()` 
 
 lm(avhengig_variabel ~ uavhengig_variabel, data = mitt_datasett)
 # På mac får du ~ med alt + k + space
+# På win får du ~ med Alt Gr + ^ 
+# ^ er knappen til venstre for toppen av enter på de fleste tastatur
 ```
 
 Dersom datasettet ditt har manglende informasjon (missing/NA) så må du legge til et element som sier hvordan regresjonen skal forholde seg til dette. Ved å legge til `na.action = "na.exclude"` i `lm()` så beholder R informasjon om hvilke 

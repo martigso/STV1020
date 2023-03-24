@@ -32,9 +32,11 @@ summary(ess)
 
 ##### Telle NA-verdier #####
 library(tidyverse)
+
 ess %>% 
   slice_head(n = 6) %>% 
   is.na()
+
 
 ess_nona <- ess %>% 
   filter(is.na(tillit) == FALSE)
@@ -58,6 +60,8 @@ ess %>%
   is.na() %>% 
   sum()
 
+sum(FALSE)
+sum(TRUE)
 
 ##### Antall NA i hele datasettet #####
 ess %>% 
@@ -73,19 +77,29 @@ ess$internettbruk %>%
 
 
 ##### Enheter uten NA på noen variabler #####
+
+ess %>% 
+  slice_head(n = 6)
+
+ess %>% 
+  slice_head(n = 6) %>% 
+  complete.cases(.)
+
+
 ess %>% 
   slice_head(n = 6) %>% 
   filter(complete.cases(.))
 
+
 ess$internettbruk %>% 
   mean(na.rm = TRUE)
 
+summary(ess)
 
 ##### Antall uten NA på noen variabler #####
 ess %>% 
   complete.cases() %>% 
   sum()
-2562 / 2745
 
 ##### Summaerende stats #####
 # For alle variabler i datasettet
@@ -93,7 +107,7 @@ summary(ess)
 # kjonn	
 # 1	Mann
 # 2	Kvinne
-
+sum(c(1, 2)) / 2
 
 # For variabelen internettbrukt
 summary(ess$internettbruk)
@@ -141,15 +155,8 @@ rm(stdavvik, varians)
 # install.packages("stargazer")
 library(stargazer)
 
-class(ess)
-
-ess <- data.frame(ess)
-class(ess)
 ess %>% 
-  data.frame() %>% 
   stargazer(., type = "text")
-
-stargazer(ess, type = "text", summary = TRUE)
 
 
 stargazer(ess, type = "html",
@@ -162,19 +169,20 @@ stargazer(ess, type = "html",
 
 ##### Laste inn ANES som .RData #####
 # Bytt ut det som står i hermetegn med filbanen og filnavnet på din maskin:
-load("./data/ANES2016small.RData")
+load("data/ANES2016small.RData")
 
 summary(ANES2016small)
 
 ##### Omkode vote og female #####
+
 ANES2016small <- ANES2016small %>% 
-  mutate(vote = case_match(V2Trump,
-                           1 ~ "Trump",
-                           0 ~ "Clinton"), 
-         gender = case_match(female, 
-                             0 ~ "Male", 
-                             1 ~ "Female"))
+  mutate(vote = ifelse(V2Trump == 1, "Trump", "Clinton"),
+         gender = ifelse(female == 1, "Kvinne", "Mann"))
+
 table(ANES2016small$V2Trump, ANES2016small$vote)
+table(ANES2016small$female, ANES2016small$gender)
+
+table(ANES2016small$vote, ANES2016small$gender)
 ######
 # Sjekker at omkodingen ble riktig:
 table(ANES2016small$female, ANES2016small$gender, useNA = "always")
@@ -185,7 +193,8 @@ table(ANES2016small$V2Trump, ANES2016small$vote, useNA = "always")
 
 
 ##### Krysstabell #####
-krysstabell <- table(ANES2016small$vote, ANES2016small$gender)
+krysstabell <- table(ANES2016small$vote,
+                     ANES2016small$gender)
 
 krysstabell
 
@@ -194,6 +203,7 @@ krysstabell
 ##### Proporsjontabell #####
 prop.table(krysstabell, margin = 2)
 prop.table(krysstabell, margin = 1)
+prop.table(krysstabell)
 
 ##### Kji-kvadrattest#####
 chisq.test(krysstabell)
@@ -238,7 +248,8 @@ ggplot(ess, aes(x = utdanning, fill = as.factor(kjonn))) +
 
 
 
-t.test(utdanning ~ as.factor(kjonn), data = ess, var.equal = TRUE)
+t.test(utdanning ~ as.factor(kjonn), 
+       data = ess, var.equal = TRUE)
 
 
 
@@ -276,6 +287,11 @@ t.test(utdanning ~ as.factor(kjonn),
        var.equal = TRUE)
 
 
+cor(ess$internettbruk, ess$tillit, use = "complete.obs")
+cor.test(ess$internettbruk, ess$tillit)
+
+ggplot(ess, aes(internettbruk, tillit)) +
+  geom_smooth(method = "lm")
 
 ##### Laste inn FairFPSR3 #####
 load("../data/FairFPSR3.RData")

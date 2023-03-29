@@ -5,7 +5,7 @@ format:
     code-fold: true
 ---
 
-I dette oppgavesettet, som er en av prøvene fra i fjor, skal vi bruke datasettet "social_survey.RData". 
+I dette oppgavesettet, som er en av prøvene fra i fjor, skal vi bruke datasettet "social_survey.RData". [Last ned her!](https://github.com/martigso/STV1020/raw/gh-pages/data/social_survey.RData). 
 Datasettet inneholder surveysvar fra personer i Norden. Variabelforklaring:
 
 | Variabelnavn      | Beskrivelse                                          |
